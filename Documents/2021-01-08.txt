@@ -1,0 +1,15 @@
+1)javascript basic
+ -types of javascript(external,internal)
+2)variable types
+3)variable mutation and type coercion
+4)Rules for declaring variable in js
+ -variable name can start with $,_,letter.
+ -can't declare varible name as same as identifier which is use   by javascript(like functio,if)
+5)Data types
+6)different operator
+7)HTML,css overview 
+8)explore css functionality like display:flex ,etc.
+9)html table create(take example for complex table for practice)
+10)typeof operator
+11)programming practice of js
+12)variable name should be meaning full 
