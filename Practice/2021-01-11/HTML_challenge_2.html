@@ -1,0 +1,26 @@
+<!-- display * instead of dot in password field -->
+<html>
+    <head>
+        <title>Html challenge 2</title>
+    </head>
+    <body>
+
+        <h1>Upload file</h1>
+        <input type="file" id="test" name="test">
+        <button type="button" onclick="myfunction()">Upload</button>
+
+        <p id="demo"></p>
+
+        <script>
+            function myfunction(){
+                var str=document.getElementById("test").value ;
+                if(!str.includes(".pdf",0)){
+                    document.getElementById("demo").innerHTML="you can't upload another file";
+                    document.getElementById("test").value="";
+                }else{
+                    document.getElementById("demo").innerHTML="you have upload file successfully";
+                }
+            }
+        </script>
+    </body>
+</html> 

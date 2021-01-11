@@ -1,0 +1,28 @@
+1)css propery like
+ -height,width
+ -margin
+ -padding
+ -image radius(to round image)
+ 
+2)understand page structure of html
+
+3)block structure for understand margin,padding.
+
+4)try some new attribute like "display:flex" for side by side  multiple image in html page
+
+5)css shadow effect
+ -text-shadow,box-shadow
+ -ex.:box-shadow: 5px 5px 10px grey(3rd parameter for blur effect)
+ -ex.:text-shadow:5px 5px grey (without blur effect)
+
+6)new tag understand of table like (thead,tboady,tfooter)
+7)understand purpose of h1 tag use in html.(use for seo)(use first tag h1)
+8)need to take textarea tag value in form
+
+notes:-
+use for property when use label
+
+Chellenges:-
+try: display * instead of dot in password field
+upload file specifically (type=file) generate error if it is different
+reset button (check for drop down value)
