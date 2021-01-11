@@ -1,0 +1,46 @@
+1)Learn about If/else condition and else if statement.
+  -taken example to check married or not using if/else statement.
+  -Also observe comparison operator (===,==).
+  -=== operator use to compare 2 values are equal or not as well as to compare data type of both values should be same.
+  -==operator only check 2 values are equal or not without checking data types.
+
+2)Boolean operator = AND(&&),OR(||),NOT(!)
+  -learn table of boolean operator for true/false value.
+  -Take example of age to check age between specified criteria like that.
+
+3)turnary oprator 
+ - condition ? true :false
+ -example check age is greater than 18 or not and return value accordingly.
+
+4)Switch operator
+ - take example of put choice and take action accordingly.
+ -it will compare each case with passed choice in switch case.
+
+5)Truthy and falsy values
+ -falsy values:- undefined,null,0,'',NaN(Not a Number)
+ -truthy values:- not falsy values
+
+6)Equality operator:
+ -=== (strict equality)
+ -== (equal)(type coercios)
+ -ex.:- 23 == '23' return true
+        23 === '23' retuen false
+
+7)function
+ -use for re usability(like don't repeat your self)
+ -taken example of retirement year calculation and age calculation.
+
+8)function declaration and expression
+ -brifly take a knowlege of declaration and expression in js.
+ -understand difference between statement and expression
+ -function expression is more usefull in js.
+
+9)Array
+ -learn to initialize array different way
+ -access item from array
+ -methods use with array (push,pop,indexof,unshift,shift,length)
+ -try another function like sort(),join()
+ -syntax:-ArrayName.join(seperator)(returns all element join   and seperated by sepertor like /,*,comma,:)
+ -another function try : concat,fill,reverse(use to reverse array)
+ 
+
