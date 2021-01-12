@@ -1,0 +1,20 @@
+1)use Doctype to know to browser in html page
+2)declare script tag in head when check before load page and at last when check after load page.
+3)CSS types:inline,embedded,external
+4)SCSS(dynamic style apply)
+5)<noscript> tag(try today)
+6)pwa(progressive web app)
+
+
+challenge:
+1)content security policy in meta data( protect a page against a cross site scripting attack)
+  -ex:Content-Security-Policy: default-src 'self'
+  -A web site administrator wants all content to come from the site's own origin (this excludes subdomains.)
+
+  -ex:Content-Security-Policy: default-src 'self' *.trusted.com
+  -A web site administrator wants to allow content from a trusted domain and    all its subdomains
+
+2)local storage,session storage of browser:
+  -these are web storage api
+  -localstorage:localStorage doesn't expire(clickCount).It will not reset
+  -sessionStorage:stores data for one session.It will reset after finish session.
