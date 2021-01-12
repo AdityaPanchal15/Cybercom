@@ -1,0 +1,39 @@
+1)learn how to javascript code run executed.
+ -javascript code->parser(check all rules and validation)->convert to machine code->code run
+
+2)Execution context and Execution stack:
+ -which variable or function in global that all are global context.(not in a function.)
+
+3)Execution context object:Variable Object(VO),Scope chain,"This" keyword
+
+4)Two phase :
+   1)Creation Phase:
+	A)Creation of Variable Object
+	B)Creation of Scope Chain
+	C)Determin value of "this" keyword
+   2)Execution Phase:
+	-run code line by line
+5)Hoisting:
+ -each function ,a property is created in the Variable Object,pointing to function.
+ -each variable ,a property is created in the Variable Object,and set to undefined.
+ -note:That is load at initial phase and assign value at time of execution.
+
+6)hoisting only work for function declaration not for function expression
+
+7)Scope chain:
+  -Each new function creates a scope
+  -Lexical scoping:get access to the scope of outer function.
+Note:Scope chain and execution stack works different.
+
+8)"this" keyword:
+  - point to global object 
+  - this variable point to the object that is calling a method
+9)objects and properties:
+ -declare and access properties
+10)Objects and methods
+11)Loops and iteration:
+  -loops:for,while
+  -break,continue statement
+  -challenge for disply reverse array using for loop
+
+12)understand ES5(basic fundamentals(preffered)) and ES6 version(go to advance level)  
