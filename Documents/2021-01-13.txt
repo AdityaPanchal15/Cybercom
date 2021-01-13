@@ -1,0 +1,15 @@
+1)DOM(Data Object Manipulation):
+  -structure representation of HTML document
+  -use to connect webpage to script
+
+2)DOM Access and Manipulation:
+-Math function:random,floor
+-querySelector(with innerHTML,textContent)
+
+3)Events and Event Handling:
+-Events
+-EventListener(for response to some event)
+-anonymous function
+
+4)use css properties in js
+-ex.document.querySelector('id/class').style.display='none'; 

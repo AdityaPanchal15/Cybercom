@@ -1,0 +1,75 @@
+.dice{
+    height:50px;
+    width:50px;
+}
+/* p{
+    display: inline;
+} */
+.headset{
+    font-size: 50px;
+    color: rgb(56, 55, 55);
+    margin:50px 0px 0px 0px;
+}
+
+.score{
+    margin-top: 0px;
+    font-size: 70px;
+    color: red;
+}
+.container{
+    display: flex;
+    margin-left:25%;
+}
+
+.subContainer{
+    height: 415px;
+    width: 315px;
+    background-color: rgb(218, 216, 216);
+    text-align: center;
+}
+.subContainer1{
+    height: 415px;
+    width: 315px;
+    background-color: rgb(247, 243, 243);
+    text-align: center;
+}
+
+.current-box{
+    background-color: rgb(250, 4, 4);
+    width: 90px;
+    height: 60px;
+    margin-top: 130px;
+    margin-left:auto;
+    margin-right:auto ;
+    
+}
+.current{
+    font-size: 30px;
+    margin:-10px;
+    color: white;
+}
+
+.current-para{
+    margin-top: 5px;
+    color: rgb(34, 34, 34);
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .button1 {background-color: #4CAF50;} /* Green */
+  .button2 {background-color: #008CBA;} /* Blue */
+ 
+  .button-ctrl{
+      margin-left: 41%;
+  }
+  
