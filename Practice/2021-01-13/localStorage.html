@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function clickCounter() {
+  if((localStorage.clickcount)=='NaN'){
+        localStorage.clickcount=1;
+    }else{
+        localStorage.clickcount = Number(localStorage.clickcount)+1;
+    }
+    
+    document.getElementById("result").innerHTML = "Click Count:" + localStorage.clickcount + " time(s).";
+}
+</script>
+<h1>localStorage Example</h1>
+</head>
+<body>
+
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+
+
+</body>
+</html>

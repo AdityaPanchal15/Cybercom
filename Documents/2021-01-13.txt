@@ -1,0 +1,9 @@
+1)client side rendering(ex.javascript) & server side rendering(ex.php)
+2)stateless application (javascript)
+3)let,const not taking in hoisting
+4)polyfilling:run core method and traspiling:core method+compiling
+5)Explore HTML5 Tags(article,aside,bdi,canvas,data(use in li),datalist,details,dialog,figure,footer,header,hgroup,mark,meter,input,output)
+
+challenge:
+1)use 15 html5 tags
+2)localstorage/session storage check accessible or not

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function clickCounter() {
+    if((sessionStorage.clickcount)=='NaN'){
+        sessionStorage.clickcount=1;
+    }else{
+        sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+    }
+    
+    document.getElementById("result").innerHTML = "Click Count:" + sessionStorage.clickcount + " time(s).";
+}
+</script>
+<h1>sessionStorage Example</h1>
+</head>
+<body>
+
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+
+
+</body>
+</html>

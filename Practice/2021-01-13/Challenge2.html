@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 1</title>
+</head>
+<body>
+    <h1>Check localStorage and sessionStorage enable or not in browser</h1>
+    <button type="button" onclick="checkFun()">Check Here</button>
+    <p id='local'></p>
+    <p id='session'></p>
+    <script>
+        function checkFun(){
+            if(localStorage){
+                document.getElementById('local').innerHTML='LocalSession enable';
+            }else{
+                document.getElementById('local').innerHTML='LocalSession disable';
+            }
+
+            if(sessionStorage){
+                document.getElementById('local').innerHTML='sessionStorage enable';
+            }else{
+                document.getElementById('local').innerHTML='sessionStorage disable';
+            }
+        }
+        
+    </script>
+</body>
+</html>
