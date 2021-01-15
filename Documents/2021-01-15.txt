@@ -1,0 +1,5 @@
+1)Practice of table with new tags:
+-<colgroup> use to group column in table
+-<col> use to give style to specific column in html table
+-border practice in table
+ 

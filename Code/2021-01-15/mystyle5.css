@@ -1,0 +1,40 @@
+
+table,th,td{
+    border:1px solid black;
+    border-collapse: collapse;
+  }
+table{
+    border:hidden;
+    border-style: double;
+}
+
+col {
+    display: table-column;
+  }
+
+.bold{
+    font-weight: bold;
+}
+.col1{
+    background-color:powderblue;width:150px;
+}
+.col2{
+    background-color:white;width:250px;
+}
+.col3{
+    background-color:pink;width:100px;
+}
+.col4{
+    background-color:rgb(230, 230, 127);width:160px;
+}
+.lightgreen{
+    background-color: lightgreen;
+    border:hidden;
+    border-style: double;
+}
+.noborder{
+    border:hidden;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 1px;
+}
