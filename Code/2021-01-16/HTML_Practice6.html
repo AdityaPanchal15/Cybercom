@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Practice 6</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container1">
+        <p class="image">Contact Us</p>
+        <div class="inputContainer">
+            <div class="input-group">
+                <span>
+                    <i class="material-icons ">person_outline</i>
+                </span>
+                <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full Name" />
+            </div>
+            <div class="input-group">
+                <span>
+                    <i class="material-icons ">mail_outline</i>
+                </span>
+                <input type="email" class="form-control" name="email" id="email" placeholder="example@gmail.com" />
+            </div>
+            <div class="input-group">
+                <span>
+                    <i class="material-icons ">phone_android</i>
+                </span>
+                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="+1800 000000" />
+            </div>
+            <div class="input-group">
+                <span>
+                    <i class="material-icons ">comment</i>
+                </span>
+                <textarea rows="5" col="10" name="comments" id="comments" placeholder="Your Comments..."></textarea>
+            </div>
+            <button class="button" onclick="submit()">SEND NOW</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
