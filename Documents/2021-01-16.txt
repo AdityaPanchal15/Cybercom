@@ -1,0 +1,37 @@
+1)Function returning Function:
+-It return function from function.So it is use anonymous function.
+
+2)Immediately Invoked Function Expression:
+-It is use for data privacy.We can not access variable from outside of IIFE.
+
+3)Closures:
+-An inner function has always access to the variable and parameters of its outer function,even after the outer function has returned.
+
+4)Bind,call,Apply :
+-Bind:it will bind function when we pass only one argument in place of 2,then after we can pass 2nd argument seperately.
+-call:It will use where we can access property of 2nd object using fiest object name .We need to pass object in arguments.
+
+5)New in ES6:
+-Variable Declaration with let and const,Blocks and IIFEs,Strings,Arrow function,Destructing,Arrays,The Spread operator,Rest,Default Parameters,Maps,Classes and subclasses
+
+6)variable declaration:let and const
+-understand the difference between var,let and const.
+-difference between block scope and function scope.
+-let and const are block scope not a function scope.
+-var is function scope.
+
+7)String in ES6:
+-access variable in string using ${var_name}in between `` instead of concatination (+) opearator in ''.
+-learn new methods like repeat(),includes in string.
+
+8)String Practice:
+-slice:to cut array from specified index
+-[] is use to du=ynamically add key in object.
+ex.const dynamic = "model";
+const item = {
+  brand: "Porsche",
+  [dynamic]: "Panamera"
+}
+
+console.log(item);
+
