@@ -1,0 +1,44 @@
+1)map in function in ES5:
+-It will map current index and return output accordingly and it map all elements in array.
+
+2)arrow function in map in ES6:
+-It will easily sort expression .not need function keyword.only argument and arrow needed.
+ex.map(args=>return args);
+
+-3 ways to use arrow function:
+	1.single args
+	2.two args
+	3.using curly brecket for multiple line of code
+
+3)this keyword point to global object in case of reguler function.
+ so,set this in var and then access property of object using var_name.property in ES5.
+
+4)To overcome to ES5 problem,we will use arrow function with this keyword.It will access in ES6.
+
+5)Destructing:
+-Destructing is use to get value instantly,means not need to get each array element from array and store to variable.
+-ex.const [name,year]=['Adi',21];
+    console.log(name);
+    console.log(year);
+-In ES6.
+-use to destructure array.
+-Also it can be done with object destrucring.
+
+6)Array in ES6:
+-InES5 ,uses Array.prototype.slice.call(boxes) to get all values in variable.
+-In ES6,simpler way to get all values in variable from array using Array.from(boxes).
+-In ES5,use for loop in simpler and longer way.
+-In ES6,use for of loop to shorter and clean code.(for(const cur of boxArray));
+
+///////////////////////Use below when only one value true in array///////////////////////
+-In ES5,we have to use map function which return each element result in array.then we can use these with indexOf and another long method to get value.
+-In ES6,findIndex(el=>condition) is use to find index of element which is true accordingly define condition.Also use find(el=>condition) to get direct value instead of index from the array.
+
+
+
+try:
+1)take array and use for loop and for/in loop
+2)A = { x: 'abc' }
+for (x in A){
+console.log(A.x);
+}
