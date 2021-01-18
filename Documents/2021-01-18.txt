@@ -1,0 +1,7 @@
+1)form create.
+-align label and input box column wise using "float:left" in label so right side is clear.and also display as a block label.
+-learn change icon of dropdown list using putting image icon.
+
+2)learn dropdown list <select> properties.
+- overflow:visible,size="" to display all element in list.
+-<optgroup label=""></optgroup>:-use to give title and display as sub option in dropdown menu in form.

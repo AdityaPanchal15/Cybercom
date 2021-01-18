@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Practice 7</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <form action="success.html">
+        <fieldset>
+            <legend>Your Address</legend>
+            <label for="fullName">First Name</label>
+            <input type="text" name="fullName" id="fullName">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName">
+            <label for="street">Street</label>
+            <input type="text" name="street" id="street">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city">
+        </fieldset>
+        <fieldset>
+            <legend>Additional details</legend>
+            <label for="biography">Biography</label>
+            <textarea name="biography" id="biography" cols="30" rows="3"></textarea>
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image">
+            <label for="ageGroup">Age Group</label>
+            <select class="ageGroup arrows" name="ageGroup" id="ageGroup" >
+                <option value="0_to_9">0 to 9 years</option>
+                <option value="10_t0_18">10 to 18 years</option>
+                <option value="above_19">19 to above </option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Interests</legend>
+            <label for="hobbies">Hobbies</label>
+            <select size="4" class="hobbies" name="hobbies" id="hobbies">
+                <option value="Playing Soccer">Playing Soccer</option>
+                <option value="Dancing">Dancing</option>
+                <option value="Gardening">Gardening</option>
+                <option value="Watching Movies">Watching Movies</option>
+            </select>
+            <label for="cars">Favourite car?</label>
+            <select name="cars" id="cars" class="ageGroup arrows">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            <label for="transport">Favourite public transport?</label>
+            <select size="4" class="hobbies" name="transport" id="transport">
+                <optgroup label="Ground">
+                    <option value="train">Train</option>
+                    <option value="bus">Bus</option>
+                </optgroup>
+                <optgroup label="Water"></optgroup>
+            </select>
+        </fieldset>
+        <button type="submit" class="button button1">Submit</button>
+        <button type="reset" class="button button2">Reset</button>
+    </form>
+</div>
+</body>
+</html>
