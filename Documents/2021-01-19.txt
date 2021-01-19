@@ -1,0 +1,7 @@
+1)make a form as define in practice 8.
+2)validate password and email using javascript which checks password and re password is same and email and re type email is same or not.
+3)take a basic knowledge of php.like how to get value from form after submit and display in tabuler form.
+4)take knowledge about get and post method in form.
+-post is secure method.
+-when confidential data are passing from channel then post is use.
+-when data are not confidential .,like pass product_id then get will use.get method displays values in url on submit. 
