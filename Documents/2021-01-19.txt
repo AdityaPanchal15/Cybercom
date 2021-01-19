@@ -1,0 +1,15 @@
+1)Binding function and constructir in class in ES6.
+-It displays well structured code.
+-constructor() method is use to define constructor in ES6.
+-static keyword use with function.static function directly access using classname.
+	Ex.class_name.function_name()
+-In ES5,prototype and function constructor in differently display in code.
+
+2)Inheritance in ES6:
+-In ES5,we need to inherit super class in sub class means function constructor,we use call method with args.
+-and also inherit prototype of parent class using subclass.prototype=Object.create(parent_class.prototype)
+
+-In ES06,Easy to inharitance.
+-use extends keyword to inherit property of parent class.
+-super keyword use to pass args to parent class constructor.
+-easily direct add additional prototype function in class.

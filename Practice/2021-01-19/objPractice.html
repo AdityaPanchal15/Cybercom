@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Object Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Object Practice</h1>
+    <p>1.A program to list the properties of an object.</p>
+    <p>2.Add multiple objects in array and store it in local storage.
+         Object contains the below properties,
+         Name, Age, Email, Telephone Number.
+         Display the multiple objects in table structure.</p>
+    <p>4. Create one html form that contain the below fields,
+        o Name, Email, Date of birth.
+        o On click of submit button, Store the data as object in one single array. (array will be same for all records)
+        o Display the data in one table format another page that is, view.html</p>
+
+    <table id="mytable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+    </table>
+
+    <form action="view.html" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="dob">Date Of Birth </label>
+        <input type="date" name="dob" id="dob">
+        <button type="submit" id="btn" >Submit</button>
+    </form>
+
+    <script src="p1.js"></script>
+    <script src="p2.js"></script>
+    <script src="p4.js"></script>
+</body>
+</html>
