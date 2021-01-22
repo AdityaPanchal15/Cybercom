@@ -20,6 +20,6 @@ function sortByYear(a,b){
     }else{
         c=-1;
     }
-    console.log(c);
+    // console.log(c);
     return c;
 }
