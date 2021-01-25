@@ -1,0 +1,47 @@
+1)know how to indentation in php
+2)echo and print keyword and difference
+3)html output using php 
+4)know how to php inside html
+5)different comment in php
+-//(for one line)
+-/*
+
+ */(comment to multiple line)
+
+6)error_reporting(from php.ini)
+7)varible:
+-direct declare using $ operator
+-not need to any keyword to specify int,string,bool
+
+8)Concatenation:
+-concat using "." dot operator in echo when use single quote.
+-using double quote not concatination operator needed.
+
+9)if_else statement:
+-if contains argument as a boolean return 
+-if(true){
+}else{
+}
+
+10)if_else if():
+also we can use if else if
+
+11)assignment operator:
+-=,+=,/=,*=,%=
+
+12)comparison operator:
+-==,>=,<=,<,>,!=
+
+13)Arithmetic Operators:
+-  +,-,*,%,/
+
+14)Logical operator:
+-  &&(AND),||(OR)
+
+15)Triple equal:
+- it return true if data type and value both equal
+
+16)while loop:
+17)do while loop:
+18)for loop:
+19)switch statement
