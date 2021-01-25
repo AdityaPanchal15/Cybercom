@@ -1,0 +1,51 @@
+1)exit() and die():
+-both are equal.
+-exit use to exit process.
+-die use to throw exception.
+
+2)preg_match(expression,string):
+-it returns true if match expression from string.
+
+3)Basic function :
+-function funName(){}
+-arg function ,function funName(arg1,ar2){}
+
+4)return value in function:
+-can be return value from function 
+
+5)global variable in function:
+-we can access outter variable by specify "global varName" in function.
+
+6)str_word_count:
+-it is use to count word.
+-str_word_count(string):returns no. of words
+
+using print_r:
+-str_word_count(string,1):returns array of words
+-str_word_count(string,2):retuens index of each word
+-str_word_count(string,1,'.'):"." also include in array
+
+7)str_suffle:
+-str_suffled(string):returns a random text from string characters.
+
+8)substr:
+-substr(string,start,end):return sub string from string.
+
+9)strlen:
+-returns a length of string.
+
+10)strrev():-returns reverse string
+
+11)similar_text(string1,string2,result)
+-reutrns no. of percentage how mouch it is similar.
+-use for plagarism check
+
+12)trim():
+-trim(),ltrim(),rtrim();
+-addslashes(string):-use for provide security by appending slash in html content.
+-stripcslashes(string):-which string has added slash it will be remove add display plain text.
+
+
+
+note:
+arrays define as per leatest version of php 
