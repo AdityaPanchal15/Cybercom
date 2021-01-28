@@ -1,0 +1,42 @@
+1)Array introduction
+-declare using $arrName=array(here);
+-echo print only 1 element from array
+-print_r can print whole array
+
+2)assosiative array
+-it will assosiate value with keys
+-it can done by $arrName=array(key1=>value1,key2=>value2);
+
+3)Multi Dimensional array:
+-array inside array
+-it can be 2D,3D
+access by $arrName[firstele][innerEleIndex];//2D
+
+4)for each loop:
+-display 2d array using for each loop
+
+5)include and require:
+-if file doesn't exist which is in include(''),that will not discard page.
+-if file doesn't exist which is in require(''),that will discard page.
+
+6)require once and include once :
+-use when need require or include more than once then .
+
+7)preg_match():
+-doing 1 program which check string hase space or not.
+
+8)string length:
+-use in for loop condition.
+
+9)string lower and upper case conversion use in real time
+
+10)strpos(string,find,offset):
+-use to find position of substring which is specified.
+-real time example
+
+11)substr_replace(string,string_to_replace,pos,no_of_character)
+
+12)str_replace($find,$replace,$string):
+-$find is array/word to want to replace.
+-$replace is array/word to want to replace from $find array/word.
+
