@@ -1,0 +1,52 @@
+1)htmlentities:
+-without htmlentities security can be vanurable.Beacuse in input field attacker can use tag like iframe to get page information.
+-so htmlentities prevent this.
+
+2)session:
+-session save at server side.
+-it can access in any page only including session_start();
+-it can use in login.
+-unset($_SESSION['username']); for unset perticular session.
+-session_destroy() is use to destroy all session.
+
+3)cookie:
+-setcookie(key,value,time()+time to alive cookie)
+-for unset cookie,that will be same :setcookie(key,value,time()-time to alive cookie)
+-it will save at client end.
+-it is use to save client activity values by website.
+-like,use in amazon,flipcart.
+
+4)file handling:
+-	w	writing
+	r	reading
+	a	appending
+
+-$fOpenVariable=fopen(fileName,mode);	//open file
+-fwrite($fOpenVariable,text);		//write file
+-fclose($fOpenVariable)			//close file
+-fopen(fileName,'a');			//append into file
+-file(fileName)				//get file in variable for read
+
+-explode(',',file_read_data)		//returns array of data which are comma seperated
+-implode(',',array_data)		//returns comma seperated values
+
+5)directory :
+-opendir(dir_name)	//open directory
+-readdir(handle_var_of_opendir)	//read files
+-try to generate dynamic link 
+
+6)delete file and rename file:
+-unlink(filename) 		//to delete file
+-rename(filename,new_file_name) 	//to rename file
+
+7)Upload file:
+-   // $name=$_FILES['file']['name'];	//returns name of file
+    // $size=$_FILES['file']['size'];	//returns size of file
+    // $type=$_FILES['file']['type'];	//returns type of file
+    // $temp_name=$_FILES['file']['tmp_name'];	//location of file
+
+-move_uploaded_file(source_location,destination_where_to_store_file)	//upload file to specific location which is specify in second arg.
+
+
+task:
+https://www.tutorialspoint.com/php/php_complete_form.htm
