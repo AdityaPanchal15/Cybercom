@@ -1,0 +1,42 @@
+1)MD5:
+-it is use to encrypt value.It will generate hash value.so attacker cannot crack password.
+
+2)mail sending:
+-I have configure php.ini
+	-comment SMTP,smtp_port,sendemail_from.
+	-set sendemail_path="path of sendemail.exe"
+
+-then,configure sendmail.ini
+	-smtp_server=smtp.gmail.com
+	-smtp_port=587
+	-smtp_ssl=tls
+	-auth_mail=
+	-auth_password=
+-Note:enable unprotected website in email.	
+
+3)Practice of Contact form with validation apply in form.
+4)Practice Contact form from tutorpoint.
+
+-htmlentities use to secure input field.
+
+5)xml:
+-xml provides custome tags.
+-can use xml page as storage or as api.
+-use simplexml_load_file('example.xml').
+-extract data using like $xml->producer[1].name
+
+-Ex.
+<producers>
+    <producer>
+        <name>Alex</name>
+        <age>21</age>
+    </producer>
+    <producer>
+        <name>Bob</name>
+        <age>25</age>
+    </producer>
+    <producer>
+        <name>Adi</name>
+        <age>20</age>
+    </producer>
+</producers>
