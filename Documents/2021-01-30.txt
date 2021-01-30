@@ -1,0 +1,90 @@
+//////////////////////////////2021-01-28////////////////////////////
+Angular Fundamentals:
+1)Building blocks of Angular Apps
+-Components
+	-encapsulate Data,HTML Template,Logic
+-every component has root component.
+
+2)steps:
+	1)create component:
+	    -name it courses.component.ts(corses component)
+	2)register it in a module:
+	    -add courses component in app.module.ts in declaration.
+	3)Add an element in an HTML markup:
+	   -create html markup app.component.html which contains html tag and use <course> which shows template element in page. 
+
+3)
+app.component.ts:use to create component
+app.component.html:html combine component using add tag of component(template component)
+app.component.css:provide css
+app.module.ts:combine all components(register module)
+
+4)Generating Components Using Angular CLI
+-use command "ng g c componentName".
+-it will generate all 4 files and auto register in app.module.ts
+
+
+///////////////////////////2021-01-29/////////////////////////////
+1)Templates:
+-binding view with logic.
+-use {{variable}} to access from class to template .
+-use for dynamic binding.
+-also we can return variable using function and call in template. known as interpolation.
+
+2)Directives:
+-declare directive like ex.courses=["courses1","courses2","courses3"];
+-In template,access directive . 
+ex. <li *ngFor="let course of courses">
+                {{course}}
+    </li>
+-ngFor is work like for loop
+
+3)Services:
+-In angular data coming from http end points.
+-but we have no endpoint till now.
+-so we need to make fake http endpoint.
+-service is use to make fake http endpoint which return data. using function.
+-name like ex.courses.service.ts
+
+4)dependancy injection:
+-dependancy injections means inject dependancy of component/class into its constructor.
+
+-when use new keyword in constructor then it will be tightly couple with component.
+-so solution is to instead of new ,use instanceName:serviceClassName in argument.
+ex.constructor(service:CoursesService){
+        // let service=new CoursesService();
+        this.courses=service.getCourses();
+    }
+-this dependancy we need to register in app.module.ts(module) in provider.
+
+
+-singleton:use only one instance for all component in module.
+
+5)Generating Service Using Angular CLI:
+-use command "ng g s serviceName"
+
+
+
+
+///////////////////////////////////////2021-01-30////////////////////////////////////
+1)Property Binding:
+-property binding using : Ex.
+-when use string interpolation?
+	-header,paragraph,span,text
+
+2)Attribute binding:
+-attribute of html bind using attr.attributeName
+ex.<td [attr.colspan]="colSpan"></td> 
+-in class component,ex.,colSpan=2;
+
+3)How to add bootstrap in angular application?
+-run "npm install bootstrap --save"
+-"--save" will save bootstrap in package.json
+-import bootstrap.css in style.css using    @import "~bootstrap/dist/css/bootstrap.css";
+-use in component.
+
+4)class binding:
+-for example .,if want to need fixed 2 class but one class use dynamically so "class binding" is use.
+Ex.<button class=" btn btn-primary" [class.active]="isActive">Save</button>
+we need to use active class dynamically.
+-ex.isActive=true (if want to active) else false.
