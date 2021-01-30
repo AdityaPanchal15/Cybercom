@@ -64,7 +64,7 @@
 -collects variable and methods.
 
 
-//////////////////////Date:2021-01-28//////////////////////////
+//////////////////////Date:2021-01-27//////////////////////////
 9)constructor:
 -it can't have multiple constructor.
 -so,if we want to optional argument then put "?" beside arg name.
