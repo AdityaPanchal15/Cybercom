@@ -1,0 +1,30 @@
+fieldset{
+    width: 500px;
+    height: 450px;
+    /* margin:auto; */
+    background-color: rgb(51, 235, 51);
+  }
+
+  legend{
+      text-align: center;
+      font-size: 25px;
+  }
+  .container{
+    background-color: greenyellow;
+    width:600px;
+    height: 500px;
+  }
+
+  table{
+      /* width:60%; */
+      margin-top: 5%;
+  }
+  td{
+      padding: 7px;
+  }
+
+  .red{
+      color: red;
+  }
+  
+  
