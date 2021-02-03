@@ -1,0 +1,70 @@
+//////////////////////2021-02-01////////////////////
+
+1)take quick introduction to phpmyadmin panel.
+
+2)connect database:
+-$link = mysqli_connect("hostname", "username", "password", "database");
+
+-if not connect : die("error_msg");
+
+3)execute query:
+-$query_run=mysqli_query($link,$query);	//execute query
+
+-mysqli_error($link);//use to query error
+
+-$query_row =mysqli_fetch_assoc($query_run); //use to fetch rows using loop.It will fetch row one by one.
+
+-$query_row['food']; //fetch row and food column
+
+-mysqli_num_rows($query_run) //returns no. of rows
+
+3)sql injection prevention:
+-put condition only that value can pass.
+
+4)Select:
+-keep practice select column_name instead of select *.
+-select query
+-update query
+-insert query
+-we can set auto increament to 0 from operation.
+-practice basic queries
+
+5)perform hit counter example to understand all queries with database.
+
+
+/////////////////////////2021-02-02//////////////////////
+1)Left Join:
+-select `people`.`name`,`pets`.`pet` from `people` 
+  left join `pets` 
+  on `people`.`id`=`pets`.`people_id`
+-return all rows of left table which are not equal.
+
+2)Right Join:
+-select `people`.`name`,`pets`.`pet` from `people` 
+  right join `pets` 
+  on `people`.`id`=`pets`.`people_id`
+-return all rows of right table which are not equal.
+
+3)Join:
+- select `people`.`name`,`pets`.`pet` from `people` 
+  join `pets` 
+  on `people`.`id`=`pets`.`people_id`
+-return only equal condition value of both table.
+
+4)sql LIKE condition:
+-select `name`
+ from `names` 
+ where `name` LIKE '%Garrett%';
+-it return rows which contain garrett word in name. 
+
+5)sql Distinct :
+-select DISTINCT `name`
+ from `names`;
+-provides distinct values;
+
+6)sql Injection:
+-ex.' OR ''='		//by pass login
+-mysqli_real_escape_string($link,$password_hash) //prevent attack
+
+7)create login form and registration form.
+
