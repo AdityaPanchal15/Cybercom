@@ -75,6 +75,9 @@ function validate(){
         (!document.getElementById("married").checked && !document.getElementById("unmerried").checked)){
 
             details.innerHTML="";
-        }
+            return false;
+    }else{
+        return true;
+    }
     
 }

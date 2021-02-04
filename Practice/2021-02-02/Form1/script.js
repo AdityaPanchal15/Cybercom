@@ -65,6 +65,10 @@ function validate(){
     if(name=="" || password=="" || address=="" || (document.getElementsByClassName("game").checked)
        || (!document.getElementById("male").checked && !document.getElementById("female").checked ) || age=="" || file==""){
            details.innerHTML="";
-       }
+           return false;
+    }else{
+        return true;
+    }
+    
 
 }

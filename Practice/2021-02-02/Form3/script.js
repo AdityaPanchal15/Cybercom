@@ -34,14 +34,14 @@ function validate(){
     if(lastName==""){
         document.getElementById("lastNameErr").innerHTML="Please enter lastName.";
     }else{
-        details.innerHTML="Last Name:"+lastName+"<br>";
+        details.innerHTML+="Last Name:"+lastName+"<br>";
         document.getElementById("lastNameErr").innerHTML="";
     } 
 
     if(dob=="null/null/null"){
         document.getElementById("dobErr").innerHTML="Please enter dob.";
     }else{
-        details.innerHTML="D.O.B:"+dob+"<br>";
+        details.innerHTML+="D.O.B:"+dob+"<br>";
         document.getElementById("dobErr").innerHTML="";
     } 
 
@@ -86,9 +86,12 @@ function validate(){
     }
 
     if(firstName=="" || lastName=="" || dob=="null/null/null" || (!document.getElementById("male").checked && !document.getElementById("female").checked)
-        || country=="Country" || email=="" || phone=="" || password==""){
+        || country=="Country" || email=="" || phone=="" || password=="" || rpassword=="" || password!=rpassword){
 
             details.innerHTML="";
+            return false;
+    }else{
+        return true;
     }
 
     

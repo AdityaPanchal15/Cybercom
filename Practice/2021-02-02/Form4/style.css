@@ -1,0 +1,41 @@
+th{
+    background-color: orangered;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding:20px;
+    font-size: 30px;
+}
+
+table,td,th{
+    border-collapse: collapse;
+    width:30%;
+    margin:auto;
+}
+
+button{
+    background-color:orange ;
+    border:none;
+    display: block;
+    width:100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding:15px 20px;
+    color: rgb(71, 18, 18);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input[type="text"],input[type="email"],textarea{
+    padding:10px 20px; 
+    border:none;
+    margin:15px 50px 15px 50px;
+    width: 60%;
+}
+td{
+    background-color: rgb(247, 210, 197);
+}
+
+.red{
+    color: red;
+}
+

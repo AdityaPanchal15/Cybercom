@@ -18,6 +18,9 @@ function validate(){
 
     if(email=="" || password=="" ){
         details.innerHTML="";
+        return false;
+    }else{
+        return true;
     }
    
 }
