@@ -1,0 +1,53 @@
+1)Exception:
+-we can throw exception using throw new Exception('$exception_message');
+
+-try,throw,catch:
+  Ex.,try{
+	throw new Exception('Not old enough.');
+      }catch(Exception $ex){
+      	echo 'Error:'.$ex->getMessage();
+      }
+-print message using:-$exception_msg->getMessage();
+
+2)custom exception:
+ -it can be use as custom exception using extend Exception to class.
+
+-custom method to display error message in class.
+-define method in class which is extended by Exception.
+
+3)OOP in php:
+-class ,properties,methods
+-class keyword use for declare class
+-create new instance ..,ex, $alex=new BankAccount();
+-$this point to currently invoked object.
+
+4)Access modifiers:
+-public,private and protected in class
+-public property directly can access
+-private,protected property can access through same class public class     
+
+5)constant:
+-const constName;   //(without "$")
+-constant variable access from class :
+	1)objName::constName (without "$")
+	2)In function:-
+	    self::constName;
+
+6)constructor:
+- syntex:
+  public function __construct(){
+  	//do something
+  }
+- involk constructor:
+  $example=new Example(); //call at object creation.
+
+7)multiple instance in class:
+-all instance contain different copy of property value of class.
+
+8)extend keyword:
+-extend use to reuse property of parent class in child class.
+
+9)Database Connection using OOP:
+-create costructor to take arg of database host,username,password.
+-check connection establish or not with check() function.
+-check function call from constructor .check() return true or flase and according that constructor print message.
