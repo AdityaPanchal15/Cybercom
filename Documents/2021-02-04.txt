@@ -1,0 +1,122 @@
+//////////////////////2021-02-04//////////////////////////
+1)event binding:
+-<button (click)="onSave($event)">Save</button>
+-it will call onSave function and disply $event property.
+
+-it has also bubble up property which will automatically run parent selector event.
+-it can stop using $event.stopPropagation(); in child selector function.
+
+2)event filtering:
+-<input (keyup.enter)="onKeyUp()"/>
+-use to filter event like ,don't need to pass $event in arg.we can direct put .enter and run.
+
+3)template variable:
+-template variable like name in input field in html.
+-ex.,<input #email (keyup.enter)="onKeyEnter(email.value)"/>
+-so,direct using template variable email get value.
+
+4)two-way binding:
+-<input [(ngModel)]="email" (keyup.enter)="onKey()"/>
+-use for form in page.it's leatest to use.
+-import FormsModule in app.module.ts and put in import[].
+-<input [value]="email" (keyup.enter)="email=$event.target.value; onKey()"/>
+-also this can use but it will long.
+
+5)Pipes:
+-symbol="|"
+-uppercase ex.,{{courses.title | uppercase}}
+-lowercase
+-number		//output:42,123
+
+-rating   ex.,{{courses.rating | number:'1.1-1'}}  //"1.1-1" is format.we can change.
+  //input:4.9745 ,output:4.97
+
+-price  ex.,  {{courses.price | currency:'INR'}}//return indian rupee symbol.we can also use other currency symbol.
+
+-date   ex.,date:'formate'
+
+6)custome pipe:
+-using ex.,summary.pipe.ts to create custome pipe.
+-implements interface PipeTransform and use Transform as function which contain arg which are pass as format .
+ex.,
+transform(value:string,limit?:number){
+        if(!value)
+            return null;
+        
+        let actualLimit=(limit)?limit:50;
+        return  value.substr(0,actualLimit)+'...';
+    }
+
+//////////////////////2021-02-02///////////////////////////
+Topic:Directives
+
+1)ngIf:
+-use in html for condition to operation on structure
+like .,
+<div *ngIf="courses.length > 0; then coursesList else noCourses"></div>
+<ng-template #coursesList>
+    List Of courses
+</ng-template>
+<ng-template #noCourses>
+    No courses yet
+</ng-template>
+
+2)hidden:
+-ex.,<div [hidden]="courses.length==0">
+    List Of courses    
+</div>
+-it take a falsy value means courses.length==0 is false then it will show this div.
+
+NOTE:when big tree structure then use ngIf otherwise use hidden.
+
+3)switch case:
+-ngSwitch="var"
+   *ngSwitchCase="'value'"
+-when multiple component we need to add toggle active the switch case can use.
+
+4)ngFor:
+-display all information from array to list in html.
+
+5)ngFor & change detection
+
+6)ngFor & track by:
+-it is use to optimize memory performance.
+if fetch data data same then it will not reload DOM .
+
+7)ngClass:
+-it is use to handle 2 class active and de-active.
+-Ex,<span
+    class="glyphicon"
+    [ngClass]="{
+        'glyphicon-star':isSelected,
+        'glyphicon-star-empty':!isSelected
+    }"
+    (click)="onClick()"
+></span>
+
+8)ngStyle:
+-change style according to true false value of variable.
+
+9)custom directive:
+-command:ng g d directive_name
+-use for more control on field.
+-@HostListener has multiple events to perform on input field.
+EX.,@HostListener('blur') onBlur(){
+    let value:string=this.el.nativeElement.value;
+
+    if(this.format=='lowercase')
+      this.el.nativeElement.value=value.toLowerCase();
+    else
+    this.el.nativeElement.value=value.toUpperCase();
+  }
+
+///////////////////////2021-02-04///////////////////////////
+
+Form:
+-2 way to control form:
+	1)Reactive(code externally)
+	2)Template-driven(directive use)
+
+-ngModel is use to allow different value like for form control:
+touch,untouch,value,dirty,valid,invalid like in true/false
+-use in input tag.

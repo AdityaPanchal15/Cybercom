@@ -1,0 +1,73 @@
+<br><br>
+<p>directives works!</p>
+
+<h2>ngIf</h2>
+<div *ngIf="courses.length > 0; then coursesList else noCourses"></div>
+<ng-template #coursesList>
+    List Of courses
+</ng-template>
+<ng-template #noCourses>
+    No courses yet
+</ng-template>
+<br><br><br>
+
+
+<h2>hidden</h2>
+<div [hidden]="courses.length==0">
+    List Of courses    
+</div>
+<div [hidden]="courses.length> 0 ">
+    No courses yet
+</div>
+<br><br>
+
+<h2>ngSwitchCase</h2>
+<ul class="nav nav-pills">
+    <li  [class.nav-link]="viewMode=='map'" [class.active]="viewMode=='map'"><a (click)="viewMode='map'">Map View</a></li>
+    <li  [class.nav-link]="viewMode=='list'" [class.active]="viewMode=='list'"><a (click)="viewMode='list'">List View</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Map View Content</div>
+    <div *ngSwitchCase="'list'">List View Content</div>
+    <div *ngSwitchDefault>Otherwise</div>
+</div>
+<br><br>
+
+<h2>ngFor & change detection</h2>
+<button (click)="onAdd()">add</button>
+<ul>
+    <li *ngFor="let course of data;even as isEven">
+        {{course.name}} 
+        <button (click)="onChange(course)">change</button>
+    </li>
+</ul>
+
+<h2>ngFor & track by</h2>
+<button (click)="loadCourses()">Load Courses</button>
+<ul>
+    <li *ngFor="let course of courses; trackBy:trackCourse">
+        {{course.name}}
+    </li>
+</ul>
+
+<br>
+<h2>ngClass</h2>
+<span
+    class="glyphicon"
+    [ngClass]="{
+        'glyphicon-star':isSelected,
+        'glyphicon-star-empty':!isSelected
+    }"
+    (click)="onClick()"
+></span>
+<br>
+
+<h2>ngStyle</h2>
+<button
+    [ngStyle]="{
+        'backgroundColor':canSave?'blue':'gray',
+        'color':canSave?'white':'black'
+    }"
+>
+Save
+</button>
