@@ -1,0 +1,46 @@
+1)class,object,method and properties.
+-class encapsulate method and properties.
+-provide binding
+
+2)override:
+-use same function in parent class and child class it is override.
+
+3)final keyword:
+-use to prevent overriding in child class.
+
+4)magic constants:
+-__CLASS__ magic constant in order to get the class name
+-__LINE__ to get the line number in which the constant is used.
+-__FILE__ to get the full path or the filename in which the constant is used.
+-__METHOD__ to get the name of the method in which the constant is used.
+
+5)$this keyword:
+-it is point to invoked object properties.
+
+6)chaining method:
+-we can implement chaining method by returning object from class method using $this keyword.
+-ex.,$tank = $bmw -> fill(10) -> ride(40) -> tank;
+
+7)abstract class and methods:
+-An abstract class is a class that has at least one abstract method. 
+-Abstract methods can only have names and arguments, and no other code. 
+-can't instantiate.
+-abstract keyword use for abstract class.
+
+8)interface :
+interface interfaceName { 
+  // abstract methods
+}
+ 
+class Child implements interfaceName {
+  // defines the interface methods and may have its own code
+}
+
+-interface contain only abstract method,constant and doesn't contain variables.
+-implements multiple interface in one class.
+
+9)Polymorphism:
+-methods in different classes that do similar things should have the same name.
+
+10)type hinting:
+-With Type hinting we can specify the expected data type (arrays, objects, interface, etc.) for an argument in a function declaration.
