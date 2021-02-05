@@ -1,0 +1,27 @@
+1)specific validation error in form input field:
+-ex.<div *ngIf="firstName.errors.required">First name is required</div>
+                <div *ngIf="firstName.errors.minlength">First name sould be minimum {{firstName.errors.minlength.requiredLength}} and maximum 10 character</div>
+                <div *ngIf="firstName.errors.pattern">First name does not match pattern</div>
+-we can add multiple error message for 1 input field according to validation.
+
+2)styling invalid input field
+-.form-control.ng-touched.ng-invalid{
+    border:2px solid red;
+}
+
+3)ngForm:
+-it use in <form>.
+-ex.,<form #f="ngForm" (ngSubmit)="submit(f)">
+-f contain value,valid,invalid,etc.. property for whole form fields.
+
+4)ngModelGroup:
+-it is use to object value in different object insted of 1 value object.
+-if we bind firstName field in ngModelGroup named contact.then it will display like
+	value:{
+	  comment:"dsd",
+	  contact:{ firstName:"banana" }
+	}
+
+-ngModel is use to for each input field seperetly.
+-ngForm is use for whole form.
+-ngModelGroup is use to group of input field information. 
