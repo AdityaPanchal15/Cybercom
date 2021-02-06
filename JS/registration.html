@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    <form action="javascript:void(0)" method="post" onsubmit="app.registration()">
+        <input type="text" name="name" id="name" placeholder="name"><br><br>
+        <input type="email" name="email" id="email" placeholder="email"><br><br>
+        <input type="password" name="password" id="password" placeholder="password"><br><br>
+        <input type="password" name="rpassword" id="rpassword" placeholder="re-password"><br><br>
+        <select name="city" id="city"><br><br>
+            <option value="null">Select City</option>
+            <option value="Vadodara">Vadodara</option>
+        </select>
+        <select name="state" id="state"><br><br>
+            <option value="null">Select State</option>
+            <option value="Gujarat">Gujarat</option>
+        </select>
+        <input type="checkbox" name="terms" id="terms"><span>Terms & condition</span><br><br>
+        <button type="submit">Register</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
