@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Users</title>
+</head>
+<body onload="app.userDetail()">
+    <ul>
+        <p id="name"></p>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="#">Login Session</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+    <div class="content">
+        <h4>Add User</h4>
+        <form action="javascript:void(0)" method="post" onsubmit="app.addUser()">
+            <input type="text" name="username" id="username" placeholder="name">
+            <input type="email" name="email" id="email" placeholder="email">
+            <input type="password" name="password" id="password" placeholder="password">
+            <input type="date" name="dob" id="dob" placeholder="dob"><br>
+            <button type="submit">Add User</button>
+        </form>
+        <br><br><br>
+        <table id="users">
+
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
