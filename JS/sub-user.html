@@ -6,12 +6,18 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body onload="app.fetchUser()">
+<body onload="app.subUser()">
     <ul>
         <p id="name"></p>
         <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="login.html">Logout</a></li>
+        <li><a onclick="app.logOutUser()" href="login.html">Logout</a></li>
     </ul>
+    <br><br><br><br><br>
+    
+    <div class="content">
+        <h3>Welcome to cybercom creation</h3>
+        <h1 id="birthday" ></h1>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

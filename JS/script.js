@@ -38,7 +38,7 @@ var app=new function(){
                 localStorage.setItem("adminData",JSON.stringify(user));
                 window.location.href = "login.html";
             }else{
-                alert('“Admin already registered');
+                alert('Admin already registered');
             }
         } 
     }
@@ -58,12 +58,12 @@ var app=new function(){
         }
         // console.log(fetchAdminArr.name);
         if(fetchAdminArr.email==user.email && fetchAdminArr.password==user.password){
-            
+            sessionStorage.setItem("adminSession",JSON.stringify(user));
             window.location.href = "dashboard.html";
         }else{
             userDataArr=this.fetchUser();
             if(userDataArr.find(element=>element.email==user.email && element.password==user.password)){
-                sessionStorage.setItem("userSession",user);
+                sessionStorage.setItem("userSession",JSON.stringify(user));
                 window.location.href = "sub-user.html";
             }else{
                 alert("Enter valid username/password");
@@ -72,32 +72,36 @@ var app=new function(){
     }
 
     this.userDetail=function(){
-        fetchAdminArr=this.fetchAdmin();
-        userDataArr=this.fetchUser();
-        document.getElementById("name").innerHTML="Hello,"+fetchAdminArr.name;
-       
-        let row='';
-        
-        if(userDataArr){
-            for(let i=0;i<userDataArr.length;i++){
-                row+="<tr>";
-                row+="<td>"+userDataArr[i].name+"</td>";
-                row+="<td>"+userDataArr[i].email+"</td>";
-                row+="<td>"+userDataArr[i].password+"</td>";
-                row+="<td>"+userDataArr[i].dob+"</td>";
-                row+="<td>"+userDataArr[i].age+"</td>";
-                row+='<td><button onclick="app.Edit('+ i +')">Edit</button></td>';
-                row+='<td><button onclick="app.Delete('+ i +')">Delete</button></td>';
-                row+="</tr>";
+        adminSession=JSON.parse(sessionStorage.getItem("adminSession"));
+        if(adminSession){
+            fetchAdminArr=this.fetchAdmin();
+            userDataArr=this.fetchUser();
+            document.getElementById("name").innerHTML="Hello,"+fetchAdminArr.name;
+            adminSession=sessionStorage.getItem("adminSession");
+            let row='';
+            
+            if(userDataArr && adminSession){
+                for(let i=0;i<userDataArr.length;i++){
+                    row+="<tr>";
+                    row+="<td>"+userDataArr[i].name+"</td>";
+                    row+="<td>"+userDataArr[i].email+"</td>";
+                    row+="<td>"+userDataArr[i].password+"</td>";
+                    row+="<td>"+userDataArr[i].dob+"</td>";
+                    row+="<td>"+userDataArr[i].age+"</td>";
+                    row+='<td><button onclick="app.Edit('+ i +')">Edit</button></td>';
+                    row+='<td><button onclick="app.Delete('+ i +')">Delete</button></td>';
+                    row+="</tr>";
+                }
+                document.getElementById("userstbl").innerHTML=row;
             }
-            document.getElementById("users").innerHTML=row;
         }
     }
 
     this.Edit=(index)=>{
          
-        document.getElementById("visibleAdd").innerHTML="Update User";
-        document.getElementById("label").innerHTML="Update User";
+        document.getElementById("visibleAdd").style.display="none";
+        document.getElementById("visibleUpdate").style.display="block";
+        // document.getElementById("label").innerHTML="Update User";
         
         userDataArr=this.fetchUser();
         document.getElementById("username").value=userDataArr[index].name;
@@ -105,14 +109,15 @@ var app=new function(){
         document.getElementById("password").value=userDataArr[index].password;
         document.getElementById("dob").value=userDataArr[index].dob;
 
-        let dob=document.getElementById("dob").value;
-        let date=new Date(dob);
-        let yearOfBirth=date.getFullYear()
-        let mothOfBirth=date.getMonth();
-        let dayOfBith=date.getDay();
+        
         
         self=this;
-        document.getElementById("visibleAdd").onclick=function(){
+        document.getElementById("visibleUpdate").onclick=function(){
+            let dob=document.getElementById("dob").value;
+            let yearOfBirth=dob.substr(0,4);
+            let mothOfBirth=dob.substr(5,2);
+            let dayOfBith=dob.substr(8,2);
+
             let user={
                 name:document.getElementById("username").value,
                 email:document.getElementById("email").value,
@@ -140,42 +145,43 @@ var app=new function(){
     }
 
     this.addUser=()=>{
-            
-            // console.log(validate());
-            userDataArr=this.fetchUser();
-            let dob=document.getElementById("dob").value;
-            let date=new Date(dob);
-           
-            let yearOfBirth=date.getFullYear()
-            let mothOfBirth=date.getMonth();
-            let dayOfBith=date.getDay();
-            
-            console.log(ageOfUser(mothOfBirth,dayOfBith,yearOfBirth));
+            adminSession=JSON.parse(sessionStorage.getItem("adminSession"));
+            if(adminSession){
+                // console.log(validate());
+                userDataArr=this.fetchUser();
+                let dob=document.getElementById("dob").value;
+                let date=new Date(dob);
 
-            let user={
-                name:document.getElementById("username").value,
-                email:document.getElementById("email").value,
-                password:document.getElementById("password").value,
-                dob:dayOfBith+"/"+mothOfBirth+"/"+yearOfBirth,
-                age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
-            }
+                let yearOfBirth=dob.substr(0,4);
+                let mothOfBirth=dob.substr(5,2);
+                let dayOfBith=dob.substr(8,2);
+                
+                console.log(ageOfUser(mothOfBirth,dayOfBith,yearOfBirth));
 
-            
-            if(userDataArr){
-                if(!userDataArr.find(element=>element.email==user.email)){
+                let user={
+                    name:document.getElementById("username").value,
+                    email:document.getElementById("email").value,
+                    password:document.getElementById("password").value,
+                    dob:dayOfBith+"/"+mothOfBirth+"/"+yearOfBirth,
+                    age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
+                }
+
+                
+                if(userDataArr){
+                    if(!userDataArr.find(element=>element.email==user.email)){
+                        userDataArr.push(user);
+                        localStorage.setItem("userData",JSON.stringify(userDataArr));
+                    }else{
+                        alert('User already exist');
+                    }
+                }else{
+                    userDataArr=[];
                     userDataArr.push(user);
                     localStorage.setItem("userData",JSON.stringify(userDataArr));
-                }else{
-                    alert('User already exist');
                 }
-            }else{
-                userDataArr=[];
-                userDataArr.push(user);
-                localStorage.setItem("userData",JSON.stringify(userDataArr));
-            }
-            this.userDetail();
-    
+                this.userDetail();
         
+            }
     }
 
     this.validate=()=>{
@@ -224,7 +230,35 @@ var app=new function(){
         return age;
     }
 
-    this.fetchUser=()=>{
-        let data=sessionStorage.getItem("")
+    this.subUser=()=>{
+        let data=[];
+        
+        data=JSON.parse(sessionStorage.getItem("userSession"));
+        userDataArr=JSON.parse(localStorage.getItem("userData"));
+        if(data){
+            data=userDataArr.find(element=>element.email==data.email && element.password==data.password);
+            document.getElementById("name").innerHTML="Hello,"+data.name;
+            let dob=data.dob;
+            let today=new Date();
+           let birthDay=dob.substr(0,2);
+           
+           let birthMonth=dob.substr(3,2);
+           
+            let day=("0" + (today.getDay())).slice(-2);
+            console.log(day);
+            let month=("0" + (today.getMonth() + 1)).slice(-2);
+           
+            if(day==birthDay && month==birthMonth){
+                document.getElementById("birthday").innerHTML="Happy Birthday!";
+            }
+        }
+        
+    }
+
+    this.logOutUser=()=>{
+        sessionStorage.removeItem("userSession");
+    }
+    this.logOutAdmin=()=>{
+        sessionStorage.removeItem("adminSession");
     }
 }
