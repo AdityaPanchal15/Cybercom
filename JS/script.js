@@ -58,9 +58,16 @@ var app=new function(){
         }
         // console.log(fetchAdminArr.name);
         if(fetchAdminArr.email==user.email && fetchAdminArr.password==user.password){
+            
             window.location.href = "dashboard.html";
         }else{
-            alert('login fail');
+            userDataArr=this.fetchUser();
+            if(userDataArr.find(element=>element.email==user.email && element.password==user.password)){
+                sessionStorage.setItem("userSession",user);
+                window.location.href = "sub-user.html";
+            }else{
+                alert("Enter valid username/password");
+            }
         }  
     }
 
@@ -68,9 +75,8 @@ var app=new function(){
         fetchAdminArr=this.fetchAdmin();
         userDataArr=this.fetchUser();
         document.getElementById("name").innerHTML="Hello,"+fetchAdminArr.name;
-
-        let row=document.getElementById("users").innerHTML;
-        // let row='';
+       
+        let row='';
         
         if(userDataArr){
             for(let i=0;i<userDataArr.length;i++){
@@ -100,9 +106,10 @@ var app=new function(){
         document.getElementById("dob").value=userDataArr[index].dob;
 
         let dob=document.getElementById("dob").value;
-        let yearOfBirth=dob.substr(0,4);
-        let mothOfBirth=dob.substr(5,2);
-        let dayOfBith=dob.substr(8,2);
+        let date=new Date(dob);
+        let yearOfBirth=date.getFullYear()
+        let mothOfBirth=date.getMonth();
+        let dayOfBith=date.getDay();
         
         self=this;
         document.getElementById("visibleAdd").onclick=function(){
@@ -110,7 +117,7 @@ var app=new function(){
                 name:document.getElementById("username").value,
                 email:document.getElementById("email").value,
                 password:document.getElementById("password").value,
-                dob:document.getElementById("dob").value,
+                dob:dayOfBith+"/"+mothOfBirth+"/"+yearOfBirth,
                 age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
             }
             userDataArr.splice(index,1,user);
@@ -137,9 +144,11 @@ var app=new function(){
             // console.log(validate());
             userDataArr=this.fetchUser();
             let dob=document.getElementById("dob").value;
-            let yearOfBirth=dob.substr(0,4);
-            let mothOfBirth=dob.substr(5,2);
-            let dayOfBith=dob.substr(8,2);
+            let date=new Date(dob);
+           
+            let yearOfBirth=date.getFullYear()
+            let mothOfBirth=date.getMonth();
+            let dayOfBith=date.getDay();
             
             console.log(ageOfUser(mothOfBirth,dayOfBith,yearOfBirth));
 
@@ -148,7 +157,6 @@ var app=new function(){
                 email:document.getElementById("email").value,
                 password:document.getElementById("password").value,
                 dob:dayOfBith+"/"+mothOfBirth+"/"+yearOfBirth,
-                
                 age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
             }
 
@@ -214,5 +222,9 @@ var app=new function(){
             age--;
         }
         return age;
+    }
+
+    this.fetchUser=()=>{
+        let data=sessionStorage.getItem("")
     }
 }
