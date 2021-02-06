@@ -64,56 +64,138 @@ var app=new function(){
         }  
     }
 
-    this.userDetail=()=>{
+    this.userDetail=function(){
         fetchAdminArr=this.fetchAdmin();
         userDataArr=this.fetchUser();
         document.getElementById("name").innerHTML="Hello,"+fetchAdminArr.name;
 
-        let row='';
-            
-        for(let i=0;i<userDataArr.length;i++){
-            row+="<tr>";
-            row+="<td>"+userDataArr[i].name+"</td>";
-            row+="<td>"+userDataArr[i].email+"</td>";
-            row+="<td>"+userDataArr[i].password+"</td>";
-            row+="<td>"+userDataArr[i].dob+"</td>";
-            row+="<td>"+userDataArr[i].age+"</td>";
-            row+='<td><button onclick="app.Edit('+ i +')">Edit</button></td>';
-            row+='<td><button onclick="app.Delete('+ i +')">Delete</button></td>';
-            row+="</tr>";
+        let row=document.getElementById("users").innerHTML;
+        // let row='';
+        
+        if(userDataArr){
+            for(let i=0;i<userDataArr.length;i++){
+                row+="<tr>";
+                row+="<td>"+userDataArr[i].name+"</td>";
+                row+="<td>"+userDataArr[i].email+"</td>";
+                row+="<td>"+userDataArr[i].password+"</td>";
+                row+="<td>"+userDataArr[i].dob+"</td>";
+                row+="<td>"+userDataArr[i].age+"</td>";
+                row+='<td><button onclick="app.Edit('+ i +')">Edit</button></td>';
+                row+='<td><button onclick="app.Delete('+ i +')">Delete</button></td>';
+                row+="</tr>";
+            }
+            document.getElementById("users").innerHTML=row;
         }
-        document.getElementById("users").innerHTML=row;
-
     }
 
-    this.addUser=()=>{
+    this.Edit=(index)=>{
+         
+        document.getElementById("visibleAdd").innerHTML="Update User";
+        document.getElementById("label").innerHTML="Update User";
+        
         userDataArr=this.fetchUser();
+        document.getElementById("username").value=userDataArr[index].name;
+        document.getElementById("email").value=userDataArr[index].email;
+        document.getElementById("password").value=userDataArr[index].password;
+        document.getElementById("dob").value=userDataArr[index].dob;
+
         let dob=document.getElementById("dob").value;
         let yearOfBirth=dob.substr(0,4);
         let mothOfBirth=dob.substr(5,2);
         let dayOfBith=dob.substr(8,2);
         
-        console.log(ageOfUser(mothOfBirth,dayOfBith,yearOfBirth));
-
-        let user={
-            name:document.getElementById("username").value,
-            email:document.getElementById("email").value,
-            password:document.getElementById("password").value,
-            dob:document.getElementById("dob").value,
-            age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
+        self=this;
+        document.getElementById("visibleAdd").onclick=function(){
+            let user={
+                name:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("password").value,
+                dob:document.getElementById("dob").value,
+                age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
+            }
+            userDataArr.splice(index,1,user);
+            localStorage.setItem("userData",JSON.stringify(userDataArr));
+            self.userDetail();
+            window.location.href = "users.html";
         }
 
+
+    }
+
+    this.Delete=(index)=>{
+        userDataArr=this.fetchUser();
         
         if(userDataArr){
-            userDataArr.push(user);
-            localStorage.setItem("userData",JSON.stringify(userDataArr));
-
-        }else{
-            userDataArr=[];
-            userDataArr.push(user);
+            userDataArr.splice(index,1);
             localStorage.setItem("userData",JSON.stringify(userDataArr));
         }
+        this.userDetail();
+    }
+
+    this.addUser=()=>{
+            
+            // console.log(validate());
+            userDataArr=this.fetchUser();
+            let dob=document.getElementById("dob").value;
+            let yearOfBirth=dob.substr(0,4);
+            let mothOfBirth=dob.substr(5,2);
+            let dayOfBith=dob.substr(8,2);
+            
+            console.log(ageOfUser(mothOfBirth,dayOfBith,yearOfBirth));
+
+            let user={
+                name:document.getElementById("username").value,
+                email:document.getElementById("email").value,
+                password:document.getElementById("password").value,
+                dob:dayOfBith+"/"+mothOfBirth+"/"+yearOfBirth,
+                
+                age:ageOfUser(mothOfBirth,dayOfBith,yearOfBirth)
+            }
+
+            
+            if(userDataArr){
+                if(!userDataArr.find(element=>element.email==user.email)){
+                    userDataArr.push(user);
+                    localStorage.setItem("userData",JSON.stringify(userDataArr));
+                }else{
+                    alert('User already exist');
+                }
+            }else{
+                userDataArr=[];
+                userDataArr.push(user);
+                localStorage.setItem("userData",JSON.stringify(userDataArr));
+            }
+            this.userDetail();
+    
         
+    }
+
+    this.validate=()=>{
+        // console.log("validate");
+        let name=document.getElementById("username").value;
+        let email=document.getElementById("email").value;
+        let password=document.getElementById("password").value;
+        let dob=document.getElementById("dob").value;
+        let details='';
+        console.log(name);
+        if(name==""){
+            details="Please Enter name<br>";
+        }
+        if(email==""){
+            details+="Please Enter email<br>";
+        }
+        if(password==""){
+            details+="Please Enter password<br>";
+        }
+        if(dob==""){
+            details+="Please Enter Birthdate<br>";
+        }
+        if(name=="" || email=="" || password=="" || dob==""){
+            document.getElementById("errors").innerHTML=details;
+        }else{
+            console.log("aaaaa");
+            this.addUser();
+        }
     }
 
     let ageOfUser=function(birth_month,birth_day,birth_year){
