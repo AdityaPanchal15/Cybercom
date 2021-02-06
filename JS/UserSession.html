@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>User Session</title>
 </head>
-<body>
+<body onload="app.logs()">
     
     <ul>
         <p id="name"></p>
@@ -17,7 +17,14 @@
     </ul>
 
     <div class="content">
-        <h2>User Session</h2>
+        <h2>User Session Logs</h2>
+        <table id="logtbl">
+            <tr>
+                <th>Name</th>
+                <th>Login Date Time</th>
+                <th>LogOut Date Time</th>
+            </tr>
+        </table>
     </div>
     <script src="script.js"></script>
 </body>

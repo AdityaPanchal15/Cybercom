@@ -62,8 +62,18 @@ var app=new function(){
             window.location.href = "dashboard.html";
         }else{
             userDataArr=this.fetchUser();
-            if(userDataArr.find(element=>element.email==user.email && element.password==user.password)){
+            find=userDataArr.find(element=>element.email==user.email && element.password==user.password);
+            if(find){
                 sessionStorage.setItem("userSession",JSON.stringify(user));
+                time= new Date().toLocaleString();
+                let logData={
+                    name:find.name,
+                    loginTime:time
+                }
+                let mylog=[];
+                mylog=JSON.parse(localStorage.getItem("logs"));
+                mylog.push(logData);
+                localStorage.setItem("logs",JSON.stringify(mylog));
                 window.location.href = "sub-user.html";
             }else{
                 alert("Enter valid username/password");
@@ -73,7 +83,7 @@ var app=new function(){
 
     this.userDetail=function(){
         adminSession=JSON.parse(sessionStorage.getItem("adminSession"));
-        if(adminSession){
+        
             fetchAdminArr=this.fetchAdmin();
             userDataArr=this.fetchUser();
             document.getElementById("name").innerHTML="Hello,"+fetchAdminArr.name;
@@ -94,7 +104,7 @@ var app=new function(){
                 }
                 document.getElementById("userstbl").innerHTML=row;
             }
-        }
+        
     }
 
     this.Edit=(index)=>{
@@ -257,8 +267,54 @@ var app=new function(){
 
     this.logOutUser=()=>{
         sessionStorage.removeItem("userSession");
+        userDataArr=this.fetchUser();
+        let logs=[];
+        logs=JSON.parse(localStorage.getItem("logs"));
+        console.log(logs);
+        let logout=new Date().toLocaleString();
+      
+        var i=0;
+        
+            logs.forEach(element => {
+                console.log(element.name);
+                userDataArr.forEach(ele => {
+                    if(element.name==ele.name){
+                        console.log(i);
+                        let user={
+                            name:element.name,
+                            loginTime:element.loginTime,
+                            logoutTime:logout
+                        }
+                        logs.splice(i,1,user);
+                        localStorage.setItem("logs",JSON.stringify(logs));
+                    }
+                });
+                
+                i++;
+            });       
     }
     this.logOutAdmin=()=>{
         sessionStorage.removeItem("adminSession");
+    }
+
+    this.logs=()=>{
+        adminSession=JSON.parse(sessionStorage.getItem("adminSession"));
+        if(adminSession){
+            let mylog=[];
+            let row=document.getElementById("logtbl").innerHTML;
+            mylog=JSON.parse(localStorage.getItem("logs"));
+            if(mylog){
+                    for(let i=0;i<mylog.length;i++){
+                        row+="<tr>";
+                        row+="<td>"+mylog[i].name+"</td>";
+                        row+="<td>"+mylog[i].loginTime+"</td>";
+                        row+="<td>"+mylog[i].logoutTime+"</td>";
+                        row+="</tr>";
+                    }
+                    document.getElementById("logtbl").innerHTML=row;
+                
+            }
+            
+        }
     }
 }
