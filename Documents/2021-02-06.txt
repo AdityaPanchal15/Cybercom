@@ -1,0 +1,15 @@
+1)disable submit button till all input field are not valid.
+-use ngForm variable in submit button.
+-Ex.,<button [disabled]="!f.valid"> 
+
+2)checkbox in form
+- <input type="checkbox" ngModel name="isSubscribed">Subscribe to main in box
+-  <p>
+     {{f.value| json}}
+   </p>
+
+3)dropdown:
+-also can use [ngValue] instead of [value] to take object in value.
+
+4)radio button:
+-can use *ngFor in radio button.
