@@ -1,0 +1,26 @@
+1)Ajax:
+-AJAX = Asynchronous JavaScript and XML
+-it is load content without reload whole page.
+-when change in file it fetch accordingly without reloading page.
+-use for fast and dynamic web page
+without ajax wenned to reload whole page.
+
+2)
+-window.XMLHttpRequest   //check browset accept xmlhttprequest
+-if that will in ready state then:
+ xmlHttp.onreadystatechange=function(){
+               if(xmlHttp.readyState==4 && xmlHttp.status==200){
+                   document.getElementById('message').innerHTML=xmlHttp.responseText;
+               }
+           }
+-check readyState and status==200 checks exsist content in page or not.
+
+3)for GET:
+-xmlHttp.open('GET','search.inc.php?search_text=parameter,true);
+-then send using xmlHttp.send();
+
+4)for POST:
+parameters='text='+document.getElementById('text').value;
+ xmlHttp.open('POST','update.inc.php',true);
+ xmlHttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');		//add header to content type
+ xmlHttp.send(parameters);		//parameter contain value of post data
