@@ -1,0 +1,14 @@
+1)make web app as assign task for crud operation in php using oop.
+
+2)make a php controller file which contain Controller class 
+-it containes constructor for establish connection.
+-implement multiple methods for insertData(),deleteData(),getDataById(),updateData().
+
+-use this method in different page like in create.php 
+-create object of controller class which automatically establish db connection.
+-then using that object access method like contactObj->insertData($POST);
+
+-similary implemet for delete and update data.
+-use getDataById() for update data to fill input field of respective id.
+
+3)implemet ajax script for delete which delete data and reflact data table without refresh page.
