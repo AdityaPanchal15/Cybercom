@@ -1,0 +1,35 @@
+Topic:Reactive Form for more controls
+
+
+1)In component script:
+-make formGroup object which contains key and value of form control.ex.,
+	form = new FormGroup({
+    	username:new FormControl(),
+    	password:new FormControl()
+  	});
+
+2)In html page,
+-add [formGroup] in form tag with initialize form which is create in component.
+-Ex.,<form [formGroup]="form">
+
+-add formControlName in input fields in form.
+
+3)In component typescript:
+-FormControl() has parameters.
+-second parameter is Validator which contain (minlength,maxlength,required,pattern,email).
+
+4)now,add error message using.,
+-<div>Error</div> after input tag.
+-use ngIf to check invalid and touched property.
+-user getter method in component script.
+Ex., 
+  get username(){
+    return this.form.get('username');
+  }
+-which returns username which is specified in formGroup function expression.
+
+5)Add seperate error in form:
+-	<div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+        	<div *ngIf="username.errors.required">Username is required</div>
+            	<div *ngIf="username.errors.minlength">Username should br minimum {{username.errors.minlength.requiredLength}}</div>
+        </div>
