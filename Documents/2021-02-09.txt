@@ -1,0 +1,8 @@
+Practice :
+1)Add pagination in webapp task .
+learn how to do pagination.
+
+2)doing practice of login page .
+use oop approach to do login app.
+
+3)for login save session and at time of logout delete session using session_destroy.
