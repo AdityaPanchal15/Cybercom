@@ -1,0 +1,49 @@
+
+1)Custome Validation:
+-use validator interface is use for custom validation.
+-Ex.,
+	export class UsernameValidators{
+    static cannotContainSpace(control: AbstractControl):ValidationErrors|null{
+        if((control.value as string).indexOf(' ')>=0)
+            return { cannotContainSpace:true };
+        
+        return null;
+    }
+}
+
+-in input field ,add className.method,  UsernameValidators.cannotContainSpace
+
+2)Asynchronous function:
+-use when it will be waiting to load data from the server.
+-so this function take specified time after that it will execute.
+-ex.,setTimeout(()=>{
+            console.log('ok');
+        },2000)
+
+-it will be in UserValidatos class.
+
+3)use promise as return type and reaturn object of Promise with 2 args,resolve,reject. it contains asynchronous function.
+
+-Ex.,return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                if(control.value === 'mosh')
+                    resolve({ shouldBeUnique:true });
+                else 
+                    resolve(null);    
+            },2000);
+        }); 
+
+4)loading message when asynchronus function taking time as above at that time pending message will display using 
+pending .
+Ex.,<div *ngIf="username.pending">Checking for Uniqueness....</div>
+
+5)add error on submit form level:
+-using this.form.setErrors({
+	inValidLogin:true
+});
+-for set Error at form level.
+-in html form add error in dib with ngIf.
+-Ex.,
+	<div *ngIf="form.errors" class="alert alert-danger">
+        The username or password is invalid.
+    </div>
