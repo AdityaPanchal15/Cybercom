@@ -1,0 +1,38 @@
+
+1)nested formGroup:
+-form = new FormGroup({
+    account:new FormGroup({
+      username:new FormControl(''),
+      password:new FormControl('')
+    })
+  });
+-put both input div group in 3rd div for grouping and in main put formGroupName="account".
+
+2)FormArray:
+-FormArray takes array of elements.
+-ex.,form=new FormGroup({
+      topics:new FormArray([])
+    });
+
+-get topics(){
+      return this.form.get('topics') as FormArray;
+    }
+-this get method convert to FormArray.
+-for push value.
+	 this.topics.push(new FormControl(topic.value));
+
+
+3)formBiulder:
+-it is use to build form using constructor.
+-can use FormBuilder instead of FormGroup.
+-ex.,form;
+    constructor(fb:FormBuilder){
+      this.form=fb.group({
+        name:['',Validators.required],
+        contact:fb.group({
+          email:[],
+          phone:[]
+        }),
+        topics:fb.array([])
+      });
+    }
