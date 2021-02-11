@@ -1,0 +1,6 @@
+
+1)array formatting :
+-doing row data convert to tree structure
+-and convert tree structure to row data array
+-learning multidimension array
+-fetch data from tree array
