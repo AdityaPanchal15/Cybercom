@@ -1,0 +1,20 @@
+Topic:Consuming HTTP services.
+
+1)Do not initialization method in custructor.
+if needed use ngOnInit(){}
+
+2)seperation of concern:
+-if there is any change then we need to change in different class files .
+-use service between component and backend;
+-so any changes we need to change at only one place. in service.  
+
+3)service is use to communicate with backend.
+
+4)Error handling:
+-expected and unexpected error
+
+-upexpected:low network,server offline
+-expected:bad request,not found(404)
+
+5)Handle error in service if there is 404 error or 400.
+-use catch for getting error.
