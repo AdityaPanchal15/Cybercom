@@ -1,0 +1,14 @@
+1)Importing observable method and factory method
+2)importing throw from rxjs/add/observable/throw
+3)make different error handler in common .
+4)make data.sevice.ts and put all methods in data.service from post.service and inherit in post.
+
+
+
+5)Observable are lazy.nothing do without subscribe.
+-Promises are eager.
+-you can nconvert observable to promises
+-Prefer observable
+-allow reactive programming
+-provides a bunch of usefull operators
+Observables are lazy
