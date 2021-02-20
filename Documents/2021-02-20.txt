@@ -1,0 +1,71 @@
+
+Routing:
+1)Configure the route
+2)Add aa router outlet
+3)Add links
+
+1)Configuration:
+-for configuration in app.module 
+	use RouterModule.forRoot([
+		{
+		path:'',
+		component:''
+		}
+	])
+
+2)Add routerLink:
+-<a routerLink="/followers">
+-<a [routerLink]="['followers',follower.id]">	it make dynamically link with id.
+
+3)RouterLinkActive:
+-when link is active it display active.
+-use routerLinkActive="active current" in <li>
+
+4)gettting parameters from route
+-use ActivedRoute in cunstructore.
+-in ngOnInit(){
+    	this.route.paramMap
+      .subscribe(params => {
+        let id= +params.get('id');
+        console.log(id);  
+      });
+    }
+
+5)
+-if you want to user to navigate on same page then use subscribe.
+-Ex.,this.route.paramMap
+       .subscribe(params => {
+         console.log(params.get('id'));  
+       });
+-if you want to user to navigate back and forth then use snapshot.
+-Ex.,let id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+
+6)Route with multiple parameters:
+-add <a [routerLink]="['/followers',follower.id,follower.login]">{{ follower.login }}</a>
+-and in app.post 
+	path='followers/:id/:username'
+
+7)Combine multiple observable:
+-use Observale.combineLeatest([
+	this.route.paramMap,
+      	this.route.queryParamMap
+	])
+	.subscribe(combine=>{
+      		let id=combine[0].get('id'); //from 1st index from combinedLeatest
+      		let page=combine[1].get('page');//from 1st index from combinedLeatest
+
+      		// this.service.getAll({ id: id,page:page })
+      	this.service.getAll()
+        	.subscribe(followers => this.followers = followers);
+	});
+
+8)when use map with Observable then it returns Observable<any>.so in subscriber it contains Observable<any> tpye argument.so it generate error.
+-when use switchMap with Observable then it returns any.so in subscriber it contains any type argument.so it resolve error.
+
+9)Programmatic navigation:
+-usong Router class redirect page to specified route.
+-use navigate method.
+- this.router.navigate(['/followers'],{
+      queryParams:{ page:1,order:'newest'}
+    });
