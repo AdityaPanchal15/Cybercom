@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CrmModule } from '../crm.module';
 import { DataService } from '../data.service';
+import { FormControl } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
  
 @Component({
   selector: 'app-add-crm',
@@ -8,12 +10,14 @@ import { DataService } from '../data.service';
   styleUrls: ['./add-crm.component.css']
 })
 export class AddCrmComponent  {
-  constructor(){
-    let service = new DataService();
-    service.setCrm(name); 
+  name=new FormControl('');
+  constructor(private service:DataService){
+    
   }
-  addAlert(name){
-    alert(name+'added');
+  
+  addAlert(){
+    this.service.setCrm(this.name.value); 
+    alert(this.name.value);
   }
 
   
