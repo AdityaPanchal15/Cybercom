@@ -1,0 +1,24 @@
+<div class="container">
+    <form (ngSubmit)="createLogin()" #postForm="ngForm">
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="text" 
+            class="form-control"
+            name="email"
+            [(ngModel)]="mode.email" 
+          >
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input 
+                type="text" 
+                class="form-control"
+                name="password"
+               [(ngModel)]="mode.password" 
+            >
+          </div>
+          
+       <input type="submit" class="btn btn-success" value="submit">
+      </form>
+     
+    </div>

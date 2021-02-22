@@ -1,0 +1,7 @@
+
+AuthGuard and canActive:
+1)It provides authentication to routes.
+2)create authGuard file using
+	-ng g guard auth(file_name)
+3)on which page you want to prevent to see content apply 
+	-canActive:[authGuardFileName] in route array under path and component.
