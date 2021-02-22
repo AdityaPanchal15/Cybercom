@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Id</th>
+        <th>color</th>
+        <th>name</th>
+        <th>pantone_value</th>
+        <th>year</th>
+    </tr>
+    <tr *ngFor="let data of _userArray">   
+        <td>{{ data.id }}</td>
+        <td>{{ data.color }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.pantone_value }}</td>
+        <td>{{ data.year }}</td>
+    </tr>
+</table>
