@@ -1,0 +1,21 @@
+
+<div class="container">
+    <p>Users list works!</p>
+    <table class="table  table-striped">
+        
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">color</th>
+            <th scope="col">name</th>
+            <th scope="col">pantone_value</th>
+            <th scope="col">year</th>
+        </tr>
+        <tr *ngFor="let data of _userArray">   
+            <td>{{ data.id }}</td>
+            <td>{{ data.color }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.pantone_value }}</td>
+            <td>{{ data.year }}</td>
+        </tr>
+    </table>
+</div>
