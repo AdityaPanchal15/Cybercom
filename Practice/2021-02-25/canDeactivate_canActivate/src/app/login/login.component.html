@@ -1,0 +1,5 @@
+<div *ngIf="!_userExist">
+<input type="email" #email>
+<button (click)="submitUser(email)" >Submit</button>
+</div>
+<button (click)="logout()" *ngIf="_userExist">Logout</button>
