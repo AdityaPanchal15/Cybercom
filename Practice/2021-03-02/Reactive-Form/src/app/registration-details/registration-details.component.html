@@ -1,0 +1,41 @@
+<p>registration-details works!</p>
+<!-- <app-form (_newItemEvent)="setItem($event)"></app-form> -->
+<table class="table table-bordered">
+    <tr>
+        <th colspan="2">Cruis Specifics</th>
+    </tr>
+    <tr>
+        <td>Date and Time</td>
+        <td>{{cruisSpecifics.date}}</td>
+    </tr>
+    <tr>
+        <td>No. of Participants</td>
+        <td>{{cruisSpecifics.participants}}</td>
+    </tr>
+    <tr>
+        <td>Food Requests</td>
+        <td>{{_choosedFoods}}</td>
+    </tr>
+</table>
+
+<table class="table table-bordered" *ngIf="cruisSpecifics.chooseOption=='yes'">
+    <tr>
+        <th colspan="2">Contact Information</th>
+    </tr>
+    <tr>
+        <td>Full Name</td>
+        <td>{{contactInformation.fullName.firstName}} {{contactInformation.fullName.lastName}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{contactInformation.email}}</td>
+    </tr>
+    <tr>
+        <td>Phone Number</td>
+        <td>{{contactInformation.phoneNumber}}</td>
+    </tr>
+    <tr>
+        <td>Additional Requests</td>
+        <td>{{contactInformation.additionalRequests}}</td>
+    </tr>
+</table>

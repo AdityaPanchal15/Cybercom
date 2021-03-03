@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -8,9 +9,10 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class FormComponent {
 
-  constructor(private _fb:FormBuilder) { }
+   @Output() _newItemEvent = new EventEmitter<Object>();
+   _registrationDetails:Object;
 
-  
+  constructor(private _fb:FormBuilder,private _router:Router) { }
 
   form = this._fb.group({
     cruisSpecifics:this._fb.group({
@@ -63,8 +65,12 @@ export class FormComponent {
 
     }
   }
+  
   onSubmit(){
-    console.log(this.form.value);
+    this._registrationDetails=this.form.value;
+    this._newItemEvent.emit(this._registrationDetails);
+    console.log(this._registrationDetails);
+    this._router.navigate(['/']);
   }
 
   get date(){return this.form.get('cruisSpecifics.date');}

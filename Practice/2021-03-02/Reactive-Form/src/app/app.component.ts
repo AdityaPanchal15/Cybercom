@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reactive-form';
+  _data:any;
+
+  constructor(private _router:Router){}
+
+  setItem(item){
+    item._newItemEvent.subscribe((data)=>{
+      this._data=data;
+      this._router.navigate(['/registrationDetails']);
+    });
+  }
 }
