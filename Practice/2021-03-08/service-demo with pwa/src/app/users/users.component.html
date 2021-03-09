@@ -1,0 +1,11 @@
+<div *ngFor="let data of users" class="media m-3">
+    <div class="media-left">
+      <a href="#">
+        <img class="avatar media-object" src="{{ data.avatar }}" alt="...">
+      </a>
+    </div>
+    <div class="media-body m-3">
+      <p>Name:{{ data.first_name }} {{ data.last_name }}</p>
+      <p>Email: {{ data.email }}</p>
+    </div>
+  </div>
