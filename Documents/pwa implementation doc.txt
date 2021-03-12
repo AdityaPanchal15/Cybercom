@@ -63,3 +63,5 @@ Ex.-3.1)const key='[public-vapid-key]';
 
 -put values from swPush.requestSubscription function from log.
     
+
+link:https://www.youtube.com/watch?v=eoaE0M_DRFI(for update and notification)
