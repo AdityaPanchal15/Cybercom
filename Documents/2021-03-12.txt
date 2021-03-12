@@ -1,0 +1,65 @@
+Topic:PWA
+
+1)Notification:
+-to show notification.
+-showNotification() {
+    Notification.requestPermission(function (result) {
+      if (result === 'granted') {
+        navigator.serviceWorker.ready.then(function (registration) {
+          registration.showNotification('Vibration Sample', {
+            body: 'Refresh page',
+            icon: 'http://simpleicon.com/wp-content/uploads/rocket.png',
+            vibrate: [200, 100, 200, 100, 200, 100, 200],
+            tag: 'vibration-sample'
+          });
+        });
+      }
+    });
+  }
+
+2)SwUpdate:
+-use available,activated,checkForUpdate(),activatedUpdate().
+Ex.-2.1) // if (swUpdate.isEnabled) {
+    //   interval(6 * 60 * 60).subscribe(() => 
+    //     swUpdate.checkForUpdate()
+    //     .then(() => console.log('checking for updates')));
+    // }
+
+    2.2)this.swUpdate.available.subscribe(event => {
+    //   this.update = true;
+    //   console.log(event);
+
+    //   window.location.reload();
+    // })
+
+    2.3)this.swUpdate.available.subscribe(evt => {
+      const snack = this.snackbar.open('Update Available', 'Reload');
+      snack
+        .onAction()
+        .subscribe(() => {
+          window.location.reload();
+      });
+    });
+
+
+3)SwPush:
+-SwPush use to push notification/message from server to client app.
+
+Ex.-3.1)const key='[public-vapid-key]';
+    this.swPush.requestSubscription({serverPublicKey:key})
+      .then(pushSubscription=>{
+        console.log(pushSubscription.toJSON());
+      });
+	
+	this.swPush.messages.subscribe(msg=>{
+      console.log(msg);
+      this.snackbar.open(JSON.stringify(msg),'ok',{duration: 3000});
+    })
+
+-generate vapid key using :- web-push generate-vapid-keys [--json] 
+
+-send message from server using cmd:- 
+	web-push send-notification --endpoint=<url> [--key=<browser key>] [--auth=<auth secret>] [--payload=<message>] [--encoding=<aesgcm | aes128gcm>] [--ttl=<seconds>] [--vapid-subject=<vapid subject>] [--vapid-pubkey=<public key url base64>] [--vapid-pvtkey=<private key url base64>]
+
+-put values from swPush.requestSubscription function from log.
+    
