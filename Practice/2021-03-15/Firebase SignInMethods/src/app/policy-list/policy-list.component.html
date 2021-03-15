@@ -1,0 +1,38 @@
+<table>
+    <thead>
+      <th>Number</th>
+      <th>Created At</th>
+      <th>Expire At</th>
+      <th>Amount</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of policies">
+  
+        <td>{{policy.id}}</td>
+        <td>{{policy.creationDate}}</td>
+        <td>{{policy.expireDate}}</td>
+        <td>{{policy.policyAmount}}</td>
+        <td>
+            <button (click)="delete(policy.ref_id)">Delete</button>
+        </td>
+        <td>
+          <button (click)="update(policy)">Update</button>
+      </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <br><br><br>
+
+  <form #postForm="ngForm">
+    <input type="text" name="id" [(ngModel)]="policyModel.id" placeholder="id"><br>
+    <input type="date" name="creationDate" [(ngModel)]="policyModel.creationDate" placeholder="creationDate"><br>
+    <input type="date" name="effectiveDate" [(ngModel)]="policyModel.effectiveDate" placeholder="effectiveDate"><br>
+    <input type="date" name="expireDate" [(ngModel)]="policyModel.expireDate" placeholder="expireDate"><br>
+    <input type="text" name="paymentOption" [(ngModel)]="policyModel.paymentOption" placeholder="paymentOption"><br>
+    <input type="number" name="policyAmount" [(ngModel)]="policyModel.policyAmount" placeholder="policyAmount"><br>
+    <input type="text" name="extraInfo" [(ngModel)]="policyModel.extraInfo" placeholder="extraInfo"><br>
+    <button (click)='create(policyModel)'>Create</button>
+    <!-- <button (click)='update(policyModel)' *ngIf='policyModel.ref_id'>Update</button> -->
+</form>
