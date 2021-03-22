@@ -1,0 +1,60 @@
+1)refer difference between angular vs react vs vuejs
+
+2)install vuejs cli using:
+	npm install -g @vue/cli
+
+3)create new project using"
+	vue create my-project
+
+4)run project using:
+	cd my-project
+	npm run serve
+
+5)refer documentation from mdn
+-learn points:
+	1)Creating our first Vue component
+	2)Rendering a list of Vue components
+	3)Adding a new todo form: Vue events, methods, and models
+	4)Styling Vue components with CSS
+
+6)pass data from child component to app.vue.
+-it can possible using emmit ex.,
+	
+In App.vue:-
+	
+	<to-do-forms @todo-added="addToDo"></to-do-forms>
+	
+	<script>	
+	export default {
+	  methods: {
+    		addToDo(toDoLabel) {
+       			console.log(toDoLabel);
+    		}
+  	  },
+	}
+	</script>
+
+In Child Component(ToDoForms.vue):-
+	<script>
+	export default {
+	  data() {
+	    return {
+	      label: "",
+	    };
+	  },
+	  methods: {
+	    onSubmit() {
+	      if (this.label === "") {
+	        return;
+	      }
+	      this.$emit("todo-added", this.label);
+	      this.label = "";
+	    },
+	  },
+	};
+	</script>
+
+
+7)understand props and use of uniqueId('prefixString-')
+
+link for ref:https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_getting_started
