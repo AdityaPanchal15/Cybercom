@@ -1,0 +1,143 @@
+--------props--------
+
+1)Prop Validation:
+     props: {
+    // Basic type check (`null` and `undefined` values will pass any type validation)
+    propA: Number,
+    // Multiple possible types
+    propB: [String, Number],
+    // Required string
+    propC: {
+      type: String,
+      required: true
+    },
+    // Number with a default value
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // Object with a default value
+    propE: {
+      type: Object,
+      // Object or array defaults must be returned from
+      // a factory function
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // Custom validator function
+    propF: {
+      validator: function (value) {
+        // The value must match one of these strings
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
+  }
+
+
+2)custom events:-
+(2.1).sync Modifier:-
+   example, in a hypothetical component with a title prop, we could communicate the intent of assigning a new value with:
+
+Ex.,In Child Component,
+this.$emit('update:title', newTitle)
+
+-Then the parent can listen to that event and update a local data property, if it wants to. For example:
+
+In Parent Component
+<text-document
+  v-bind:title="doc.title"
+  v-on:update:title="doc.title = $event"
+></text-document>
+
+
+With .sync, the child doesn’t need a value prop. Instead it uses the same prop name you synced in the parent.
+It also instead of emitting an input event to update the prop, you emit the conveniently named event update:prop-name.
+
+For convenience, we offer a shorthand for this pattern with the .sync modifier:
+
+In parent Component,
+<text-document v-bind:title.sync="doc.title"></text-document>
+
+
+---------------------------------Slots----------------------------------
+
+1)If <navigation-link>‘s template did not contain a <slot> element, any content provided between its opening and closing tag would be discarded.
+Ex.,
+<navigation-link url="/profile">
+  <!-- Use a component to add an icon -->
+  <font-awesome-icon name="user"></font-awesome-icon>
+  Your Profile
+</navigation-link>
+
+2)v-slot:-
+-  v-slot can only be added to a <template>.
+
+3)Scoped Slots:-
+-Sometimes, it’s useful for slot content to have access to data only available in the child component.
+-To make user available to the slot content in the parent, we can bind user as an attribute to the <slot> element:
+
+-In CurrentUser.vue
+<span>
+  <slot v-bind:user="user">
+    {{ user.lastName }}
+  </slot>
+</span>
+
+<script>
+export default {
+  data () {
+    return {
+        user:{firstName:'Aditya',lastName:'Panchal'}
+    }
+  },
+    
+};
+</script>
+
+
+Attributes bound to a <slot> element are called slot props. Now, in the parent scope, we can use v-slot with a value to define a name for the slot props we’ve been provided:
+
+-In App.vue
+<current-user>
+  <template v-slot:default="{user}">
+    {{ user.firstName }}
+  </template>
+</current-user>
+
+
+-Abbreviated Syntax for Lone Default Slots:
+
+<current-user v-slot:default="slotProps">
+  {{ slotProps.user.firstName }}
+</current-user>
+ ------------------OR-------------------
+<current-user v-slot="slotProps">
+  {{ slotProps.user.firstName }}
+</current-user>
+
+
+4)Destructuring Slot Props:-
+Internally, scoped slots work by wrapping your slot content in a function passed a single argument:
+
+function (slotProps) {
+  // ... slot content ...
+}
+That means the value of v-slot can actually accept any valid JavaScript expression that can appear in the argument position of a function definition.
+
+you can also use ES2015 destructuring to pull out specific slot props, like so:
+
+<current-user v-slot="{ user }">
+  {{ user.firstName }}
+</current-user>
+
+5)Named Slots Shorthand:-
+Similar to v-on and v-bind, v-slot also has a shorthand, replacing everything before the argument (v-slot:) with the special symbol #.
+
+For example, 
+v-slot:header can be rewritten as #header
+
+
+important:-Slot props allow us to turn slots into reusable templates that can render different content based on input props.
+This is most useful when you are designing a reusable component that encapsulates data logic while allowing the consuming parent component to customize part of its layout.
+
