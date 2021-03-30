@@ -1,0 +1,256 @@
+------------------------Dynamic & Async Components-----------------------------
+1)keep-alive with Dynamic Components:-
+-we used the is attribute to switch between components in a tabbed interface:
+
+<component v-bind:is="currentTabComponent"></component>
+
+-When switching between these components though, you’ll sometimes want to maintain their state or avoid re-rendering for performance reasons.
+-You’ll notice that if you select a post, switch to the Archive tab, then switch back to Posts, it’s no longer showing the post you selected. That’s because each time you switch to a new tab, Vue creates a new instance of the currentTabComponent.
+
+-To solve this problem, we can wrap our dynamic component with a <keep-alive> element:
+<keep-alive>
+  <component v-bind:is="currentTabComponent"></component>
+</keep-alive>
+
+2)Async Components:
+-In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it’s needed. To make that easier, Vue allows you to define your component as a factory function that asynchronously resolves your component definition. Vue will only trigger the factory function when the component needs to be rendered and will cache the result for future re-renders. 
+
+-When using local registration, you can also directly provide a function that returns a Promise:
+
+new Vue({
+  // ...
+  components: {
+    'my-component': () => import('./my-async-component')
+  }
+})
+
+
+---------------------------Handling Edge Cases------------------------------
+
+-Element & Component Access:
+1)Accessing the Root Instance:-
+In every subcomponent of a new Vue instance, this root instance can be accessed with the $root property. For example, in this root instance:
+
+Ex.,
+new Vue({
+  data: {
+    foo: 1
+  },
+  computed: {
+    bar: function () { /* ... */ }
+  },
+  methods: {
+    baz: function () { /* ... */ }
+  }
+})
+
+All subcomponents will now be able to access this instance and use it as a global store:
+Ex.,
+this.$root.foo
+
+// Set root data
+this.$root.foo = 2
+
+// Access root computed properties
+this.$root.bar
+
+
+2)Accessing the Parent Component Instance:-
+-Similar to $root, the $parent property can be used to access the parent instance from a child. This can be tempting to reach for as a lazy alternative to passing data with a prop.
+ex.,
+<google-map>
+  <google-map-markers v-bind:places="iceCreamShops"></google-map-markers>
+</google-map>
+
+var map = this.$parent.map
+
+
+3)Accessing Child Component Instances & Child Elements:-
+-Despite the existence of props and events, sometimes you might still need to directly access a child component in JavaScript. To achieve this you can assign a reference ID to the child component using the ref attribute. For example:
+
+<base-input ref="usernameInput"></base-input>
+
+Now in the component where you’ve defined this ref, you can use:
+
+this.$refs.usernameInput
+
+
+
+4)Dependency Injection:-
+-get data from child component to parent using provide and dependency injection.
+
+Ex.,In App.vue.,
+<parent>
+	<child/>
+</parent>
+
+-In Parent component:-
+  provide: function() {
+          return {
+            getMap:"from Hello World"
+          };
+        },
+
+-In Child component:-
+<template>
+  <div>
+    <p>{{getMap}}</p>
+  </div>
+</template>
+export default {
+  inject: ['getMap'],
+};
+
+
+
+--------------------------------Controlling Updates----------------------------
+1)Cheap Static Components with v-once:-
+-Rendering plain HTML elements is very fast in Vue, but sometimes you might have a component that contains a lot of static content. 
+-In these cases, you can ensure that it’s only evaluated once and then cached by adding the v-once directive to the root element, like this:
+
+Vue.component('terms-of-service', {
+  template: `
+    <div v-once>
+      <h1>Terms of Service</h1>
+      ... a lot of static content ...
+    </div>
+  `
+})
+
+
+---------------------------Transitions & Animation---------------------------
+1)Enter/Leave & List Transitions
+-Vue provides a transition wrapper component, allowing you to add entering/leaving transitions for any element or component in the following contexts:
+
+Conditional rendering (using v-if)
+Conditional display (using v-show)
+Dynamic components
+Component root nodes
+
+#Custom Transition Classes
+You can also specify custom transition classes by providing the following attributes:
+
+enter-class
+enter-active-class
+enter-to-class (2.1.8+)
+leave-class
+leave-active-class
+leave-to-class (2.1.8+)
+
+Ex.,
+<div id="demo">
+  <button v-on:click="show = !show">
+    Toggle
+  </button>
+  <transition name="fade">
+    <p v-if="show">hello</p>
+  </transition>
+</div>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+
+
+#Also you can use Animate.css
+
+<template>
+<link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+
+<div id="example-3">
+  <button @click="show = !show">
+    Toggle render
+  </button>
+  <transition
+    name="custom-classes-transition"
+    enter-active-class="animated tada"
+    leave-active-class="animated bounceOutRight"
+  >
+    <p v-if="show">hello</p>
+  </transition>
+</div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      show: true,
+    };
+  },
+};
+</script>
+
+
+
+------------------------------Mixin----------------------------
+-Mixins are a flexible way to distribute reusable functionalities for Vue components.
+
+-When sae property like same method/data or any property same in 2 or more component then that all same property will remove from components and add in mixin .js file.
+-Then add mixin property in every relative components like,
+
+export default{
+mixin:[mixinFile],
+}
+
+-When any property conflict between component and mixin file then priority high for components property.
+
+
+--------------------------------Custom Directive-------------------------------
+-In addition to the default set of directives shipped in core (v-model and v-show), Vue also allows you to register your own custom directives.
+
+-If you want to register a directive locally instead, components also accept a directives option:
+
+<script>
+export default{
+ directives: {
+  focus: {
+    // directive definition
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+ }
+}
+</script>
+
+Then in a template, you can use the new v-focus attribute on any element, like this:
+
+<input v-focus>
+
+################Directive Hook Arguments#################
+-el: The element the directive is bound to. This can be used to directly manipulate the DOM.
+
+-binding: An object containing the following properties.
+
+-name: The name of the directive, without the v- prefix.
+
+-value: The value passed to the directive. For example in v-my-directive="1 + 1", the value would be 2.
+
+-oldValue: The previous value, only available in update and componentUpdated. It is available whether or not the value has changed.
+
+-expression: The expression of the binding as a string. For example in v-my-directive="1 + 1", the expression would be "1 + 1".
+
+-arg: The argument passed to the directive, if any. For example in v-my--directive:foo, the arg would be "foo".
+
+-modifiers: An object containing modifiers, if any. For example in v-my-directive.foo.bar, the modifiers object would be { foo: true, bar: true }.
+
+-vnode: The virtual node produced by Vue’s compiler. See the VNode API for full details.
+oldVnode: The previous virtual node, only available in the update and componentUpdated hooks.
+
+
+###################Object Literals################
+-If your directive needs multiple values, you can also pass in a JavaScript object literal. Remember, directives can take any valid JavaScript expression.
+
+Ex.,
+<div v-demo="{ color: 'white', text: 'hello!' }"></div>
+
+Vue.directive('demo', function (el, binding) {
+  console.log(binding.value.color) // => "white"
+  console.log(binding.value.text)  // => "hello!"
+})
+
