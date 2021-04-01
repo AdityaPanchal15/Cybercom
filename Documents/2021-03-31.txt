@@ -1,0 +1,32 @@
+--------------------------Render Functions & JSX-----------------------------
+1)Vue recommends using templates to build your HTML in the vast majority of cases. There are situations however, where you really need the full programmatic power of JavaScript. 
+That’s where you can use the render function, a closer-to-the-compiler alternative to templates.
+
+-----------------------filter----------------------------
+-Vue.js allows you to define filters that can be used to apply common text formatting. Filters are usable in two places: mustache interpolations and v-bind expressions (the latter supported in 2.1.0+). Filters should be appended to the end of the JavaScript expression, denoted by the “pipe” symbol:
+
+<!-- in mustaches -->
+{{ message | capitalize }}
+
+<!-- in v-bind -->
+<div v-bind:id="rawId | formatId"></div>
+
+-You can define local filters in a component’s options:
+
+filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  }
+}
+
+#Filters can be chained:
+
+{{ message | filterA | filterB }}
+
+-In this case, filterA, defined with a single argument, will receive the value of message, and then the filterB function will be called with the result of filterA passed into filterB‘s single argument.
+
+--------------------------Routing-------------------------------
+start routing with simple setup,with params.
+

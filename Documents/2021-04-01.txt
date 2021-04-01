@@ -1,0 +1,115 @@
+----------------------Routing------------------------
+1)Pass param in url and recieved as a props instead of $route.param.id.
+-declare in route array for each param receiving component set true to prop.
+Ex.,
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    props: true,
+    component: Home,
+  },
+]
+
+-advantage:using this we don't need to know,how to data are coming whether from route param or passing prop in component.
+
+2)Nested router-link:-
+-use children in router.js
+{
+    path: "/destination/:slug",
+    name: "DestinationDetails",
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "details" */ "../views/DestinationDetails"),
+    children: [
+      {
+        path: ":experienceSlug",
+        name: "experienceDetails",
+        props: true,
+        component: () =>
+          import(/*webpackChunkName: "experienceDetails" */ "../views/ExperienceDetails.vue"),
+      },
+    ],
+  },
+
+3)goback button:-
+-use this.$router.go(-1)
+-it will go to back page.
+
+4)create route transitions with Vue Router:
+-use enter/leave transition doc from vue.
+-use for animation when route change.
+
+
+------------------------Navigation Guard----------------------
+#Per-Route Guard:-
+1)create a 404 Not Found route and page with Vue Router
+- beforeEnter: (to, from, next) => {
+      const exists = store.destinations.find(
+        (destination) => destination.slug === to.params.slug
+      );
+      if (exists) {
+        next();
+      } else {
+        next({ name: "notFound" });
+      }
+    },
+-it will execute before change route.
+
+#control the scroll behavior of Vue Router:-
+-it will use for better user experience.
+
+scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      const position = {};
+      if (to.hash) {
+        position.selector = to.hash;
+        if (to.hash === '#experience') {
+          position.offset = { y: 110 };
+        }
+        if (document.querySelector(to.hash)) {
+          return position;
+        }
+        return false;
+      }
+    }
+  }
+
+
+
+
+###########Authentication Guard###########
+-configure an authentication middleware (route guard) with Vue Router
+add meta in router in component scope
+Ex., 
+{
+    path: "/user",
+    name: "user",
+    component: () => import(/* webpackChunkName: "User" */ "../views/User"),
+    meta: { requiresAuth: true },
+},
+
+#Global Before Guards:-
+-check condition before route to another page:-
+ex.,
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!store.user) {
+      next({
+        name: "login",
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
+redirect to another page using this.$router.push('/mypage').
+
+#Vue Router Query Parameters:-
+
+
