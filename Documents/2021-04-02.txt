@@ -1,0 +1,164 @@
+----------------------Vuex--------------------------
+there are 4 components in vuex:-
+1)state
+2)Getters
+3)mutations
+4)actions
+
+1)state:-
+-The data you store in state in Vuex follows the same rules as the data in a Vue instance, ie the state object must be plain. See also: Vue#data.
+
+#The mapState Helper:-
+-We can also pass a string array to mapState when the name of a mapped computed property is the same as a state sub tree name.
+
+ex.,in component
+computed: mapState([
+  // map this.count to store.state.count
+  'count'
+])
+
+2)Getters:-
+-Sometimes we may need to compute derived state based on store state, for example filtering through a list of items and counting them.
+
+const store = new Vuex.Store({
+  state: {
+    todos: [
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false }
+    ]
+  },
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done)
+    }
+  }
+})
+
+-In component:-
+export default {
+  computed: {
+    ...mapState(['count']),   //get state
+    ...mapGetters(['doneTodos']),//get getters
+    getTodo(){				//get 2 args getters
+      return store.getters.getTodoById(2)
+    }
+  },
+
+3)Mutations:-
+-The only way to actually change state in a Vuex store is by committing a mutation. Vuex mutations are very similar to events: each mutation has a string type and a handler. The handler function is where we perform actual state modifications, and it will receive the state as the first argument:
+
+const store = new Vuex.Store({
+  state: {
+    count: 1
+  },
+  mutations: {
+    increment (state) {
+      // mutate state
+      state.count++
+    }
+  }
+})
+
+You cannot directly call a mutation handler. Think of it more like event registration: "When a mutation with type increment is triggered, call this handler." To invoke a mutation handler, you need to call store.commit with its type:
+
+store.commit('increment')
+
+#Commit with Payload
+You can pass an additional argument to store.commit, which is called the payload for the mutation:
+
+// ...
+mutations: {
+  increment (state, n) {
+    state.count += n
+  }
+}
+store.commit('increment', 10)
+
+---------------------------OR----------------------------
+mutations: {
+  increment (state, payload) {
+    state.count += payload.amount
+  }
+}
+store.commit('increment', {
+  amount: 10
+})
+
+
+
+#Replace that Object with a fresh one. For example, using the object spread syntax (opens new window)we can write it like this:
+
+state.obj = { ...state.obj, newProp: 123 }
+
+
+
+#Committing Mutations in Components
+-You can commit mutations in components with this.$store.commit('xxx'), or use the mapMutations helper which maps component methods to store.commit calls (requires root store injection):
+
+import { mapMutations } from 'vuex'
+
+export default {
+  // ...
+  methods: {
+    ...mapMutations([
+      'increment', // map `this.increment()` to `this.$store.commit('increment')`
+
+      // `mapMutations` also supports payloads:
+      'incrementBy' // map `this.incrementBy(amount)` to `this.$store.commit('incrementBy', amount)`
+    ]),
+    ...mapMutations({
+      add: 'increment' // map `this.add()` to `this.$store.commit('increment')`
+    })
+  }
+}
+
+
+4)Actions:-
+-Actions are similar to mutations, the differences being that:
+1)Instead of mutating the state, actions commit mutations.
+2)Actions can contain arbitrary asynchronous operations.
+
+-Actions use for asynchronous data fetch like call api data.
+-Actions contain context in argument.
+
+actions: {
+        incrementAsync (context) {
+            setTimeout(() => {
+                context.commit('increment')
+            }, 1000)
+        }
+      }
+
+// dispatch with a payload
+store.dispatch('incrementAsync', {
+  amount: 10
+})
+
+// dispatch with an object
+store.dispatch({
+  type: 'incrementAsync',
+  amount: 10
+})
+
+
+
+#Composing Actions
+Actions are often asynchronous, so how do we know when an action is done?
+The first thing to know is that store.dispatch can handle Promise returned by the triggered action handler and it also returns Promise:
+
+actions: {
+  actionA ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        commit('someMutation')
+        resolve()
+      }, 1000)
+    })
+  }
+}
+
+Now you can do:
+
+store.dispatch('actionA').then(() => {
+  // do something here after success(like set false loader)
+})
