@@ -1,0 +1,30 @@
+1)Introduction of NUXT JS:-
+-Nuxt.js is a free and open source web application framework based on Vue.js, Node.js, Webpack and Babel.js. Nuxt is inspired by Next.js, which is a framework of similar purpose, based on React.js. The framework is advertised as a "meta-framework for universal applications".
+
+2)What is NUXT JS used for?
+-js is a frontend framework built upon Vue. js that offers great development features such as server side rendering, automatically generated routes, improved meta tags managing and SEO improvement.
+
+3)What is Nuxt.js?
+-Nuxt.js is a higher-level framework that builds on top of Vue. It simplifies the development of universal or single page Vue apps.
+
+-Nuxt.js abstracts away the details of server and client code distribution so you can focus on application development. The goal with Nuxt is for it to be flexible enough for you to use as a main project base. Because most of what Nuxt does happens during the development phase.
+
+
+#points:
+1. Create universal apps without the hassle
+2. Statically render your Vue apps and get all of benefits of a universal app without a server
+3. Get automatic code splitting (pre-rendered pages)
+4. Setup via the command line with the starter template
+5. Easily set up transitions between your routes
+
+6. Get great project structure by default:
+   Here are a few of the main directories that it sets you up with:
+   components — A folder so you can organize your individual Vue components.
+   layouts — A folder to contain your main application layouts.
+   pages — A folder to contain your app’s routes. Nuxt.js reads all the .vue    files inside this directory and creates the application router.
+   store — A folder to contain all of your app’s Vuex Store Files.
+
+7. Easily write Single File Components
+8. Get ES6/ES7 compilation without any extra work
+9. Get setup with an auto-updating server for easy development
+
