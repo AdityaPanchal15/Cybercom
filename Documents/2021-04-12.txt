@@ -1,0 +1,13 @@
+1)context
+2)data fetching
+-use fetch hook(use $fetchState,activated())
+-use asyncData
+3)Meta tag and SEO
+-use head property for meta tag in components
+-default meta tag in nuxt.config.js
+4)Loading
+-when route change
+-default loading
+-custom loading bar using 
+ loading:'loadingBarComponent.vue' in nuxt.config.js for global
+-can be use for specific page
