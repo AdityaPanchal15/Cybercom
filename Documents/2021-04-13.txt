@@ -1,0 +1,30 @@
+From provided material(nuxtjs)
+1)Introduction of Nuxtjs
+2)create project with custom project and auto config project using npx
+3)Understand Nuxtjs core concepts
+-Understand modules,
+-plugin,expressnodejs,nuxtjs config,
+-html in nuxtjs,default and custom layout,
+-custom error page,
+-attribute of pages(like head,asyncData)
+-meta tag(global and component level)
+-Router and dynamic routing
+-validate for route param validation(ex.,strict to accept only number from route param)
+-middleware (like as a route guard)
+
+
+->lint auto fix enable using,
+-nuxt.config.js
+export default{
+   eslint:{
+     fix:true,
+   }
+}
+
+->for global middleware,
+-nuxt.config.js
+export default{
+   render:{
+     middleware:'auth',    //  middleware/auth.js
+   }
+}
