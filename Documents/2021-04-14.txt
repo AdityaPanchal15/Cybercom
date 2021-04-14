@@ -1,0 +1,5 @@
+-Take example of weather app
+  -getting data from api using axios
+  -make design using vuetify(excercise of vuetify)
+  -use fetch for data fetch from api
+  -after making weather app,transforms all to vuex for state management
