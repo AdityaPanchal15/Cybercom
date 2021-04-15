@@ -12,6 +12,9 @@
           <v-btn text>
             <nuxt-link to="/weather-app">Weather App</nuxt-link>
           </v-btn>
+          <v-btn text>
+            <nuxt-link to="/quiz">Quiz App</nuxt-link>
+          </v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <transition>

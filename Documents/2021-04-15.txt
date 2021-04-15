@@ -1,0 +1,6 @@
+->nuxtJS
+-start with example of quiz app
+-make interactive ui for app using vuetify
+-after design start connect with firebase
+-perform create and update operations
+-use different components of vuetify
