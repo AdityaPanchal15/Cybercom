@@ -27,7 +27,9 @@
                   <td class="pa-3">{{ props.item.option3 }}</td>
                   <td class="pa-3">{{ props.item.option4 }}</td>
                   <td class="pa-3">
-                    <v-icon small color="red">mdi-delete</v-icon>
+                    <v-icon small color="red" @click="destroy(props.item.id)"
+                      >mdi-delete</v-icon
+                    >
                     <nuxt-link
                       class="text-decoration-none"
                       :to="`/admin/questions/${props.item.id}`"
@@ -47,6 +49,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   data() {
     return {
       headers: [
@@ -67,17 +70,37 @@ export default {
   methods: {
     fetchQuestions() {
       this.$axios
-        .get(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/questions.json`
-        )
+        .get(`/questions.json`)
         .then((res) => {
           this.questions = Object.keys(res.data).map((key, index) => {
             res.data[key].id = key
-            // console.log(res.data[key])
             return res.data[key]
           })
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err.response.data))
+    },
+    destroy(key) {
+      this.deleteQuestion(key)
+    },
+    deleteQuestion(key) {
+      this.$axios.delete(`/questions/${key}.json`).then((res) => {
+        this.deleteAnswer(key)
+      })
+    },
+    deleteAnswer(key) {
+      this.$axios
+        .get(
+          `/answers.json?orderBy="question_id"&startAt="${key}"&endAt="${key}"`
+        )
+        .then((res) => {
+          const answerId = Object.keys(res.data)[0]
+          this.destroyAnswer(key, answerId)
+        })
+    },
+    destroyAnswer(key, answerId) {
+      this.$axios.delete(`/answers/${answerId}.json`).then((res) => {
+        this.questions.splice(this.questions[key])
+      })
     },
   },
 }

@@ -1,0 +1,12 @@
+->NuxtJS
+------------------Quiz App--------------
+-delete Answer with question
+-login form,connect login with firebase auth
+-use nuxtServerInit for don't destroy state from vuex store on hard refresh
+-Auth logout with plugin
+-perform middleware for logged user and when logout
+-change rule in firebase for authentication
+-write plugin for axios default param and auth param
+-fetch question and display 
+-get correct answer
+-vue notification for correct ans on client side only 

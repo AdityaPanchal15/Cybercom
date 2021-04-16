@@ -78,6 +78,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   data() {
     return {
       quiz: {
@@ -93,25 +94,19 @@ export default {
   methods: {
     store() {
       this.$axios
-        .post(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/questions.json`,
-          this.quiz
-        )
+        .post(`/questions.json`, this.quiz)
         .then((res) => {
           this.storeAnswer(res.data.name)
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err.response.data))
     },
     storeAnswer(id) {
       this.$axios
-        .post(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/answers.json`,
-          { question_id: id, answer: this.correct }
-        )
+        .post(`/answers.json`, { question_id: id, answer: this.correct })
         .then((res) => {
           this.$router.push('/admin/questions')
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err.response.data))
     },
   },
 }

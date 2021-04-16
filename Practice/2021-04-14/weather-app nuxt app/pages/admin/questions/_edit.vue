@@ -78,6 +78,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   data() {
     return {
       quiz: {
@@ -99,9 +100,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/questions/${this.$route.params.edit}.json`
-        )
+        .get(`/questions/${this.$route.params.edit}.json`)
         .then((res) => {
           this.quiz = res.data
         })
@@ -109,20 +108,17 @@ export default {
     },
     update() {
       this.$axios
-        .$patch(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/questions/${this.$route.params.edit}.json`,
-          this.quiz
-        )
+        .$patch(`/questions/${this.$route.params.edit}.json`, this.quiz)
         .then((res) => this.updateAnswer())
         .catch((err) => console.log(err.response.data))
     },
     getAnswer() {
       this.$axios
         .$get(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/answers.json?orderBy="question_id"&
-          startAt="${this.$route.params.edit}"&endAt="${this.$route.params.edit}"`
+          `/answers.json?orderBy="question_id"&startAt="${this.$route.params.edit}"&endAt="${this.$route.params.edit}"`
         )
         .then((res) => {
+          // console.log(res)
           this.correct = Object.values(res)[0].answer
           this.answer_id = Object.keys(res)[0]
         })
@@ -130,15 +126,12 @@ export default {
     },
     updateAnswer() {
       this.$axios
-        .patch(
-          `https://nuxt-quiz-ad98d-default-rtdb.firebaseio.com/quiz/answers/${this.answer_id}.json`,
-          {
-            question_id: this.$route.params.edit,
-            answer: this.correct,
-          }
-        )
+        .patch(`/answers/${this.answer_id}.json`, {
+          question_id: this.$route.params.edit,
+          answer: this.correct,
+        })
         .then((res) => this.$router.push('/admin/questions'))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err.response.data))
     },
   },
 }
