@@ -1,0 +1,5 @@
+-complete video tutorial
+-scrollToTop property for child component
+-plugin for global use in app
+-transition with different option 
+-nuxt-content(provide live editing)
