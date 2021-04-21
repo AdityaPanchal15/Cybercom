@@ -1,0 +1,5 @@
+
+-->NuxtJS
+-Continue to build website page from other website
+-apply middleware,plugin,store in login pagin and register page
+-manage cookie,.env apply
