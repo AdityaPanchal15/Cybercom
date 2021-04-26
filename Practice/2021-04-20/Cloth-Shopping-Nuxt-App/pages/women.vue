@@ -58,23 +58,23 @@ export default {
       ],
       imgSrc: [
         {
-          src: 'https://product.koovs.com/home-uni-fTAE6X.webp',
-          alt: 'denim',
-        },
-        {
-          src: 'https://product.koovs.com/home-WEB-6-hsIFwL.webp',
+          src: 'https://product.koovs.com/home-WEB-6-Pm7i2S.webp',
           alt: 'dresses',
         },
         {
-          src: 'https://product.koovs.com/home-WEB-5-yll2fq.webp',
-          alt: 'footwear',
+          src: 'https://product.koovs.com/home-uni-m8gAsJ.webp',
+          alt: 'denim',
         },
         {
-          src: 'https://product.koovs.com/home-WEB-8-Yo0wHk.webp',
+          src: 'https://product.koovs.com/home-WEB-8-KBDa9W.webp',
           alt: 'topstees',
         },
         {
-          src: 'https://product.koovs.com/home-WEB-2-Cv14sf.webp',
+          src: 'https://product.koovs.com/home-WEB-9-6ChJvF.webp',
+          alt: 'footwear',
+        },
+        {
+          src: 'https://product.koovs.com/home-WEB-10-h61wst.webp',
           alt: 'jackets',
         },
       ],

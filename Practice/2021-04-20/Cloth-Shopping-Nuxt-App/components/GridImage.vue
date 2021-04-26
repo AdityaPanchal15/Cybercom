@@ -17,29 +17,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      img: [
-        {
-          src: 'https://product.koovs.com/home-uni-1-6uxXhm.jpg',
-        },
-        {
-          src: 'https://product.koovs.com/home-uni-2-fkm7Ia.jpg',
-        },
-        {
-          src: 'https://product.koovs.com/home-uni-3-JiPVzg.jpg',
-        },
-        {
-          src: 'https://product.koovs.com/home-uni-4-TP9WI8.jpg',
-        },
-        {
-          src: 'https://product.koovs.com/home-uni-5_2-huCgpZ.jpg',
-        },
-        {
-          src: 'https://product.koovs.com/home-uni-6-4CZBvZ.jpg',
-        },
-      ],
-    }
+  props: {
+    img: {
+      type: Array,
+      default: null,
+    },
   },
 }
 </script>

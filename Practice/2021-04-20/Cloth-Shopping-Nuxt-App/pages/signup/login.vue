@@ -49,7 +49,7 @@
                 >Login</v-btn
               >
               <v-layout class="mt-4">
-                <nuxt-link to="/signup/register">Reset Password</nuxt-link>
+                <nuxt-link to="/signup/reset">Reset Password</nuxt-link>
                 <v-spacer></v-spacer>
                 <span class="font-weight-bold">New to koovs?</span>
                 <nuxt-link to="/signup/register">Create Account</nuxt-link>
@@ -84,6 +84,7 @@ export default {
         .then((res) => {
           this.$cookies.set('token', res.data.idToken)
           this.$store.commit('setLoggedIn', true)
+          this.$router.push('/checkout/wishlist')
         })
         .catch((err) => alert(err.response.data.error.message))
     },

@@ -36,9 +36,35 @@
         <v-toolbar flat>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn text>
+            <v-menu offset-y>
+              <template #activator="{ on }">
+                <v-btn text v-on="on">
+                  <nuxt-link to="/" title="MEN">Men</nuxt-link>
+                </v-btn>
+              </template>
+              <v-card>
+                <v-list dense>
+                  <v-subheader>All Category</v-subheader>
+                  <v-divider></v-divider>
+                  <v-list-tile
+                    v-for="category in categories"
+                    :key="category.id"
+                  >
+                    <v-list-tile-title>
+                      <nuxt-link
+                        :to="`/men/${category.title}`"
+                        :title="category.title"
+                        >{{ category.title }}
+                      </nuxt-link>
+                      <br />
+                    </v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+              </v-card>
+            </v-menu>
+            <!-- <v-btn text>
               <nuxt-link to="/" title="MEN">Men</nuxt-link>
-            </v-btn>
+            </v-btn> -->
             <v-btn text>
               <nuxt-link to="/women" title="WOMEN">Women</nuxt-link>
             </v-btn>
@@ -71,6 +97,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      categories: [
+        { id: 1, title: 'Shirt' },
+        { id: 2, title: 'T-Shirts' },
+        { id: 3, title: 'Jeans' },
+        { id: 4, title: 'Trousers & Chinos' },
+      ],
+    }
+  },
   methods: {
     logout() {
       this.$cookies.remove('token')

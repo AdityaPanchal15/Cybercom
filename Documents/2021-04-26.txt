@@ -1,0 +1,8 @@
+-->NuxtJS
+1)continue to demo website ,
+-make a reset password with firebase
+-implement nuxtServerInit to maintain state of login
+-implement wishlist page,product page
+-use vuex for transfer product page to wishlist
+-implement cart using vuex
+-reuse components
