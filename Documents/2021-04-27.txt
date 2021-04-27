@@ -1,0 +1,4 @@
+
+create contact us page from 1stopberooms.com in nuxt
+splite page into components
+make sidebar,header,footer,other info component.
