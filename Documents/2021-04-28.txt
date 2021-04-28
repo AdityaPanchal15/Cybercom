@@ -1,0 +1,6 @@
+1)Lazy loading your components			  
+2)The alias Property
+3)$nuxt.isOffline ,$nuxt.isOnline,$nuxt.refresh()
+-$nuxt.$loading.start(),$nuxt.$loading.finish()
+renderedOn display server side or client side rendering
+4)prefetch
