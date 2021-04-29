@@ -1,0 +1,5 @@
+
+explore auth in nuxt
+try to implement login with google
+
+use '@nuxt/auth-next'
