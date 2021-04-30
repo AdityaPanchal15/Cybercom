@@ -1,0 +1,4 @@
+
+1)explore nuxt/pwa 
+-icon module,meta module,workbox module 
+2)explore nuxt/auth : try to resolve query
