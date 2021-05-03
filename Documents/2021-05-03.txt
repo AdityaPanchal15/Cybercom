@@ -1,0 +1,9 @@
+
+1)continue to work on pwa from doc and try different option like,
+-meta with option
+-workbox,menifest with different options
+
+2)download admin panel templete
+-try to understand structure and used library
+-like element ui and scss
+-take overview of vuejs chart doc.
