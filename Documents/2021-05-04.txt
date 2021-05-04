@@ -1,0 +1,5 @@
+
+1)try to resolve errors in firebase auth to login with google
+2)implement local module ngrok for provide public link 
+3)watchQuery implement
+4)start vuelidate for form validation
