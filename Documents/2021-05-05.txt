@@ -1,0 +1,10 @@
+
+1)explore vuelidate with different form controls
+-$errors and $anyError
+-explore $v values and $v methods
+-dynamic validation
+-Collections validation(Array support with $each keyword)
+-custom validation
+2)vuetify explore 
+-alert box and scroll button in vuetify
+-different component for apply layout to app like v-app,v-main
