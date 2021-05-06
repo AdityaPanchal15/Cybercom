@@ -1,0 +1,7 @@
+
+-college viwa
+-more practice on vuetify layout
+-practice sidebar,app bar,footer
+-snackbar
+-vuetify tables
+-try to make web app layout using vuetify
