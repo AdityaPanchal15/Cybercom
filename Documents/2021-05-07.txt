@@ -1,0 +1,4 @@
+Start making index page of 1stopbedrooms.com in nuxtjs
+-make slider
+-small image slider
+-feature panel
