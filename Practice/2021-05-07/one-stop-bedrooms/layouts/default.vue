@@ -17,12 +17,17 @@
 
     <v-row class="blue darken-4" dark>
       <v-col>
-        <v-img
-          class="ma-5"
-          width="200"
-          src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/1sb_logo_ftr.png"
-        ></v-img>
+        <nuxt-link to="/">
+          <v-img
+            class="ma-5"
+            width="200"
+            src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/1sb_logo_ftr.png"
+          ></v-img>
+        </nuxt-link>
       </v-col>
+
+      <v-spacer></v-spacer>
+
       <v-col>
         <p class="pt-3 white--text body-2">
           <a href="">
@@ -40,14 +45,30 @@
           dark
           label="Search Furniture"
           class="mt-1"
+          width="60"
           append-icon="mdi-search-web"
-        ></v-text-field>
-      </v-col>
-      <v-col>
-        <v-col class="pa-9">
-          <v-icon dark>mdi-login</v-icon>
-          <span class="white--text">Sign In <br />My Account</span></v-col
         >
+          <template #append>
+            <v-btn icon>
+              <v-icon>mdi-search-web</v-icon>
+            </v-btn>
+          </template>
+        </v-text-field>
+      </v-col>
+
+      <v-spacer></v-spacer>
+
+      <v-col>
+        <div class="pt-12">
+          <nuxt-link to="sign-in">
+            <v-icon dark>mdi-login</v-icon>
+            <span class="white--text">Sign In</span>
+          </nuxt-link>
+          <nuxt-link to="cart">
+            <v-icon dark class="pl-10">mdi-cart</v-icon>
+            <span class="white--text"><v-badge content="0">Cart</v-badge></span>
+          </nuxt-link>
+        </div>
       </v-col>
     </v-row>
 
@@ -65,11 +86,29 @@
         class="deep-orange lighten-1"
       ></v-img>
       <v-container fluid>
+        <v-fab-transition>
+          <v-btn
+            color="blue"
+            fixed
+            dark
+            bottom
+            right
+            fab
+            @click="
+              $vuetify.goTo(0, {
+                easing: 'easeInCubic',
+                duration: '2000',
+              })
+            "
+          >
+            <v-icon>mdi-arrow-up</v-icon>
+          </v-btn>
+        </v-fab-transition>
         <Nuxt />
       </v-container>
     </v-main>
 
-    <v-footer padless="false">
+    <v-footer>
       <v-container>
         <v-row class="py-5">
           <v-col>
@@ -97,7 +136,11 @@
             <v-btn color="primary" class="my-5 px-12"
               ><v-icon class="mr-2">mdi-message</v-icon> Message
             </v-btn>
-            <v-btn color="primary" class="my-5 px-12" outlined
+            <v-btn
+              href="tel:877-958-9203"
+              color="primary"
+              class="my-5 px-12"
+              outlined
               ><v-icon class="mr-2">mdi-phone-in-talk</v-icon> Call Us
             </v-btn>
           </v-col>
