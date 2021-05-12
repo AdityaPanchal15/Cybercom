@@ -9,7 +9,10 @@
     </v-img>
     <v-row>
       <v-col v-for="(category, i) in categories" :key="i" class="mb-16">
-        <nuxt-link :to="category.name" class="text-decoration-none">
+        <nuxt-link
+          :to="'/' + $route.params.product + '/' + productLinks[i].link"
+          class="text-decoration-none"
+        >
           <v-hover v-slot="{ hover }">
             <v-card id="rounded-card">
               <v-avatar size="200">
@@ -61,6 +64,7 @@ export default {
   props: {
     imgSrc: { type: String, default: null },
     categories: { type: Array, default: null },
+    productLinks: { type: Array, default: null },
   },
   data() {
     return {
