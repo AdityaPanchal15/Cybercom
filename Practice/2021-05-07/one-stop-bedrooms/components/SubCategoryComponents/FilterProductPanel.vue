@@ -19,7 +19,7 @@
               :label="item"
               :true-value="item"
               false-value=""
-              @click="query(filterProduct.typesData[index])"
+              @click="query(filterProduct, index)"
             ></v-checkbox>
           </div>
         </v-expansion-panel-content>
@@ -38,6 +38,8 @@ export default {
       filters: [
         {
           name: 'Product Types',
+          myKey: 'product_type',
+          queryObj: { product_type: null },
           types: [
             'Arch Bed(11)',
             'Bedroom Set(48)',
@@ -48,6 +50,7 @@ export default {
             'DayBed(8)',
             'Estate Bed(1)',
           ],
+          id: [1, 2, 3, 4, 5, 6, 7, 8],
           typesData: [
             { type1: false },
             { type2: false },
@@ -61,6 +64,9 @@ export default {
         },
         {
           name: 'Bed Size',
+          myKey: 'bed_size_measure',
+          queryObj: { bed_size_measure: null },
+          id: [9, 10, 11, 12, 13, 14, 15, 16],
           types: [
             'California King (600)',
             'Full (457)',
@@ -195,9 +201,10 @@ export default {
     }
   },
   methods: {
-    query(val) {
-      if (val) {
-        console.log(val)
+    query(filter, i) {
+      if (filter.typesData[i]) {
+        filter.queryObj[filter.myKey] = filter.id[i]
+        this.$router.push({ query: filter.queryObj })
       }
     },
   },
