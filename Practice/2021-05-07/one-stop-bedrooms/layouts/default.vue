@@ -21,7 +21,7 @@
           <v-img
             class="ma-5"
             width="200"
-            src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/aboutonestop/images/1sb_logo_ftr.png"
+            src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/account-logo.png"
           ></v-img>
         </nuxt-link>
       </v-col>
@@ -60,7 +60,7 @@
 
       <v-col>
         <div class="pt-12">
-          <nuxt-link to="sign-in">
+          <nuxt-link to="/customer/account/login">
             <v-icon dark>mdi-login</v-icon>
             <span class="white--text">Sign In</span>
           </nuxt-link>
