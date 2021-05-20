@@ -13,17 +13,21 @@ const typeDefs = gql`
 		title: String!
 		author: Person!
 	}
+	input PersonInput {
+		name: String!
+		age: Int!
+	}
 	type Query {
 		allPerson(last: Int): [Person!]!
 		personById(id: Int!): Person
 	}
 	type Mutation {
-		createPerson(id: Int!, name: String!, age: Int!): Person!
+		createPerson(input: PersonInput!): Person!
 		updatePerson(id: Int!, name: String!, age: Int!): Person
 		deletePerson(id: Int!): Person
 		createPost(id: Int!, title: String!): Post!
 		updatePost(id: Int!, title: String!): Post
-		deletePost(id:Int!):Post
+		deletePost(id: Int!): Post
 	}
 	type Subscription {
 		newPerson: Person!
@@ -33,6 +37,7 @@ const typeDefs = gql`
 
 const NEW_PERSON = 'NEW_PERSON';
 const NEW_POST = 'NEW_POST';
+var personIndex = persons.length + 1;
 
 const resolvers = {
 	Subscription: {
@@ -50,9 +55,9 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		createPerson: (_, { id, name, age }, { pubsub }) => {
+		createPerson: (_, { input: { name, age } }, { pubsub }) => {
 			const user = {
-				id,
+				id: 'user_' + personIndex,
 				name,
 				age,
 				posts: [],
@@ -94,26 +99,26 @@ const resolvers = {
 			pubsub.publish(NEW_POST, {
 				newPost: post,
 			});
-			person.posts.push(post)
+			person.posts.push(post);
 			return post;
 		},
 		updatePost: (_, { id, title }) => {
 			const person = persons.find((person) => person.id === id);
-			const post = person.posts.find((post)=>{
-				if(post.id === id){
-					post.title = title
-					return post
+			const post = person.posts.find((post) => {
+				if (post.id === id) {
+					post.title = title;
+					return post;
 				}
-			})
+			});
 			return post;
 		},
-		deletePost:(_,{id})=>{
+		deletePost: (_, { id }) => {
 			const person = persons.find((person) => person.id === id);
-			const postIndex = person.posts.findIndex((post)=>post.id===id);
-			const post=person.posts[postIndex]
-			person.posts.splice(postIndex,1)
-			return post
-		}
+			const postIndex = person.posts.findIndex((post) => post.id === id);
+			const post = person.posts[postIndex];
+			person.posts.splice(postIndex, 1);
+			return post;
+		},
 	},
 };
 

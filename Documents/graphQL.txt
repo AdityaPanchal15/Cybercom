@@ -26,3 +26,202 @@ function User_name(user) {
 }
 
 -After a GraphQL service is running (typically at a URL on a web service), it can receive GraphQL queries to validate and execute. The service first checks a query to ensure it only refers to the types and fields defined, and then runs the provided functions to produce a result.
+
+
+
+
+-------------------------------graphQL Alias-----------------------------------
+-When we do like this,
+{
+  repository(name: "graphql", owner: "facebook") {
+    description
+    name
+  }
+  repository(name: "react", owner: "facebook") {
+    description
+    name
+  }
+}
+
+-it will generate rgument conflict error.
+-To resolve this ,we use alias.
+-so , it will look like,
+
+Ex.,
+{
+  graphqlProject: repository(name: "graphql", owner: "facebook") {
+    description
+    name
+  }
+  reactProject: repository(name: "react", owner: "facebook") {
+    description
+    name
+  }
+}
+
+o/p:
+{
+  "data": {
+    "graphqlProject": {
+      "description": "GraphQL is a query language and execution engine tied to any backend service.",
+      "name": "graphql-spec"
+    },
+    "reactProject": {
+      "description": "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+      "name": "react"
+    }
+  }
+}
+
+--------------------------------------Fragments-------------------------------
+-Fragment is use for re-occuring data,
+
+Example for.,
+{
+  graphqlProject: repository(name: "graphql", owner: "facebook") {
+    description
+    name
+  }
+  reactProject: repository(name: "react", owner: "facebook") {
+    description
+    name
+  }
+}
+
+-In this ,both need same repeated fields(description,name).
+-So,fragment bind this field in one and use only fragment name instead of name of fields every time.
+
+Ex.,
+{
+  graphqlProject: repository(name: "graphql", owner: "facebook") {
+    ...repoFields
+  }
+  reactProject: repository(name: "react", owner: "facebook") {
+    ...repoFields
+  }
+}
+fragment repoFields on Repository{
+  description
+  name
+}
+
+-repoFields is fragment name. 
+
+-----------------------------Nested Fields-----------------------------------
+
+-If nested fields are there,then it will generate error ad expect pagination like first,last,etc.
+
+Ex.,
+{
+  viewer{
+    repositories{
+      nodes{
+        id
+        name
+      }
+    }
+  }
+}
+-It generate  error for PAGINATION_ERROR.
+-so,it can resolve by pagination.
+
+Ex.,
+{
+  viewer{
+    repositories(first:5){
+      nodes{
+        id
+        name
+      }
+    }
+  }
+}
+-It will return array of nodes[] with first 5 object.
+
+
+---------------------------------Connection-----------------------------------
+-Connection represents the connection between fields and types
+-Connection made up of edges and nodes.
+
+-------------------------------Multiple Nested Fields-------------------------
+-we can also use multiple nested field in one.
+Ex.,
+{
+  repository(name:"react",owner:"facebook") {
+    id
+    name
+    description
+    watchers(first:5){
+      nodes{
+        id
+        name
+        company
+      }
+    }
+    pullRequests(first:5){
+      nodes{
+        id
+        author{
+          login
+          avatarUrl
+        }
+      }
+    }
+  }
+}
+
+
+----------------------------------Pagination-----------------------------------
+-Pagiantion is use to filter data
+-first,last,filterBy,orderBy,states these all use for pagination.
+
+Ex.,
+{
+  repository(name: "react", owner: "facebook") {
+    id
+    issues(first:5,states:OPEN){
+      edges{
+        node{
+          id
+          number
+          title
+        }
+      }
+    }
+  }
+}
+-It will return only first 5 nodes whose states are open.
+
+------------------------------Variable Definitions-----------------------------
+-We can use variable to change value dynamically.
+
+Ex.,
+query facebookNodes($login:String!,$first:Int!) {
+  organization(login: $login) {
+    id
+    name
+    repositories(first: $first) {
+      nodes {
+        id
+        name
+      }
+    }
+  }
+}
+
+Query Variables:
+{
+  "login": "google",
+  "first": 5
+}
+
+-So,$login and $first are query variables.
+
+
+------------------------------------Mutation-----------------------------------
+
+-To do crud operation,muation is use instead of muation.
+
+
+-----------------------------------Input Types------------------------------
+-It contains only input type fields
