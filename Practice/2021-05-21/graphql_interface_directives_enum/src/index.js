@@ -1,46 +1,71 @@
-const { ApolloServer, gql, SchemaDirectiveVisitor } = require('apollo-server');
-const { defaultFieldResolver } = require('graphql');
+const { ApolloServer,gql, PubSub } = require('apollo-server');
+// const express = require('express');
+// const { ApolloServer } = require('apollo-server-express');
+
+const pubsub = new PubSub();
 
 const typeDefs = gql`
-	directive @date(format: String) on FIELD_DEFINITION
-
-	scalar Date
-
+	type Subscription {
+		postCreated: Post
+	}
 	type Post {
-		published: Date @date(format: "mm-dd-yyyy")
+		author: String
+		comment: String
 	}
 	type Query {
-		myDate: Post
+		allPost: [Post]
+	}
+	type Mutation {
+		createPost(author: String, comment: String): Post
 	}
 `;
 
-class DateFormatDirective extends SchemaDirectiveVisitor {
-	visitFieldDefinition(field) {
-		const { resolve = defaultFieldResolver } = field;
-		const { format } = this.args;
-		field.resolve = async function (...args) {
-			const date = await resolve.apply(this, args);
-			return require('dateformat')(date, format);
-		};
-		// The formatted Date becomes a String, so the field type must change:
-		field.type = String;
-	}
-}
-
 const resolvers = {
 	Query: {
-		myDate: () => {
-			return { published: '21-05-2021' };
+		allPost: () => {
+			return [
+				{ author: 'a', comment: 'author is a' },
+				{ author: 'b', comment: 'author is b' },
+				{ author: 'c', comment: 'author is c' },
+			];
+		},
+	},
+	Mutation: {
+		createPost(parent, args, { req, res }) {
+			pubsub.publish('POST_CREATED', { postCreated: args });
+			// req.session.userId = 'aedfgrejndserk';
+			return args;
+		},
+	},
+	Subscription: {
+		postCreated: {
+			// More on pubsub below
+			subscribe: () => pubsub.asyncIterator(['POST_CREATED']),
 		},
 	},
 };
+// const app = express();
+// const server = new ApolloServer({
+// 	subscriptions: {
+// 		path: '/subscriptions',
+// 		onConnect: (connectionParams, webSocket, context) => {
+// 			console.log('Cliend Connected');
+// 		},
+// 		onDisconnect: (webSocket, context) => {
+// 			console.log('Client disconnected');
+// 		},
+// 	},
+// 	typeDefs,
+// 	resolvers,
+// 	context: ({ req, res }) => ({ req, res }),
+// });
 
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	schemaDirectives: {
-		date: DateFormatDirective,
-	},
 });
+//   await server.start();
+
+//   server.applyMiddleware({ app });
 
 server.listen().then(({ url }) => console.log(`server started at ${url}`));
