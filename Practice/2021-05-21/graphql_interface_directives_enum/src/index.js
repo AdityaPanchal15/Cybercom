@@ -1,71 +1,44 @@
-const { ApolloServer,gql, PubSub } = require('apollo-server');
-// const express = require('express');
-// const { ApolloServer } = require('apollo-server-express');
-
-const pubsub = new PubSub();
+const { ApolloServer, gql } = require('apollo-server');
+const User = require('./datasources/user');
 
 const typeDefs = gql`
-	type Subscription {
-		postCreated: Post
+	type Query {
+		login(email: String!, password: String!): Person!
+		allPost: [Post!]!
+	}
+	type Person {
+		token: String
 	}
 	type Post {
-		author: String
-		comment: String
-	}
-	type Query {
-		allPost: [Post]
-	}
-	type Mutation {
-		createPost(author: String, comment: String): Post
+		author: String!
 	}
 `;
 
 const resolvers = {
 	Query: {
-		allPost: () => {
-			return [
-				{ author: 'a', comment: 'author is a' },
-				{ author: 'b', comment: 'author is b' },
-				{ author: 'c', comment: 'author is c' },
-			];
+		login: (_, { email, password }, { user, req }) => {
+			const res = user.login(email, password);
+			console.log(req.headers);
+			return res;
 		},
-	},
-	Mutation: {
-		createPost(parent, args, { req, res }) {
-			pubsub.publish('POST_CREATED', { postCreated: args });
-			// req.session.userId = 'aedfgrejndserk';
-			return args;
-		},
-	},
-	Subscription: {
-		postCreated: {
-			// More on pubsub below
-			subscribe: () => pubsub.asyncIterator(['POST_CREATED']),
+		allPost: (_, __, context) => {
+			if (context.req.headers.token && context.req.headers.token === 'QpwL5tke4Pnpja7X4') {
+				return [{ author: 'a' }, { author: 'b' }, { author: 'c' }];
+			}
+			throw new Error('Login Required');
 		},
 	},
 };
-// const app = express();
-// const server = new ApolloServer({
-// 	subscriptions: {
-// 		path: '/subscriptions',
-// 		onConnect: (connectionParams, webSocket, context) => {
-// 			console.log('Cliend Connected');
-// 		},
-// 		onDisconnect: (webSocket, context) => {
-// 			console.log('Client disconnected');
-// 		},
-// 	},
-// 	typeDefs,
-// 	resolvers,
-// 	context: ({ req, res }) => ({ req, res }),
-// });
 
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	context: ({ req }) => {
+		return {
+			user: new User(),
+			req,
+		};
+	},
 });
-//   await server.start();
-
-//   server.applyMiddleware({ app });
 
 server.listen().then(({ url }) => console.log(`server started at ${url}`));
