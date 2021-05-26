@@ -18,6 +18,7 @@ const resolvers = {
 	Query: {
 		login: (_, { email, password }, { user, req }) => {
 			const res = user.login(email, password);
+			window.localStorage.setItem('token','asasas')
 			console.log(req.headers);
 			return res;
 		},
