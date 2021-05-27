@@ -225,3 +225,66 @@ Query Variables:
 
 -----------------------------------Input Types------------------------------
 -It contains only input type fields
+
+
+-----------------------------------Union Type---------------------------------
+-It is use to union of 2 or more schemas.
+-It use when whatever result return is not decided.
+
+Ex., In search function ,if we pass book name then it shoud return Book schema else return Author schema.
+
+-union Result = Book | Author
+
+-for decision making resolveType is use.
+
+
+----------------------------------Interface Type------------------------------
+-It is similar to union.
+-Difference is that it is use when common fields are use for multiple schema.
+
+-Ex.,type Textbook and type ColoringBook has 2 same fields(title,author).
+-so this 2 field wrapping in 1 interface and implement in Textnook and ColoringBook.
+
+---------------------------------Custom Scalar--------------------------------
+-We can also create custom scaler like date,oddeven.
+Ex.,
+const resolvers = {
+	Odd: new GraphQLScalarType({
+		name: 'Odd',
+		description: 'Odd custom scalar type',
+		parseValue: oddValue,
+		serialize: oddValue,
+		parseLiteral(ast) {
+			if (ast.kind === Kind.INT) {
+				return oddValue(parseInt(ast.value, 10));
+			}
+			return null;
+		},
+	}),
+}
+
+-Also add third party custom scalar
+-to create custom scaler,
+	-->syntax:- scalar scalarName in typeDefs
+
+
+-------------------------------------Directives------------------------------
+-It is use to specify field as a deprecated.
+-among the default directives, @deprecated is a schema-exclusive directive and @skip and @include are operation-exclusive directives.
+
+1)@deprecated(reason: String):
+	-Marks the schema definition of a field or enum value as deprecated with an optional reason.
+
+2)@skip(if: Boolean!):-
+	-If true, the decorated field or fragment in an operation is not resolved by the GraphQL server.
+
+Ex.,query myQuery($someTest: Boolean) {
+  experimentalField @skip(if: $someTest)
+}
+
+3)@include(if: Boolean!):-
+	-If false, the decorated field or fragment in an operation is not resolved by the GraphQL server.
+
+Ex.,query myQuery($someTest: Boolean) {
+  experimentalField @include(if: $someTest)
+}
