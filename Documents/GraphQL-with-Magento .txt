@@ -1,0 +1,5 @@
+-->What Is GraphQL Needed for in Magento 2? 
+	Answering the question of how to use GraphQL in Magento 2 and what it’s for, the main use of GraphQL in Magento is for building progressive web applications. For example, developers often use the PWA Studio to build PWAs (it is an official set of tools that’s utilized for simplifying the process of creating progressive web applications on Magento, it includes ready-made GraphQL solutions).
+
+Because “Magentitians” aspire to use those solutions that’ll be efficient, time-optimal, and flexible, for Magento PWA GraphQL is a great fit for the API side of the work. And since Magento is a highly loaded system in itself, GraphQL is handy for “unloading” it. I.e., by indicating the return of the results based on the required field with GraphQL and for replacing SOAP and REST in front end development. Although not all default query cases are covered yet, the main functionality is already available.
+
