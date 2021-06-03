@@ -1,0 +1,18 @@
+Magento has built in REST APIs for most of the features like products, customers, inventory, customer address, orders. You can find more information on the devdocs here.
+
+Here are few REST URLs
+
+Base URL for REST APIs: http://YOUR_DOMAIN_NAME/api/rest
+
+http://magentohost/api/rest/products
+http://magentohost/api/rest/products/:productId/categories
+http://magentohost/api/rest/products/:productId/images
+http://magentohost/api/rest/products/:productId/websites
+http://magentohost/api/rest/customers
+http://magentohost/api/rest/customers/:customerId/addresses
+http://magentohost/api/rest/stockitems
+http://magentohost/api/rest/orders
+http://magentohost/api/rest/orders/:orderId/items
+http://magentohost/api/rest/orders/:orderid/addresses
+http://magentohost/api/rest/orders/:orderid/comments
+You need to use oAuth to authenticate the APIs. 
