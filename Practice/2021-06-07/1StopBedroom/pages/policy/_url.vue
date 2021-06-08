@@ -1,7 +1,7 @@
 <template>
-  <v-col cols="9">
-    <slot :policy="policy"></slot>
-    <v-card tile flat class="pa-2 px-4 grey lighten-5">
+  <v-col>
+    <v-card v-if="policy" tile flat class="pa-2 px-4 grey lighten-5">
+      {{ changeLayout(policy) }}
       <v-card-title class="blue--text">
         {{ policy.content.contentHeading }}
       </v-card-title>
@@ -12,7 +12,30 @@
 
 <script>
 import gql from 'graphql-tag'
+import { mapMutations } from 'vuex'
 export default {
+  data() {
+    return {
+      newPath: this.$route.params.url,
+    }
+  },
+  head() {
+    return {
+      title: this.policy ? this.policy.pageInfo.pageTitle : '',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.policy ? this.policy.metaData.description : '',
+        },
+      ],
+    }
+  },
+  methods: {
+    ...mapMutations('policy', ['changeLayout']),
+  },
   apollo: {
     policy: {
       query: gql`
@@ -30,6 +53,9 @@ export default {
               contentHeading
               contentDetails
             }
+            design {
+              layout
+            }
           }
         }
       `,
@@ -40,19 +66,10 @@ export default {
       },
     },
   },
-  head() {
-    return {
-      title: this.policy.pageInfo.pageTitle,
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.policy.metaData.description,
-        },
-      ],
-    }
-  },
 }
 </script>
+<style scoped>
+h1 {
+  color: red;
+}
+</style>

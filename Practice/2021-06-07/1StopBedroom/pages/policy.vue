@@ -2,21 +2,24 @@
   <div class="mx-2">
     <div class="body-2 mb-2">
       <nuxt-link to="/" class="text-decoration-none">Home</nuxt-link>
-      <nuxt-link class="text-decoration-none text-capitalize" :to="'/' + url">
+      <nuxt-link
+        class="text-decoration-none text-capitalize"
+        :to="$route.fullPath"
+      >
         / Policy / {{ name }}</nuxt-link
       >
     </div>
     <v-row>
-      <v-col>
+      <v-col v-if="layout !== '1 column'" cols="3">
         <v-card tile flat class="pa-2 px-4 grey lighten-5">
           <div v-for="(item, i) of sidebarLinks" :key="i" class="py-2">
             <h4 class="text-uppercase">{{ item.heading }}</h4>
             <div v-for="(link, j) of item.links" :key="j">
               <nuxt-link
-                :to="'/policy/' + link.link"
+                :to="link.link"
                 active-class="highlighted"
                 :class="[
-                  link.link === '/policy/' + url ? 'highlighted' : '',
+                  link.link === $route.fullPath ? 'highlighted' : '',
                   'sidebarLinks',
                 ]"
               >
@@ -26,31 +29,37 @@
           </div>
         </v-card>
       </v-col>
-      <nuxt-child v-slot="{ policy }"
-        >{{ (name = policy.pageInfo.pageTitle) }}
-      </nuxt-child>
+      <nuxt-child> </nuxt-child>
     </v-row>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
-      url: this.$route.params.url,
-      name: '',
       sidebarLinks: [
         {
           heading: 'Customer Service',
           links: [
-            { title: 'Help Center', link: 'help-center' },
-            { title: 'My Account', link: 'my-account' },
-            { title: 'Privacy Policy', link: 'privacy-policy' },
-            { title: 'Return Policy', link: 'return-policy' },
-            { title: 'Cancellation Policy', link: 'calncellation-policy' },
-            { title: 'Delivery Policy', link: 'delivery-policy' },
-            { title: 'Terms & Condition', link: 'terms-n-condition' },
-            { title: 'Contact Us', link: 'contact-us' },
+            { title: 'Help Center', link: '/policy/help-center' },
+            { title: 'My Account', link: '/customer/account/login' },
+            { title: 'Privacy Policy', link: '/policy/privacy-policy' },
+            { title: 'Return Policy', link: '/policy/return-policy' },
+            {
+              title: 'Cancellation Policy',
+              link: '/policy/return-policy#cancellation-policy',
+            },
+            {
+              title: 'Delivery Policy',
+              link: '/policy/return-policy#delivery-policy',
+            },
+            {
+              title: 'Terms & Condition',
+              link: '/policy/terms-and-conditions',
+            },
+            { title: 'Contact Us', link: '/contact-us' },
           ],
         },
         {
@@ -85,6 +94,9 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    ...mapState('policy', ['name', 'layout']),
   },
 }
 </script>
