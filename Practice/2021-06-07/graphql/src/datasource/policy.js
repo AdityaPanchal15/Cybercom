@@ -72,7 +72,7 @@ const policy = [
         </div>`,
 		},
 		design: {
-			layout: '2 column with left bar',
+			layout: '2 columns with left bar',
 			layout_update_xml: {
 				reference: [
 					{
@@ -129,7 +129,7 @@ const policy = [
             </div>`,
 		},
 		design: {
-			layout: '2 column with left bar',
+			layout: '2 columns with left bar',
 			layout_update_xml: {
 				reference: [
 					{
@@ -152,8 +152,8 @@ const policy = [
 			keywords: '',
 			description: '',
 		},
-  },
-  {
+	},
+	{
 		pageInfo: {
 			pageTitle: 'Help Center',
 			url: 'help-center',
@@ -287,8 +287,8 @@ const policy = [
 			keywords: '',
 			description: '',
 		},
-  },
-  {
+	},
+	{
 		pageInfo: {
 			pageTitle: 'Terms & Conditions',
 			url: 'terms-and-conditions',
@@ -433,6 +433,642 @@ const policy = [
               });
           }
       // ]]></script>`,
+		},
+		design: {
+			layout: '2 columns with right bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Shipping and Delivery',
+			url: 'shipping-and-delivery',
+			status: true,
+		},
+		content: {
+			contentHeading: 'Shipping Information',
+			contentDetails: `<div class="shipping-delivery-content cms-page-cnt"><dl><dt>How Will My Order Ship?</dt><dd>
+            <p>Using our experience and expertise we have determined the best shipping options for each product we carry to make sure you receive the fastest, safest, and most efficient delivery possible. Available shipping options will be displayed on each item&rsquo;s page and in the shopping cart.</p>
+            </dd></dl>
+            <div class="small-box">
+            <div class="inner">
+            <h3>Smaller Items (Small Parcel)</h3>
+            <div class="content">
+            <p>These items are small enough to safely ship with UPS or FedEx. Available shipping options may vary depending on the item but generally include:</p>
+            <p class="line"><strong>1-Day Shipping:</strong> Your order will be delivered within 1 business day once the order ships. <strong>2-Day Shipping:</strong> Your order will be delivered within 2 business days once the order ships. <strong>Ground Shipping:</strong> Your order will be delivered within 7-14 business days once the order ships.</p>
+            </div>
+            </div>
+            </div>
+            <div class="large-box">
+            <div class="inner">
+            <h3>Large Items (Large Parcel)</h3>
+            <div class="content">
+            <p>We want to ensure your order is delivered to you in perfect condition quickly and efficiently. Items that are too large, fragile or heavy to ship with UPS / FedEx will ship with large parcel carriers who specialize in furniture delivery. We automatically select the best team of carriers for your delivery. Your order will be carefully and professional handled from start to finish making sure it arrives to you safe and sound.</p>
+            </div>
+            </div>
+            </div>
+            <dl><dt>The Delivery Process:</dt><dd><ol class="full-refund-decimal">
+            <li><strong>Choose a delivery option for your larger item at checkout.</strong> Available shipping options may vary depending on the item. All options will be displayed at checkout. You can learn more about our Large Item delivery options <a href="{{store url=white-glove-delivery}}">here</a>.</li>
+            <li><strong>Your order is shipped from the warehouse.</strong> We'll send you an email as soon as your order is in transit.</li>
+            <li><strong>Your order is delivered to a Local White Glove Delivery Carrier.</strong> Your order is professionally transported with care by a Large Parcel carrier to a White Glove Delivery Carrier in your local area that specializes in professional residential furniture delivery and assembly.</li>
+            <li><strong>Schedule a delivery appointment.</strong> Upon receiving your order, the Local White Glove Delivery Carrier will contact you to schedule a delivery appointment.</li>
+            <li><strong>Delivery Day.</strong> Please make sure to inspect your order upon delivery. If you have concerns regarding the condition or packaging or your item, simply describe the issue on the delivery paperwork provided by the driver, sign and accept your order and <a href="{{store url='contact-us'}}">contact us</a> for assistance.</li>
+            </ol>
+            <div class="process-link"><a href="{{store url=dashboard-delivery-process-explained}}" target="_blank">Delivery Process Explained infographic</a></div>
+            </dd><dd>
+            <h4>Large Parcel Delivery Service Options:</h4>
+            <div class="left">
+            <h3>Standard In Home Delivery</h3>
+            <div class="content">
+            <p>Unlike other companies, we provide this upgraded service for free with all large parcel orders. The White Glove Delivery Carrier will call ahead to arrange a delivery day and time. They will offload and carry the furniture into your home and carefully place it in the first dry area.</p>
+            </div>
+            </div>
+            <div class="right">
+            <h3>Platinum White Glove Delivery</h3>
+            <div class="content">
+            <p>Our all inclusive upgraded delivery service. With this service a highly skilled white glove delivery team will call ahead to arrange a delivery appointment. They will offload and carry the furniture into your home. They'll place the furniture to your room of choice. They will very carefully unpack the furniture, assemble it and take the trash and packing material when they leave. This is a full service delivery. All you need to do is open the door.</p>
+            </div>
+            </div>
+            <table class="table-grid">
+            <tbody>
+            <tr><th>Key Features Include</th><th align="center" class="center">Standard In Home Delivery</th><th align="center" class="center">Platinum White Glove Delivery</th></tr>
+            <tr class="odd">
+            <td>Specialized White Glove Delivery team with furniture expertise</td>
+            <td align="center"><span class="yes">Yes</span></td>
+            <td align="center"><span class="yes">Yes</span></td>
+            </tr>
+            <tr class="even">
+            <td>Offload Service</td>
+            <td align="center"><span class="yes">Yes</span></td>
+            <td align="center"><span class="yes">Yes</span></td>
+            </tr>
+            <tr class="odd">
+            <td>Free In Home Delivery</td>
+            <td align="center"><span class="yes">Yes</span></td>
+            <td align="center"><span class="yes">Yes</span></td>
+            </tr>
+            <tr class="even">
+            <td>To Room of Choice</td>
+            <td align="center"><span class="no">No</span></td>
+            <td align="center"><span class="yes">Yes</span></td>
+            </tr>
+            <tr class="odd">
+            <td>Unboxing and Package Removal</td>
+            <td align="center"><span class="no">No</span></td>
+            <td align="center"><span class="yes">Yes</span></td>
+            </tr>
+            <tr class="even">
+            <td>Assembly Service</td>
+            <td align="center"><span class="no">No</span></td>
+            <td align="center"><span class="yes">Yes</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <div class="large">
+            <p>Transit time for Large Parcel orders is approximately 2-4 weeks. For more information on our large item Delivery Options <a href="{{store url=white-glove-delivery}}">Click Here</a>.</p>
+            <p>*Remote delivery locations may be subject to additional fees.</p>
+            </div>
+            </dd></dl>
+            <div class="expert-tip">
+            <div class="inner">
+            <h3>Expert Tip ..</h3>
+            <div class="content">
+            <p>Watch out for companies who hide their shipping charges and fees. Many companies advertise free shipping but will only provide curbside delivery with you having to unload the truck yourself. We dont believe that's fair, you deserve better. We are proud to offer Free White Glove Delivery on almost all of our products which includes placing the furniture in your room of choice + full setup and assembly. Our delivery team will even clean up and remove all packing materials.</p>
+            </div>
+            </div>
+            </div>
+            </div>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Best Value: Platinum White Glove Delivery (Room of Choice + Full Assembly)',
+			url: 'white-glove-delivery',
+			status: true,
+		},
+		content: {
+			contentHeading: 'Delivery Options',
+			contentDetails: `<div class="main-container col1-layout">
+            <div class="main">
+            <div class="col-main ">
+            <div class="order-middel free-white-main">
+            <div>
+            <div class="sp-cnt">
+            <div class="sp-main-cnt">
+            <div class="sp-cnt-lft">
+            <div class="left-half">
+            <h1 class="top-title">IN HOME DELIVERY</h1>
+            <h3>Includes</h3>
+            <ul>
+            <li>Scheduled delivery appointment </li>
+            <li>Inside placement of your furniture</li>
+            </ul>
+            <p>Unlike other companies that offer curb side delivery or just leave the heavy furniture at your door and expect you to lug the furniture inside yourselves, our professional delivery team will carry the heavy furniture inside for you and place it in the first dry area of your home.</p>
+            </div>
+            <div class="left-half">
+            <h1>PLATINUM<br /> WHITE GLOVE DELIVERY</h1>
+            <h3 class="right-Includes">Includes</h3>
+            <ul>
+            <li>Scheduled Delivery Appointment</li>
+            <li>Room of Choice<br /> <label>Our delivery team will place the furniture into your room of choice.</label></li>
+            <li>Full Setup and Assembly<br /> <label>Our assembly professionals will unpack and assemble the furniture for you.</label></li>
+            <li>Debris Removal <br /> <label>Dont get stuck with the trash, our delivery team will clean up all the trash and packing material.</label></li>
+            </ul>
+            </div>
+            </div>
+            <div class="sp-cnt-rgt">
+            <h4 class="main-ttl">Watch our shipping options explained video</h4>
+            <h4>In home delivery <span>VS</span> Platinum white glove delivery</h4>
+            <img height="382" src="http://192.168.0.60/aditya/js/tiny_mce/themes/advanced/img/trans.gif" width="100%" data-mce-json="{'video':{},'params':{'src':'https://www.youtube.com/embed/GoSnLVenvP0','frameborder':'0'},'hspace':null,'vspace':null,'align':null,'bgcolor':null}" /></div>
+            </div>
+            <div class="grey-bg-btm">
+            <table class="main-tbl">
+            <tbody>
+            <tr class="standard-delivery">
+            <td class="top-lft-tbl top">Standard Delivery</td>
+            <td class="top-lft-tbl"><img alt="" src="{{skin url=images/od-1.jpg}}" /></td>
+            <td class="top-lft-tbl"><img alt="" src="{{skin url=images/od-2.jpg}}" /></td>
+            <td class="top-lft-tbl"><img alt="" src="{{skin url=images/od-3.jpg}}" /></td>
+            </tr>
+            <tr class="platinum-text">
+            <td class="top-rgt-tbl">Platinum <span class="break">White Glove Delivery</span><span>Room Of Choice + Assembly</span></td>
+            <td class="white-rgt-tbl">
+            <div class="tbl-cnt-rgt"><img alt="" src="{{skin url=images/od-v1-rgt.jpg}}" /></div>
+            </td>
+            <td class="white-rgt-tbl">
+            <div class="tbl-cnt-rgt"><img alt="" src="{{skin url=images/od-v2-rgt.jpg}}" /></div>
+            </td>
+            <td class="white-rgt-tbl">
+            <div class="tbl-cnt-rgt"><img alt="" src="{{skin url=images/od-v3-rgt.jpg}}" /></div>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'International Shipping ',
+			url: 'international-shipping',
+			status: true,
+		},
+		content: {
+			contentHeading: 'International Shipping',
+			contentDetails: `<div class="shipping-delivery-content cms-page-cnt"><dl><dt><span style="font-size: medium; font-family: verdana, geneva;"><strong>International shipping outside of the United States</strong></span></dt><dd>
+            <p><span style="font-family: verdana, geneva;">While we do not directly ship to a locations outside of the United States, we can however accommodate your request in the following ways:</span></p>
+            </dd><dt><span style="font-size: medium; font-family: verdana, geneva;"><strong>Delivery to a Freight Forwarder</strong></span></dt><dd>
+            <p><span style="font-family: verdana, geneva;">We would be happy to delivery your order to a freight forwarder of your choosing. The freight forwarder will receive the delivery and ship to your final international destination at your expense. Once the delivery is signed for by the freight forwarder, you assume full liability of the shipment. Keep in mind that certain products may not be able to ship internationally due to safety regulations.</span></p>
+            </dd><dt><span style="font-family: verdana, geneva;"><strong><span style="font-size: medium;">Delivery to a location near the border</span></strong></span></dt><dd>
+            <p><span style="font-family: verdana, geneva;">We are able to ship to a location near the border (for Mexico or Canada only). This will allow you to arrange the retrieval of your order on your own. Once the delivery is signed for, you assume full liability of the shipment. Keep in mind that certain products may not be able to ship internationally due to safety regulations</span></p>
+            </dd><dd style="border: 1px solid #DDD; padding: 10px 15px;">
+            <h5 style="margin-bottom: 10px;">Related Articles</h5>
+            <p><strong><a href="{{store direct_url=&quot;white-glove-delivery&quot;}}">Delivery Options</a></strong></p>
+            <p><strong><a href="{{store direct_url=&quot;sales/guest/form/&quot;}}">Track My order</a></strong></p>
+            <!--<p><b>Delivery Process explained</b> <a href='{{store direct_url="dashboard-delivery-process-explained"}}'>Learn more</a></p>--></dd></dl></div>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Free Shipping',
+			url: 'free-shipping',
+			status: true,
+		},
+		content: {
+			contentHeading: 'Free Shipping!',
+			contentDetails: `<div class="free-shipping-content cms-page-cnt"><dl><dd>Items marked Free Shipping! will ship free via UPS/FedEx to the entire continental United States. No exceptions!</dd><dt class="free-white-glove-ttl"><label class="titlt"><span class="red">Free</span> White Glove Delivery</label></dt><dd>
+            <p>Items marked Free White Glove Delivery will ship free via a specialized white glove delivery carrier with one exception. If you live in a remote or rural location a delivery surcharge may be required.</p>
+            </dd><dt class="free-delivery-ttl"><label class="ttl"><span class="red">Free</span> In Home Delivery</label></dt><dd>
+            <p>Items marked Free In Home Delivery will ship free via a specialized furniture carrier with one exception. If you live in a remote or rural location a delivery surcharge may be required.</p>
+            <div class="input-box">
+            <p>To check if your delivery address is listed as a remote or rural location please enter your zip code below.</p>
+            <input class="input-box-text zipcode" name="zipcode" type="text" /> <button class="button btn-look-up" onclick="getLookup(this)" title="Look up" type="button"><span><span>Look up</span></span></button>
+            <p class="message" style="display: none;"></p>
+            </div>
+            <p>Beware of companies who mask their shipping charges and surprise you with prohibitive shipping and handling fees or oversize charges at the end of the checkout process. Make sure to check what type of delivery service is being offered. Many companies offer free delivery which is curb side or threshold and just leave the heavy furniture at your curb or door and expect you to lug the furniture inside yourselves. Our professional delivery team will carry the heavy furniture inside for you. Make sure you know the total cost of your purchase when shopping around.</p>
+            <p>We keep it simple, straightforward and all-inclusive.</p>
+            </dd></dl></div>
+            <script type="text/javascript">// <![CDATA[
+            function getLookup(obj) {
+                $$('.message').invoke('update', "");
+                $$('.message').invoke('setStyle', { display: 'none' });
+                $$('.message').invoke('removeClassName', 'green-text');
+                $$('.message').invoke('removeClassName', 'blue-text');
+                $$('.message').invoke('removeClassName', 'red-text');
+                var url = '{{store url="order/multishipping_index/zipcodeLoopup"}}';
+                var zipcode = $$('[name="zipcode"]')[0].value;
+                var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipcode);
+                if (!isValidZip) {
+                    $$('.message').invoke('addClassName', 'red-text');
+                    $$('.message').invoke('update', "Please provide a valid zipcode.");
+                    $$('.message').invoke('setStyle', { display: 'block' });
+                    return;
+                }
+                new Ajax.Request(url + (url.match(new RegExp('\\?')) ? '&ajax=true&zipcode=' + zipcode : '?ajax=true&zipcode=' + zipcode), {
+                    method: 'GET',
+                    onSuccess: function(response) {
+                        var responseText = response.responseText.evalJSON();
+                        if (responseText.status) {
+                            $$('.message').invoke('addClassName', 'green-text');
+                            $$('.message').invoke('setStyle', { display: 'block' });
+                            $$('.message').invoke('update', responseText.success);
+                        } else {
+                            $$('.message').invoke('addClassName', 'blue-text');
+                            $$('.message').invoke('setStyle', { display: 'block' });
+                            $$('.message').invoke('update', responseText.success);
+                        }
+                    },
+                    onFailure: function(response) {
+                        $$('.message').invoke('addClassName', 'red-text');
+                        $$('.message').invoke('setStyle', { display: 'block' });
+                        $$('.message').invoke('update', 'Some error occured');
+                    },
+                    onComplete: function() {
+            
+                    }
+                });
+            }
+            // ]]></script>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Order Help',
+			url: 'order-help',
+			status: true,
+		},
+		content: {
+			contentHeading: 'Order Help',
+			contentDetails: `<div class="order-help-content cms-page-cnt"><dl><dt id="i-received-order">I Received an Incomplete Order</dt><dd>
+            <p>if you are missing an item first log in to your account to verify that all items on your order have shipped.<br /> If you need to notify us of a missing item from your order, please <a href="{{store url='contact-us'}}">contact us</a>.</p>
+            <p>Different items within your order may ship at different shipping times and or from different locations in order to expedite delivery and provide you with the best and most efficient service.<br /> If you need to notify us of a missing item from your order, please <a href="{{store url='contact-us'}}">contact us</a>.</p>
+            </dd><dt id="i-received-damaged">My item arrived damaged</dt></dl>
+            <p>The event of something arriving damaged is extremely slim however on rare occasion accidents do happen.</p>
+            <p class="inner-title"><strong>If your item arrived damaged please take the following steps:</strong></p>
+            <ol>
+            <li><strong>Make Notes:</strong> Make sure to notate and describe the damage on the delivery paperwork that you are given by the delivery team.</li>
+            <li><strong>Accept Delivery:</strong> Please sign for your delivery</li>
+            <li><strong>Pictures:</strong> Please take a picture of the serial number / label on the box. Please take a picture of the box (before unpacking your items) if there is damage to it. Finally please take a picture of the area that is damaged on the item itself.</li>
+            <li><strong>Notify Us:</strong> Please call <strong>866-456-8823</strong> or <a class="link" href="https://support.1stopbedrooms.com/hc/en-us/requests/new#new_request"> Submit a ticket</a>.</li>
+            <li><strong>Resolution:</strong> Once we hear from you we will rush to action to review the claim and get back to you right away with a resolution.</li>
+            </ol>
+            <p><strong>*Our customer service department must be notified of any damages within 24 hours of delivery.</strong></p>
+            <dl><dt id="i-received-item">I received the wrong item</dt><dd>
+            <p>Did you receive a different item than what you ordered? Please <a href="{{store url='contact-us'}}">contact us</a> so that we can resolve the issue for you. This is an extremely rare occurrence so there is no need to worry. Simply make a note on the delivery receipt describing what is wrong and sign to accept delivery. Do not refuse the item, you can use the wrong item until the correct one arrives.</p>
+            </dd><dt id="missing-parts">Missing Parts</dt><dd>
+            <p>If an item arrives and its missing parts don't worry it's easy to get replacement parts.<br /> Simply <a href="{{store url='contacts'}}">contact us</a> to let us know and our customer service representatives will make sure to provide you with what you need. Most parts are readily available and able to ship with UPS or FedEx so you wont have to wait.</p>
+            <p>Check for any compartments, pockets, or pouches underneath or behind your item that could store the necessary hardware, legs, or feet to your purchase, i.e. Sofa legs are usually stored underneath the sofa within the dust cover. Should a part be missing, please <a href="{{store url='contacts'}}">contact us</a> immediately.</p>
+            <p class="inner-title"><strong>Have the following information ready and available to help us achieve the best resolution for your request:</strong></p>
+            <ol class="margin-remove">
+            <li>Details of why parts are needed</li>
+            <li>Part number needed (found in the assembly guide or package contents)</li>
+            <li>Part name and item options (color, size, etc.)</li>
+            <li>Item model/serial/production #/dye lot # (if available)</li>
+            <li>Side the part is needed for (when facing the item, left or right)</li>
+            <li>Quantity needed</li>
+            <li>Please provide photos of: The serial numbers on the outside of the package.</li>
+            </ol></dd></dl></div>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Billing and Payment',
+			url: 'billing-and-payment',
+			status: true,
+		},
+		content: {
+			contentHeading: 'Billing and Payment',
+			contentDetails: `<div class="billing-payment cms-page-cnt" id="payment-methods">
+            <div class="title">Accepted Payment Methods</div>
+            <div class="credit-cart-box">
+            <div class="inner">
+            <h3><strong>Credit/Debit Cards</strong> (American Express, MasterCard, Visa, and Discover)</h3>
+            <div class="content">
+            <p>Please keep in mind that fraud checks may occur. For security purposes, we may verify the address details with a third-party fraud check company. If there is a security concern, we may ask for additional information in order to process the order.</p>
+            </div>
+            </div>
+            </div>
+            <div class="paypal-cart-box">
+            <div class="inner">
+            <h3>PayPal</h3>
+            <div class="content">
+            <p>If you have a PayPal account, you can click &ldquo;Check out with PayPal&rdquo; in the shopping cart.</p>
+            </div>
+            </div>
+            </div>
+            <div class="affirm-cart-box">
+            <div class="inner">
+            <h3>Affirm</h3>
+            <div class="content">
+            <p>Buy with Affirm and pay over 12,24,or 36 months just select Affirm at checkout.</p>
+            </div>
+            </div>
+            </div>
+            <div class="personal-cart-box">
+            <div class="inner">
+            <h3>Personal Checks, Cashier's Checks, and Money Orders</h3>
+            <div class="content">
+            <p>To pay by check please contact our sales department and place your order by phone.</p>
+            </div>
+            </div>
+            </div>
+            <div class="wire-cart-box">
+            <div class="inner">
+            <h3>Wire Transfer</h3>
+            <div class="content">
+            <p>In a continuing effort to provide the lowest prices we're happy to accept wire transfers. A 2% discount off your total order will be provided. Please contact our sales department for more information.</p>
+            </div>
+            </div>
+            </div>
+            <div class="store-cart-box">
+            <div class="inner">
+            <h3>Store Credit</h3>
+            <div class="content">
+            <p>Store credit is an option for return refunds and discounts on existing orders. To use your store credit please contact our sales department and place your order by phone.</p>
+            </div>
+            </div>
+            </div>
+            <div class="title last" id="ordering-options">Ordering options</div>
+            <div class="call-cart-box">
+            <div class="inner">
+            <h3>Call us</h3>
+            <div class="content">
+            <p>Our experienced, non-commissioned product consultants are available over the phone 24 hours 7 days a week. Call us at <strong>866-456-8823</strong> and we will place your phone order, walk you through the process and answer any questions you may have.</p>
+            </div>
+            </div>
+            </div>
+            <div class="order-online-cart-box">
+            <div class="inner">
+            <h3>Order online</h3>
+            <div class="content">
+            <p>Placing an order through our website is safe, easy, and fast. Simply add the items you want to purchase to your shopping cart and follow the step by step instructions on the screen. Feel free to call us at <strong>866-456-8823</strong> for assistance placing your online order and to ask any questions you may have.</p>
+            </div>
+            </div>
+            </div>
+            <div class="mail-cart-box">
+            <div class="inner">
+            <h3>Mail-In</h3>
+            <div class="content">
+            <p>If you would prefer to pay by check or money order, please call us at <strong>866-456-8823</strong> to obtain a quote. You will need to reference the quote number when mailing in your payment.</p>
+            </div>
+            </div>
+            </div>
+            </div>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Price Match Guarantee',
+			url: 'price-match-guarantee',
+			status: true,
+		},
+		content: {
+			contentHeading: '',
+			contentDetails: `<div class="pricing-content cms-page-cnt">
+            <div class="content-width">
+            <div class="price-match-guarantee">
+            <div class="price-match-guarantee-top">
+            <div class="image"><img alt="Price Match Guarantee" src="{{skin url='images/price_match_logo_v2.png'}}" title="Price Match Guarantee" /></div>
+            <div class="content">
+            <p class="title-text"><strong>Found a lower price?<br />Just let us know and we'll beat it!<span>We wont be beat on price.</span> </strong></p>
+            <p class="bold-text">Call us: <label> 866-456-8823 </label> and select option <label> 1</label> to speak to a sales associate.</p>
+            </div>
+            </div>
+            <p class="inner-title"><strong>Items must meet the following criteria to qualify for our Price Match Guarantee:</strong></p>
+            <ul>
+            <li>The product is not a closeout, discontinued or clearance item.</li>
+            <li>The products must be identical (quantity, brand, color, etc.)</li>
+            <li>The price includes in home delivery with setup and applicable sales tax.</li>
+            <li>The product is in stock and available for immediate shipment from the competitor.</li>
+            <li>The advertised price is from an authorized online store.</li>
+            <li>The price must be published online and written quotations are not acceptable.</li>
+            <li>Verbal price quotes are not acceptable.</li>
+            <li>Coupons cannot be applied with an item that has been submitted for pricematch.</li>
+            <li>The Low Price Guarantee cannot be applied to previous orders.</li>
+            <li>Due to the high shipping minimums of our superior shipping service, the price match policy is only effective for items over $899 per item.</li>
+            <li>We only compare with verified companies.</li>
+            <li>Must be done at the time of sale.</li>
+            </ul>
+            <p class="call-us-cnt">If you have any questions about our price match policy or to see if your product qualifies, <br /> Call us: <label> 866-456-8823. </label></p>
+            {{block type="core/template" is_cms_page=1 template="pricewaiter/pricemguarantee.phtml"}}</div>
+            <div class="price-changes" id="price-changes">
+            <h3>Price Changes</h3>
+            <div class="content-width">
+            <p>We offer a 100% low price guarantee. If we receive a savings we are happy to pass that savings along to you as always. If the price of your item goes down after you place your order we are happy to adjust the price down as long as your order has not already been processed. Discount incentives are provided by the manufacturer during certain times and any order processed before those incentives were available will not be eligible for adjustment.</p>
+            </div>
+            </div>
+            </div>
+            </div>`,
+		},
+		design: {
+			layout: '2 columns with left bar',
+			layout_update_xml: {
+				reference: [
+					{
+						action: {
+							type: 'skin_css',
+							name: 'css/help_center.css',
+						},
+					},
+					{
+						block: {
+							action: {
+								block_id: 'help-center-menu',
+							},
+						},
+					},
+				],
+			},
+		},
+		metaData: {
+			keywords: '',
+			description: '',
+		},
+    },
+    {
+		pageInfo: {
+			pageTitle: 'Sales Tax',
+			url: 'sales-tax',
+			status: true,
+		},
+		content: {
+			contentHeading: 'Sales Tax',
+			contentDetails: `<div class="sales-tax-content cms-page-cnt">
+            <p>Online purchases are subject to applicable sales taxes. The sales tax for your order is based on state and local tax rates as well as the shipping and/or service location of your order. Gift cards are not taxable but purchases made with gift cards are subject to applicable sales taxes.</p>
+            <p>We collect sales tax on sales made to all state and local jurisdictions. For purchases where sales tax is applicable. Tax shown at checkout is an estimate and the actual tax collected may differ once we process the order.</p>
+            <p>Factors such as the type of item or service purchased, the time and location of fulfillment, the shipment or delivery address of your order can change between the time you place an order and when your shipment is complete. As a result, the tax calculated on your order may change. We provide an "Estimated Tax" displayed at Check Out when confirming an order. The amounts displayed as estimated tax may then be updated later when your order is finalized and completed. The tax rate applied to your order will be the combined state and local rates of the address where your order is delivered to or fulfilled from. For example, if you live in a state that does not impose a sales tax, you may still see tax calculated on your order if shipped to another state.</p>
+            <p>We use reasonable commercial efforts to calculate and remit the correct amount of tax required on each taxable purchase, but we do not guarantee the accuracy of the amount of the tax we represent to you as the tax owed. Minor errors may occur owing to the inability to accurately track multiple taxing districts, state and local &ldquo;tax holidays,&rdquo; the timing of rate changes or the application of certain taxes to categories of items we sell. As a result of any error, we may over collect or under collect your tax. In consideration of our allowing you access to and use of the Site, and in collecting and remitting taxes required on your purchases, you hereby waive your right to claim that the tax collected on any purchase is incorrect in any respect and agree to hold us harmless, our officers, directors, employees, agents and representatives, for any harm or other damages you may incur as a result of our error in calculating the taxes you owe for your purchases.</p>
+            </div>`,
 		},
 		design: {
 			layout: '2 columns with left bar',

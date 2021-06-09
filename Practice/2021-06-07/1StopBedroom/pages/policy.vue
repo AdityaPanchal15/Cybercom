@@ -10,8 +10,8 @@
       >
     </div>
     <v-row>
-      <v-col v-if="layout !== '1 column'" cols="3">
-        <v-card tile flat class="pa-2 px-4 grey lighten-5">
+      <v-col v-if="layoutSet()" cols="3" :order="order">
+        <v-card tile flat class="pa-2 px-4 grey lighten-5 fix">
           <div v-for="(item, i) of sidebarLinks" :key="i" class="py-2">
             <h4 class="text-uppercase">{{ item.heading }}</h4>
             <div v-for="(link, j) of item.links" :key="j">
@@ -37,8 +37,10 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  scrollToTop: true,
   data() {
     return {
+      order: 0,
       sidebarLinks: [
         {
           heading: 'Customer Service',
@@ -66,30 +68,57 @@ export default {
           heading: 'Shipping And Delivery',
           links: [
             { title: 'COVID-19', link: 'covid-19' },
-            { title: 'Shipping Information', link: 'shipping-information' },
-            { title: 'Delivery Option', link: 'delivery-option' },
+            {
+              title: 'Shipping Information',
+              link: '/policy/shipping-and-delivery',
+            },
+            { title: 'Delivery Option', link: '/policy/white-glove-delivery' },
             { title: 'Track My Order', link: 'track-my-order' },
-            { title: 'International Shipping', link: 'internation-shipping' },
-            { title: 'Free Shipping', link: 'free-shipping' },
-            { title: 'I Receive An Incomplete Order', link: 'order-help' },
-            { title: 'My Item Arrived Damaged', link: 'order-help' },
-            { title: 'I Received Wrong Item', link: 'order-help' },
-            { title: 'Missing Parts', link: 'order-help' },
+            {
+              title: 'International Shipping',
+              link: '/policy/international-shipping',
+            },
+            { title: 'Free Shipping', link: '/policy/free-shipping' },
+            {
+              title: 'I Receive An Incomplete Order',
+              link: '/policy/order-help#i-received-order',
+            },
+            {
+              title: 'My Item Arrived Damaged',
+              link: '/policy/order-help#i-received-damaged',
+            },
+            {
+              title: 'I Received Wrong Item',
+              link: '/policy/order-help#i-received-item',
+            },
+            {
+              title: 'Missing Parts',
+              link: '/policy/order-help#missing-parts',
+            },
           ],
         },
         {
           heading: 'Billing And Payment',
           links: [
-            { title: 'Payment Methods', link: 'billing-and-payment' },
-            { title: 'Ordering Option', link: 'billing-and-payment' },
-            { title: 'Price Match Guarantee', link: 'price-match-guarantee' },
-            { title: 'Sales Tax', link: 'sales-tax' },
+            { title: 'Payment Methods', link: '/policy/billing-and-payment' },
+            {
+              title: 'Ordering Option',
+              link: '/policy/billing-and-payment#ordering-options',
+            },
+            {
+              title: 'Price Match Guarantee',
+              link: '/policy/price-match-guarantee',
+            },
+            { title: 'Sales Tax', link: '/policy/sales-tax' },
           ],
         },
         {
           heading: 'Account Help',
           links: [
-            { title: 'Unsubscribe From Emails', link: '/newsletter/manage' },
+            {
+              title: 'Unsubscribe From Emails',
+              link: '/customer/account/login',
+            },
           ],
         },
       ],
@@ -97,6 +126,16 @@ export default {
   },
   computed: {
     ...mapState('policy', ['name', 'layout']),
+  },
+  methods: {
+    layoutSet() {
+      if (this.layout === '1 column') {
+        return false
+      } else {
+        this.order = this.layout === '2 columns with right bar' ? 1 : 0
+        return true
+      }
+    },
   },
 }
 </script>
@@ -111,5 +150,9 @@ export default {
 .highlighted {
   color: black;
   border-bottom: 2px solid blue;
+}
+.fix {
+  position: sticky;
+  top: 20px;
 }
 </style>

@@ -3,6 +3,7 @@
     <v-card v-if="policy" tile flat class="pa-2 px-4 grey lighten-5">
       {{ changeLayout(policy) }}
       <v-card-title class="blue--text">
+        <!-- {{ content }} -->
         {{ policy.content.contentHeading }}
       </v-card-title>
       <v-card-text v-html="policy.content.contentDetails"></v-card-text>
@@ -68,8 +69,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-h1 {
-  color: red;
-}
-</style>

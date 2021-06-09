@@ -21,69 +21,73 @@
     <v-row>
       <v-col v-for="(product, i) in products[subCategory]" :key="i">
         <v-hover v-slot="{ hover }">
-          <v-card max-width="350" :elevation="hover ? 10 : 0">
-            <v-img :src="product.src"></v-img>
-            <v-row>
-              <v-btn
-                tile
-                text
-                class="grey lighten-2 subtitle-2 ml-5 mr-12 my-2 text-capitalize"
-              >
-                More Options
-              </v-btn>
-              <v-btn text class="my-2 mr-5 py-3" height="50"
-                ><v-icon>mdi-magnify-scan</v-icon>
-                <span class="subtitle-2 text-left pl-1 text-capitalize"
-                  >Shop<br />
-                  Similars
-                </span>
-              </v-btn>
-            </v-row>
-            <p class="pt-5 px-2 black--text subtitle-1 mb-1">
-              {{ product.title }}
-            </p>
-            <p v-if="!hover" class="px-2 subtitle-2 font-weight-regular mb-1">
-              {{ product.subTitle }}
-            </p>
-            <p v-else class="px-2 subtitle-2 font-weight-medium mb-1">
-              Web Id:<span class="font-weight-bold">{{ product.webId }}</span>
-            </p>
-            <p v-if="!product.specialPrice" class="red--text mx-2 title my-1">
-              {{ product.price }}
-              <span
-                class="grey--text subtitle-2 pl-2 text-decoration-line-through font-weight-light"
-              >
-                {{ product.originalPrice }}
-              </span>
-            </p>
-            <div v-else class="mx-2">
-              <p class="special-price">
-                <span class="px-2 black--text">{{ product.specialPrice }}</span>
-                <span class="white--text special-price-label">
-                  <v-icon dark>mdi-tag-multiple</v-icon>
-                  Special Price
+          <nuxt-link :to="'/' + product.title">
+            <v-card max-width="350" :elevation="hover ? 10 : 0">
+              <v-img :src="product.src"></v-img>
+              <v-row>
+                <v-btn
+                  tile
+                  text
+                  class="grey lighten-2 subtitle-2 ml-5 mr-12 my-2 text-capitalize"
+                >
+                  More Options
+                </v-btn>
+                <v-btn text class="my-2 mr-5 py-3" height="50"
+                  ><v-icon>mdi-magnify-scan</v-icon>
+                  <span class="subtitle-2 text-left pl-1 text-capitalize"
+                    >Shop<br />
+                    Similars
+                  </span>
+                </v-btn>
+              </v-row>
+              <p class="pt-5 px-2 black--text subtitle-1 mb-1">
+                {{ product.title }}
+              </p>
+              <p v-if="!hover" class="px-2 subtitle-2 font-weight-regular mb-1">
+                {{ product.subTitle }}
+              </p>
+              <p v-else class="px-2 subtitle-2 font-weight-medium mb-1">
+                Web Id:<span class="font-weight-bold">{{ product.webId }}</span>
+              </p>
+              <p v-if="!product.specialPrice" class="red--text mx-2 title my-1">
+                {{ product.price }}
+                <span
+                  class="grey--text subtitle-2 pl-2 text-decoration-line-through font-weight-light"
+                >
+                  {{ product.originalPrice }}
                 </span>
               </p>
-            </div>
-            <v-row no-gutters class="mx-1">
-              <v-col cols="4">
-                <v-rating
-                  v-model="product.rating"
-                  readonly
-                  background-color="grey"
-                  half-increments
-                  size="17"
-                  dense
-                ></v-rating>
-              </v-col>
-              <v-col>
-                <span class="body-2 black--text"
-                  >({{ product.numberOfRating }})</span
-                >
-              </v-col>
-            </v-row>
-            <p class="px-2 subtitle-2 py-2">Free Home Delivery</p>
-          </v-card>
+              <div v-else class="mx-2">
+                <p class="special-price">
+                  <span class="px-2 black--text">{{
+                    product.specialPrice
+                  }}</span>
+                  <span class="white--text special-price-label">
+                    <v-icon dark>mdi-tag-multiple</v-icon>
+                    Special Price
+                  </span>
+                </p>
+              </div>
+              <v-row no-gutters class="mx-1">
+                <v-col cols="4">
+                  <v-rating
+                    v-model="product.rating"
+                    readonly
+                    background-color="grey"
+                    half-increments
+                    size="17"
+                    dense
+                  ></v-rating>
+                </v-col>
+                <v-col>
+                  <span class="body-2 black--text"
+                    >({{ product.numberOfRating }})</span
+                  >
+                </v-col>
+              </v-row>
+              <p class="px-2 subtitle-2 py-2">Free Home Delivery</p>
+            </v-card>
+          </nuxt-link>
         </v-hover>
       </v-col>
     </v-row>
