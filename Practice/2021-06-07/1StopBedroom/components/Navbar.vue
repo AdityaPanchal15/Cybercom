@@ -11,7 +11,10 @@
             class="onHoverBtn"
             v-on="on"
           >
-            <nuxt-link :to="'/' + link.link">{{ link.linkTitle }}</nuxt-link>
+            <nuxt-link
+              :to="{ name: 'product', params: { product: link.link } }"
+              >{{ link.linkTitle }}</nuxt-link
+            >
           </v-btn>
         </template>
         <v-card max-width="900" flat tile>

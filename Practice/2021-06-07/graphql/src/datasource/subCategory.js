@@ -17,7 +17,7 @@ module.exports = {
           title: 'Lettner Light Gray Sleigh Bedroom Set',
           subTitle: 'By Signature Design by Ashley',
           webId: 'QB1225358',
-          specialPrice: '$1229.42',
+          specialPrice: '$1,229.42',
           price: '$1,229.42',
           numberOfRating: '1',
           rating: 4.5,

@@ -66,7 +66,12 @@
           </nuxt-link>
           <nuxt-link to="cart">
             <v-icon dark class="pl-10">mdi-cart</v-icon>
-            <span class="white--text"><v-badge content="0">Cart</v-badge></span>
+            <span class="white--text"
+              >Cart<v-badge
+                v-if="products.length !== 0"
+                :content="products.length"
+              ></v-badge
+            ></span>
           </nuxt-link>
         </div>
       </v-col>
@@ -109,10 +114,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Footer from '~/components/Footer.vue'
 import Navbar from '~/components/Navbar.vue'
 export default {
   components: { Navbar, Footer },
+  computed: {
+    ...mapState('cart', ['products']),
+  },
 }
 </script>
 <style>

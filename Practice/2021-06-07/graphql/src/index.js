@@ -29,6 +29,7 @@ const typeDefs = gql`
 		title:String
 		subTitle:String
 		webId:String
+		specialPrice:String
 		price:String
 		originalPrice:String
 		numberOfRating:String
