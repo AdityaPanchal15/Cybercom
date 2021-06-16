@@ -9,25 +9,23 @@ export const mutations = {
   removeProduct(state, id) {
     state.products.splice(id, 1)
   },
-  //   updateProduct(state, payload) {
-  //     state.products[payload.id] = payload.product
-  //   },
+  updateProduct(state, payload) {
+    const myproduct = state.products[payload.id]
+    myproduct.quantity = payload.quantity
+    myproduct.subTotal = (payload.quantity * myproduct.finalPrice).toFixed(2)
+    state.products[payload.id] = myproduct
+  },
 }
 
-// export const actions = {
-//   updateQuantity({ commit, getters }, payload) {
-//     console.log(payload)
-//     const product = getters.getProducts(payload.id)
-//     console.log(product)
-//     product.quantity = payload.selectedQuantity
-//     product.subTotal = payload.selectedQuantity * product.finalPrice
-//     commit.updateProduct(product, payload.id)
-//   },
-// }
-
-// export const getters = {
-//   getProducts: (state) => (id) => {
-//     console.log(id)
-//     return state.products[id]
-//   },
-// }
+export const getters = {
+  getProducts: (state) => (id) => {
+    return state.products[id]
+  },
+  totalAmount: (state) => {
+    let totalPrice = 0
+    for (let index = 0; index < state.products.length; index++) {
+      totalPrice = totalPrice + parseFloat(state.products[index].subTotal)
+    }
+    return totalPrice.toFixed(2)
+  },
+}

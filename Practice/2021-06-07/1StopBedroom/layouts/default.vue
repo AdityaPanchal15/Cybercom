@@ -64,14 +64,13 @@
             <v-icon dark>mdi-login</v-icon>
             <span class="white--text">Sign In</span>
           </nuxt-link>
-          <nuxt-link to="cart">
+          <nuxt-link to="checkout/cart">
             <v-icon dark class="pl-10">mdi-cart</v-icon>
             <span class="white--text"
-              >Cart<v-badge
-                v-if="products.length !== 0"
-                :content="products.length"
-              ></v-badge
-            ></span>
+              ><v-badge v-if="products.length !== 0" :content="products.length"
+                >Cart</v-badge
+              ></span
+            >
           </nuxt-link>
         </div>
       </v-col>
