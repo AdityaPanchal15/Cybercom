@@ -49,12 +49,46 @@
             <v-btn value="custom">Build Your Own</v-btn>
           </v-btn-toggle>
         </p>
+        <div v-for="(item, index) in itemSet" :key="index">
+          <span>{{ item.productType }}</span>
+          <span>SKU:{{ item.sku }}</span>
+        </div>
       </v-col>
     </v-row>
+
+    <h1 class="font-weight-light">Include Additional Items</h1>
+    <div v-for="(item, index) in itemSet" :key="index">
+      <nuxt-link :to="'/' + item.title">
+        <v-row @click="setProductDetailsAndPathFrom(item)">
+          <v-col cols="2">
+            <v-img :src="item.src" width="150px"></v-img>
+          </v-col>
+          <v-col cols="8">
+            <h4 class="font-weight-medium">{{ item.title }}</h4>
+            <p class="grey--text body-1">
+              sku:{{ item.sku }} | Web Id:{{ item.webId }}
+            </p>
+            <h3>{{ item.price || item.specialPrice }}</h3>
+          </v-col>
+          <v-col class="mt-4">
+            <v-select
+              v-model="selectedQuantity"
+              :items="quantityOptions"
+              dense
+              outlined
+              background-color="grey lighten-4"
+            ></v-select>
+          </v-col>
+        </v-row>
+      </nuxt-link>
+      <v-divider class="my-5"></v-divider>
+    </div>
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
+import { mapMutations } from 'vuex'
 export default {
   props: {
     productDetails: {
@@ -67,7 +101,42 @@ export default {
     return {
       text: 'twin',
       set: '2',
+      selectedQuantity: 1,
+      quantityOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     }
+  },
+  methods: {
+    setProductDetailsAndPathFrom(product) {
+      this.addProductDetails(product)
+    },
+    ...mapMutations(['addProductDetails']),
+  },
+  apollo: {
+    itemSet: {
+      query: gql`
+        query getItemSet($sku: String) {
+          itemSet(sku: $sku) {
+            src
+            title
+            webId
+            price
+            specialPrice
+            sku
+            productType
+          }
+        }
+      `,
+      variables() {
+        return {
+          sku: this.productDetails.sku,
+        }
+      },
+    },
   },
 }
 </script>
+<style scoped>
+a {
+  color: black;
+}
+</style>

@@ -116,6 +116,7 @@ export default {
             originalPrice
             numberOfRating
             rating
+            sku
           }
         }
       `,

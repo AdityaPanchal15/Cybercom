@@ -2,7 +2,6 @@ const { ApolloServer, gql } = require('apollo-server');
 // const Products = require('./datasource/products');
 const policy = require('./datasource/policy');
 const product = require('./datasource/product');
-const { keys } = require('./datasource/product');
 const subCategory = require('./datasource/subCategory');
 
 const typeDefs = gql`
@@ -10,6 +9,7 @@ const typeDefs = gql`
 		product(productType:String!): Product
 		policy(url:String): Policy
 		subCategory(categoryType:String!):[subCategory]
+		itemSet(sku:String):[subCategory]
 	}
 	type Product{
 		productLinks:[Link]
@@ -34,6 +34,8 @@ const typeDefs = gql`
 		originalPrice:String
 		numberOfRating:String
 		rating:Float
+		sku:String
+		productType:String
 	}
 	# type Product {
 	# 	entity_id: String
@@ -122,10 +124,6 @@ const typeDefs = gql`
 `;
 const resolvers = {
 	Query: {
-		// hello: (_, __, { dataSources }) => {
-		// 	dataSources.products.ProductAPI();
-		// 	return 'hello world';
-		// },
 		// products: (_, __, { dataSources }) => {
 		// 	return dataSources.products.ProductAPI();
 		// },
@@ -137,9 +135,17 @@ const resolvers = {
 			return product[productType]
 		},
 		subCategory:(_,{categoryType})=>{
-			const result = subCategory[categoryType]
+			const result = subCategory.filter((item)=>item.productType===categoryType)
 			return result
-		}
+		},
+		itemSet:(_,{sku})=>{
+			const result = subCategory.filter(item=>{
+				if(item.sku !== sku && item.sku){
+					return  item.sku.slice(0,4)===sku.slice(0,4)
+				}
+			})
+			return result
+		},
 	},
 };
 

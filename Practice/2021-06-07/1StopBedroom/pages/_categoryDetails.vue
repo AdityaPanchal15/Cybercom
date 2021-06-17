@@ -20,7 +20,7 @@
       <nuxt-link
         class="text-decoration-none text-capitalize grey--text"
         :to="productDetails.title"
-        >{{ productDetails.title }}</nuxt-link
+        >sku:{{ productDetails.sku }}</nuxt-link
       >
     </div>
 
