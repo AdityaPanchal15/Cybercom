@@ -11,3 +11,11 @@ export const mutations = {
     state.pathFrom = payload
   },
 }
+
+export const actions = {
+  nuxtServerInit({ commit }) {
+    if (this.$cookies.get('token')) {
+      commit('auth/setLoggedIn', true)
+    }
+  },
+}

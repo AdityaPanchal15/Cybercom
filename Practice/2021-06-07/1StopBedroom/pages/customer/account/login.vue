@@ -91,8 +91,8 @@ export default {
           }
         )
         .then((res) => {
-          console.log(res)
-          alert('login successfull')
+          this.$cookies.set('token', res.data.idToken)
+          this.$store.commit('auth/setLoggedIn', true)
           this.$router.push('/')
         })
         .catch((error) => {

@@ -60,11 +60,15 @@
 
       <v-col>
         <div class="pt-12">
-          <nuxt-link to="/customer/account/login">
+          <nuxt-link
+            v-if="!$store.state.auth.loggedIn"
+            to="/customer/account/login"
+          >
             <v-icon dark>mdi-login</v-icon>
             <span class="white--text">Sign In</span>
           </nuxt-link>
-          <nuxt-link to="checkout/cart">
+          <v-btn v-else dark text @click="logout"> Sign Out </v-btn>
+          <nuxt-link to="/checkout/cart">
             <v-icon dark class="pl-10">mdi-cart</v-icon>
             <span class="white--text"
               ><v-badge v-if="products.length !== 0" :content="products.length"
@@ -120,6 +124,13 @@ export default {
   components: { Navbar, Footer },
   computed: {
     ...mapState('cart', ['products']),
+  },
+  methods: {
+    logout() {
+      this.$cookies.remove('token')
+      this.$store.commit('auth/setLoggedIn', false)
+      this.$router.push('/')
+    },
   },
 }
 </script>

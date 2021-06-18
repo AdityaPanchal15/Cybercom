@@ -2,11 +2,13 @@
   <div>
     <h1 class="font-weight-regular">{{ productDetails.title }}</h1>
     <v-row class="body-2" no-gutters>
-      <nuxt-link to="/review"> Write a Review </nuxt-link>
+      <nuxt-link to="/review" class="blue--text"> Write a Review </nuxt-link>
       |
       <p class="grey--text">{{ productDetails.webId }}</p>
       <v-spacer></v-spacer>
-      <nuxt-link to="/">Desciption | Specification</nuxt-link>
+      <nuxt-link to="/" class="blue--text"
+        >Desciption | Specification</nuxt-link
+      >
     </v-row>
     <v-divider></v-divider>
 
@@ -50,8 +52,8 @@
           </v-btn-toggle>
         </p>
         <div v-for="(item, index) in itemSet" :key="index">
-          <span>{{ item.productType }}</span>
-          <span>SKU:{{ item.sku }}</span>
+          <span class="subtitle-2">1 x {{ item.productType }} | </span>
+          <span class="subtitle-2">SKU:{{ item.sku }}</span>
         </div>
       </v-col>
     </v-row>
