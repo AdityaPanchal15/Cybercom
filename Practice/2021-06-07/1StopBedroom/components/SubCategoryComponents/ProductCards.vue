@@ -286,10 +286,10 @@ export default {
         return 0
       }
       if (type === 'Price:Low-High') {
-        this.products[this.subCategory].sort(compare)
+        this.subCategory.sort(compare)
       }
       if (type === 'Price:High-Low') {
-        this.products[this.subCategory].sort(compare).reverse()
+        this.subCategory.sort(compare).reverse()
       }
     },
     setProductDetailsAndPathFrom(product) {
