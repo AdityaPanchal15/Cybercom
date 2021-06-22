@@ -7,7 +7,7 @@
       <v-col cols="3">
         <know-about-sidebar />
       </v-col>
-      <v-col>
+      <v-col cols="9">
         <v-main>
           <Nuxt />
         </v-main>

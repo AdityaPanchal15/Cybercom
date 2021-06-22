@@ -63,13 +63,13 @@ export default {
     return {
       footerLinks: {
         knowUs: [
-          { title: 'About Us', link: 'about-us' },
-          { title: 'The 1Stop Advantage', link: 'the-onestop-advantage' },
-          { title: 'Sell on 1StopBedrooms', link: 'partner-with-us' },
-          { title: 'Careers', link: 'careers' },
-          { title: 'Social Responsibility', link: 'onestop-cares' },
-          { title: 'Reviews', link: 'testimonials' },
-          { title: 'A Note on COVID-19', link: 'covid-19' },
+          { title: 'About Us', link: '/about-us' },
+          { title: 'The 1Stop Advantage', link: '/the-onestop-advantage' },
+          { title: 'Sell on 1StopBedrooms', link: '/partner-with-us' },
+          { title: 'Careers', link: '/careers' },
+          { title: 'Social Responsibility', link: '/onestop-cares' },
+          { title: 'Reviews', link: '/testimonials' },
+          { title: 'A Note on COVID-19', link: '/covid-19' },
         ],
         customerService: [
           { title: 'My Account', link: '/customer/account/login' },

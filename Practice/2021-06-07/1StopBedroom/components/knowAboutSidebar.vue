@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer color="grey lighten-4" width="100%">
+  <v-navigation-drawer color="grey lighten-3" width="100%">
     <div
       v-for="(item, index) in knowUsLinks"
       :key="index"
