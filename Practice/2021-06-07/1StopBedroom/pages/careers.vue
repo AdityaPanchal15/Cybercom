@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-6 black--text">
+  <div class="ma-9 black--text">
     <h1 class="py-5">Working with us</h1>
     <p>
       Looking to join a dynamic team that’s always striving to improve their

@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-6">
+  <div class="ma-9">
     <div class="text-center black--text">
       <h1 class="pt-10 font-weight-medium">
         You learn a thing or two after 20 years in <br />

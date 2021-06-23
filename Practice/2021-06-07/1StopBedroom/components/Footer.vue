@@ -9,7 +9,7 @@
       </v-col>
       <v-col>
         <h3 class="pb-3">Get to Know Us</h3>
-        <div v-for="(item, i) in footerLinks.knowUs" :key="i">
+        <div v-for="(item, i) in footerLinks.knowUs" :key="i" class="pb-2">
           <nuxt-link :to="item.link" class="grey--text">{{
             item.title
           }}</nuxt-link>
@@ -17,8 +17,12 @@
       </v-col>
       <v-col>
         <h3 class="pb-3">Customer Service</h3>
-        <div v-for="(item, i) in footerLinks.customerService" :key="i">
-          <nuxt-link :to="item.link" class="grey--text pb-3">{{
+        <div
+          v-for="(item, i) in footerLinks.customerService"
+          :key="i"
+          class="pb-2"
+        >
+          <nuxt-link :to="item.link" class="grey--text">{{
             item.title
           }}</nuxt-link>
         </div>

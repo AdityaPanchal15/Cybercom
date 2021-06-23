@@ -104,6 +104,7 @@
 <script>
 export default {
   layout: 'login',
+  middleware: 'customer',
   data() {
     return {
       show1: false,

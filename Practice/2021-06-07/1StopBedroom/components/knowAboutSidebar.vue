@@ -14,18 +14,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      knowUsLinks: [
-        { title: 'About Us', link: 'about-us' },
-        { title: 'Our Story', link: 'our-story' },
-        { title: 'The 1Stop Advantage', link: 'the-onestop-advantage' },
-        { title: '1Stop Cares', link: 'onestop-cares' },
-        { title: 'Careers', link: 'careers' },
-        { title: 'Partner With Us', link: 'partner-with-us' },
-        { title: 'Contact Us', link: 'about-contact-us' },
-      ],
-    }
+  props: {
+    knowUsLinks: {
+      type: Array,
+      default: null,
+      required: true,
+    },
   },
 }
 </script>
@@ -38,12 +32,12 @@ a.nuxt-link-exact-active {
   display: block;
   background-color: white;
   padding: 10px 20px;
-  margin-left: 10px;
+  margin-left: 20px;
   width: 90%;
   border-radius: 5px;
 }
 .linkStyle {
-  padding: 10px 30px;
+  padding: 10px 40px;
   color: black;
 }
 a:hover {

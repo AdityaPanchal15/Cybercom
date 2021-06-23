@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-6">
+  <div class="ma-9">
     <h1 class="py-4">Furniture is different. So is 1Stop.</h1>
     <p class="black--text">
       Can the perfect online furniture experience exist? As veterans of the

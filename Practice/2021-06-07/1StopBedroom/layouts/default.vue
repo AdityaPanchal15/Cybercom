@@ -15,7 +15,7 @@
     </v-system-bar>
     <br />
 
-    <v-row class="blue darken-4" dark>
+    <v-row class="bg-header" dark>
       <v-col>
         <nuxt-link to="/">
           <v-img
@@ -35,11 +35,11 @@
               >36 Month Financing*</span
             ></a
           >&nbsp;&nbsp;&nbsp;
-          <a href=""
-            ><span class="text-decoration-underline white--text"
-              >Track My Order</span
-            ></a
-          >
+          <nuxt-link to="/sales/guest/form">
+            <span class="text-decoration-underline white--text">
+              Track My Order
+            </span>
+          </nuxt-link>
         </p>
         <v-text-field
           dark
@@ -137,5 +137,12 @@ export default {
 <style>
 a {
   text-decoration: none;
+}
+</style>
+<style scoped>
+.bg-header {
+  background: #002859
+    url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/header_img.png?v4b3a5475)
+    0 0;
 }
 </style>
