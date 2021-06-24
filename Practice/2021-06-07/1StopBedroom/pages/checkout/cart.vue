@@ -1,18 +1,18 @@
 <template>
-  <div>
+  <div class="ma-2">
     <div class="d-inline-flex mt-3">
       <p class="blue--text display-1 mb-10">Your Cart</p>
-      <router-link to="/onepage">
-        <v-btn
-          v-if="$store.state.cart.products.length"
-          class="ml-5 deep-orange accent-3"
-          dark
-          right
-        >
-          <v-icon left dark> mdi-lock </v-icon>
-          Proceed To Checkout
-        </v-btn>
-      </router-link>
+
+      <v-btn
+        v-if="$store.state.cart.products.length"
+        class="ml-5 deep-orange accent-3"
+        dark
+        right
+        to="/onepage"
+      >
+        <v-icon left dark> mdi-lock </v-icon>
+        Proceed To Checkout
+      </v-btn>
     </div>
     <v-card
       v-if="$store.state.cart.products.length"

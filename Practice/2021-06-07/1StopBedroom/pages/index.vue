@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-2">
+  <div class="ma-2">
     <slider />
     <small-image-slider />
     <v-parallax

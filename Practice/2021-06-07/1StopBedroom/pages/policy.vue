@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-2">
+  <div class="ma-2">
     <div class="body-2 mb-2">
       <nuxt-link to="/" class="text-decoration-none">Home</nuxt-link>
       <nuxt-link
