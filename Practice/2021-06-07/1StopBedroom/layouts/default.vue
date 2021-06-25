@@ -212,7 +212,7 @@ export default {
         {
           icon: 'mdi-message-cog',
           title: 'Preference',
-          src: '/customer/address',
+          src: '/newsletter/manage',
         },
         {
           icon: 'mdi-login',
@@ -224,13 +224,6 @@ export default {
   },
   computed: {
     ...mapState('cart', ['products']),
-  },
-  methods: {
-    logout() {
-      this.$cookies.remove('token')
-      this.$store.commit('auth/setLoggedIn', false)
-      this.$router.push('/')
-    },
   },
 }
 </script>
