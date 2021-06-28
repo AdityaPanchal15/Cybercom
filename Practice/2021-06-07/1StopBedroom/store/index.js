@@ -15,7 +15,11 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ commit }) {
     if (this.$cookies.get('token')) {
-      commit('auth/setLoggedIn', true)
+      commit('auth/setLoggedIn', {
+        loggedIn: true,
+        name: this.$cookies.get('userName'),
+        email: this.$cookies.get('email'),
+      })
     }
   },
 }

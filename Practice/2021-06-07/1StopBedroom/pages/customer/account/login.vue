@@ -93,7 +93,14 @@ export default {
         )
         .then((res) => {
           this.$cookies.set('token', res.data.idToken)
-          this.$store.commit('auth/setLoggedIn', true)
+          this.$cookies.set('userName', res.data.displayName)
+          this.$cookies.set('email', res.data.email)
+          this.$cookies.set('uid', res.data.localId)
+          this.$store.commit('auth/setLoggedIn', {
+            loggedIn: true,
+            name: res.data.displayName,
+            email: res.data.email,
+          })
           this.$router.push('/')
         })
         .catch((error) => {

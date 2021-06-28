@@ -10,7 +10,14 @@ export default {
   methods: {
     logout() {
       this.$cookies.remove('token')
-      this.$store.commit('auth/setLoggedIn', false)
+      this.$cookies.remove('userName')
+      this.$cookies.remove('email')
+      this.$cookies.remove('uid')
+      this.$store.commit('auth/setLoggedIn', {
+        loggedIn: false,
+        displayName: null,
+        email: null,
+      })
       this.$router.push('/')
     },
   },

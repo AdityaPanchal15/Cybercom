@@ -132,6 +132,7 @@ export default {
           {
             email: this.register.email,
             password: this.register.password,
+            displayName: this.register.firstName + ' ' + this.register.lastName,
             returnSecureToken: true,
           }
         )

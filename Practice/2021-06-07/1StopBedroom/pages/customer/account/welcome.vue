@@ -1,6 +1,8 @@
 <template>
   <div class="grey lighten-5 text-center">
-    <p class="display-1 py-10 blue--text font-weight-bold">Wecome! Aditya</p>
+    <p class="display-1 py-10 blue--text font-weight-bold">
+      Wecome! {{ firstName }}
+    </p>
     <div v-for="i in 3" :key="i">
       <v-row v-if="i % 2 !== 0">
         <v-col cols="2"></v-col>
@@ -77,9 +79,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   layout: 'customerLayout',
   middleware: 'auth',
+
   data() {
     return {
       otherPageLink: [
@@ -144,6 +148,9 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    ...mapState('auth', ['firstName']),
   },
 }
 </script>

@@ -6,6 +6,33 @@
       <v-row>
         <v-col>
           <v-text-field
+            :value="firstName"
+            label="First Name"
+            outlined
+            dense
+            title="First Name"
+            :disabled="edit"
+            type="text"
+          ></v-text-field>
+          <v-text-field
+            :value="email"
+            label="Email Address"
+            outlined
+            dense
+            title="Email"
+            :disabled="edit"
+            type="email"
+          ></v-text-field>
+          <v-text-field
+            v-if="!edit"
+            :value="remail"
+            label="Confirm Email Address"
+            outlined
+            dense
+            title="Confirm Email Address"
+            type="email"
+          ></v-text-field>
+          <v-text-field
             v-for="(field, i) in formFields"
             :key="i"
             :value="field.value"
@@ -18,13 +45,13 @@
           ></v-text-field>
           <v-text-field
             v-if="edit"
-            value=""
+            value="*****"
             label="Password"
             outlined
             dense
             title="Password"
             :disabled="edit"
-            type="password"
+            type="text"
           ></v-text-field>
           <v-btn
             v-if="edit"
@@ -47,7 +74,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            value=""
+            :value="lastName"
             label="Last Name"
             outlined
             dense
@@ -65,18 +92,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   layout: 'customerLayout',
+
   data() {
     return {
       edit: true,
+      remail: null,
       formFields: [
-        { value: 'Adi', label: 'First Name', type: 'text' },
-        { value: 'email', label: 'Email Address', type: 'email' },
         { value: '', label: 'Phone Number', type: 'number' },
         { value: '', label: 'Date Of Birth', type: 'text' },
       ],
     }
+  },
+  computed: {
+    ...mapState('auth', ['firstName', 'lastName', 'email']),
   },
 }
 </script>

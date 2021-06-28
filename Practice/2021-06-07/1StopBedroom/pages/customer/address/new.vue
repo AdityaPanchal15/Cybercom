@@ -10,7 +10,7 @@
         <v-col>
           <v-layout>
             <v-text-field
-              value=""
+              v-model="newAddress.firstName"
               label="First Name"
               outlined
               dense
@@ -20,7 +20,7 @@
               required
             ></v-text-field>
             <v-text-field
-              value=""
+              v-model="newAddress.lastName"
               label="Last Name"
               outlined
               dense
@@ -31,7 +31,7 @@
             ></v-text-field>
           </v-layout>
           <v-text-field
-            value=""
+            v-model="newAddress.company"
             label="Company"
             outlined
             dense
@@ -41,7 +41,7 @@
           ></v-text-field>
           <v-layout>
             <v-text-field
-              value=""
+              v-model="newAddress.phoneNumber"
               label="Phone Number"
               outlined
               dense
@@ -50,7 +50,7 @@
               type="number"
             ></v-text-field>
             <v-text-field
-              value=""
+              v-model="newAddress.alternatePhoneNumber"
               label="Alternate Phone Number"
               outlined
               dense
@@ -60,7 +60,7 @@
             ></v-text-field>
           </v-layout>
           <v-text-field
-            value=""
+            v-model="newAddress.streetAddress"
             label="Street Address"
             outlined
             dense
@@ -69,17 +69,17 @@
             type="text"
           ></v-text-field>
           <v-text-field
-            value=""
-            label="Street Address"
+            v-model="newAddress.streetAddress2"
+            label="Street Address 2"
             outlined
             dense
             class="mr-2"
-            title="Street Address"
+            title="Street Address 2"
             type="text"
           ></v-text-field>
           <v-layout>
             <v-text-field
-              value=""
+              v-model="newAddress.city"
               label="City"
               outlined
               dense
@@ -88,7 +88,7 @@
               type="text"
             ></v-text-field>
             <v-select
-              value="Please select region,state or province"
+              v-model="newAddress.state"
               :items="state"
               label="State"
               outlined
@@ -99,7 +99,7 @@
             ></v-select>
           </v-layout>
           <v-text-field
-            value=""
+            v-model="newAddress.zipCode"
             label="Zip/Postal Code"
             outlined
             dense
@@ -109,7 +109,9 @@
           ></v-text-field>
           <div class="mt-8 mb-4">
             <v-btn outlined depressed color="grey darken-3">Cancel</v-btn>
-            <v-btn class="grey darken-3 mx-2" dark>Save Address</v-btn>
+            <v-btn class="grey darken-3 mx-2" dark @click="createNewAddress">
+              Save Address
+            </v-btn>
           </div>
         </v-col>
         <v-col></v-col>
@@ -119,12 +121,42 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   layout: 'customerLayout',
   data() {
     return {
       state: ['Please select region,state or province', 'Gujarat'],
+      newAddress: {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        company: '',
+        phoneNumber: '',
+        alternatePhoneNumber: '',
+        streetAddress: '',
+        streetAddress2: '',
+        city: '',
+        state: 'Please select region,state or province',
+        zipCode: '',
+        uid: this.$cookies.get('uid'),
+      },
     }
+  },
+
+  computed: {
+    ...mapState('auth', ['firstName', 'lastName']),
+  },
+  methods: {
+    createNewAddress() {
+      this.$axios
+        .post(
+          `https://nuxt-demo-app-6526b-default-rtdb.firebaseio.com/userInfo.json`,
+          this.newAddress
+        )
+        .then((res) => {
+          this.$router.push('/customer/address')
+        })
+    },
   },
 }
 </script>

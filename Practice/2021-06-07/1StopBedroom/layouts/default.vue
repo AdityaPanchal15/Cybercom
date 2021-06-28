@@ -71,7 +71,16 @@
                 <v-icon color="white">mdi-login</v-icon>
                 <span>Sign In</span>
               </span>
-              <v-btn v-else dark text v-bind="attrs" @click="logout" v-on="on">
+              <v-btn
+                v-else
+                dark
+                text
+                v-bind="attrs"
+                class="text-capitalize"
+                v-on="on"
+              >
+                <v-icon>mdi-account</v-icon>
+                Hello {{ firstName }},<br />
                 My Account
               </v-btn>
             </template>
@@ -224,6 +233,7 @@ export default {
   },
   computed: {
     ...mapState('cart', ['products']),
+    ...mapState('auth', ['firstName']),
   },
 }
 </script>
