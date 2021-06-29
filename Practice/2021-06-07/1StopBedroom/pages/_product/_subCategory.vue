@@ -5,14 +5,13 @@
       <nuxt-link
         class="text-decoration-none text-capitalize"
         :to="'/' + product"
-        >{{ product }}</nuxt-link
       >
+        {{ product }}
+      </nuxt-link>
       /
-      <nuxt-link
-        class="text-decoration-none text-capitalize"
-        :to="subCategory"
-        >{{ subCategory }}</nuxt-link
-      >
+      <nuxt-link class="text-decoration-none text-capitalize" :to="subCategory">
+        {{ subCategory }}
+      </nuxt-link>
     </div>
     <v-row class="mt-3" no-gutters>
       <v-col cols="3">

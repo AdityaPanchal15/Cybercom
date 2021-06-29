@@ -41,7 +41,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-card flat tile width="100%" class="white lighten-1 text-center">
+    <v-card flat tile class="white lighten-1 text-center">
       <v-card-text>
         <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
           <v-icon size="24px">

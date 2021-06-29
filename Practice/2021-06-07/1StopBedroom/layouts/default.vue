@@ -142,8 +142,7 @@
 
     <v-main>
       <v-img
-        src="https://cdn.1stopbedrooms.com/media/bannerslider/s/p/springsale_topbanner_desk_050321.png"
-        class="deep-orange lighten-1"
+        src="https://cdn.1stopbedrooms.com/media/bannerslider/j/u/july4thsale2021_topbnr_internal_170621.png"
       ></v-img>
       <v-container fluid>
         <v-fab-transition>

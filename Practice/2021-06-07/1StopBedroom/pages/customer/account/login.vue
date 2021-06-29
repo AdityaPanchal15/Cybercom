@@ -17,6 +17,7 @@
                   placeholder="Email"
                   outlined
                   dense
+                  type="email"
                 ></v-text-field>
                 <v-text-field
                   v-model="password"
@@ -24,6 +25,7 @@
                   placeholder="Password"
                   outlined
                   dense
+                  type="password"
                 ></v-text-field>
                 <v-btn
                   color="indigo accent-4"

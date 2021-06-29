@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <v-row no-gutters>
+    <v-row no-gutters class="black--text">
       <v-col v-for="(feature, i) in features" :key="i">
         <!-- <v-spacer></v-spacer> -->
-        <v-icon size="50" dark>{{ feature.icon }}</v-icon>
+        <v-icon size="50" color="black">{{ feature.icon }}</v-icon>
 
         <h3>{{ feature.title }}</h3>
         <p>

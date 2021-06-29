@@ -10,7 +10,7 @@
         <v-col>
           <v-layout>
             <v-text-field
-              v-model="newAddress.firstName"
+              :value="firstName"
               label="First Name"
               outlined
               dense
@@ -20,7 +20,7 @@
               required
             ></v-text-field>
             <v-text-field
-              v-model="newAddress.lastName"
+              :value="lastName"
               label="Last Name"
               outlined
               dense

@@ -61,9 +61,8 @@
 </template>
 
 <script>
-// import address from '~/middleware/address'
 export default {
-  // middleware: 'address',
+  layout: 'customerLayout',
   data() {
     return {
       id: this.$cookies.get('uid'),
@@ -80,7 +79,6 @@ export default {
           `https://nuxt-demo-app-6526b-default-rtdb.firebaseio.com/userInfo.json?orderBy="uid"&startAt="${this.id}"&endAt="${this.id}"`
         )
         .then((res) => {
-          console.log(Object.values(res.data))
           this.address = Object.values(res.data)
             ? Object.values(res.data)[0]
             : false

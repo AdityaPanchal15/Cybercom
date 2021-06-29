@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="primary" height="50">
+  <v-app-bar color="blue darken-4" height="50">
     <div v-for="(link, index) in links" :key="index">
       <v-menu rounded="0" open-on-hover offset-y>
         <template #activator="{ on, attrs }">
@@ -9,12 +9,11 @@
             tile
             height="50"
             class="onHoverBtn"
+            :to="{ name: 'product', params: { product: link.link } }"
+            dark
             v-on="on"
           >
-            <nuxt-link
-              :to="{ name: 'product', params: { product: link.link } }"
-              >{{ link.linkTitle }}</nuxt-link
-            >
+            {{ link.linkTitle }}
           </v-btn>
         </template>
         <v-card max-width="900" flat tile>
@@ -24,13 +23,13 @@
               :key="i"
               cols="4"
             >
-              <v-btn text tile>
-                <nuxt-link
-                  :to="'/' + link.link + '/' + item.link"
-                  class="black--text body-2"
-                >
-                  {{ item.linkTitle }}
-                </nuxt-link>
+              <v-btn
+                text
+                tile
+                class="black--text body-2"
+                :to="'/' + link.link + '/' + item.link"
+              >
+                {{ item.linkTitle }}
               </v-btn>
             </v-col>
           </v-row>
@@ -242,11 +241,6 @@ export default {
 <style scoped>
 .onHoverBtn:hover {
   background-color: white;
-}
-a {
-  color: white;
-}
-a:hover {
   color: black;
 }
 </style>

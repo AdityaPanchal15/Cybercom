@@ -66,10 +66,6 @@
               >Cancel</v-btn
             >
             <v-btn class="grey darken-3" width="60%" dark>Update</v-btn>
-            <p class="pt-6 mb-2">Password</p>
-            <v-btn class="grey darken-3" width="50%" dark @click="edit = false"
-              >Reset Password</v-btn
-            >
           </div>
         </v-col>
         <v-col>
@@ -87,6 +83,58 @@
         <v-col></v-col>
         <v-col></v-col>
       </v-row>
+
+      <v-row v-if="!edit">
+        <v-col>
+          <p class="pt-6 mb-2">Password</p>
+          <v-divider></v-divider>
+          <v-btn
+            v-if="editPassword"
+            class="grey darken-3 my-2"
+            dark
+            @click="editPassword = !editPassword"
+          >
+            Reset Password
+          </v-btn>
+          <div v-if="!editPassword">
+            <v-text-field
+              v-model="currentPassword"
+              label="Currrent Password"
+              outlined
+              dense
+              title="Currrent Password"
+              type="password"
+            ></v-text-field>
+            <v-layout>
+              <v-text-field
+                v-model="newPassword"
+                label="New Password"
+                outlined
+                dense
+                title="New Password"
+                class="mr-2"
+                type="password"
+              ></v-text-field>
+              <v-text-field
+                v-model="confirmNewPassword"
+                label="Confirm New Password"
+                :rules="emailRules"
+                outlined
+                dense
+                title="Confirm New Password"
+                type="password"
+              ></v-text-field>
+            </v-layout>
+            <v-btn outlined depressed color="grey darken-3" @click="edit = true"
+              >Cancel</v-btn
+            >
+            <v-btn class="grey darken-3" dark @click="resetPassword">
+              Update
+            </v-btn>
+          </div>
+        </v-col>
+        <v-col></v-col>
+      </v-row>
     </v-form>
   </div>
 </template>
@@ -98,8 +146,13 @@ export default {
 
   data() {
     return {
+      emailRules: [(v) => v === this.newPassword || 'Password mismatch'],
       edit: true,
+      editPassword: false,
       remail: null,
+      currentPassword: null,
+      newPassword: null,
+      confirmNewPassword: null,
       formFields: [
         { value: '', label: 'Phone Number', type: 'number' },
         { value: '', label: 'Date Of Birth', type: 'text' },
@@ -108,6 +161,24 @@ export default {
   },
   computed: {
     ...mapState('auth', ['firstName', 'lastName', 'email']),
+  },
+  methods: {
+    resetPassword() {
+      this.$axios
+        .post(
+          `https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDHlvRK5SCz0hRGRgqt8b-eMGwhloC2I-U`,
+          {
+            idToken: this.$cookies.get('token'),
+            password: this.confirmNewPassword,
+            returnSecureToken: true,
+          }
+        )
+        .then((res) => {
+          alert('Password reset successfully.')
+          this.$cookies.set('token', res.data.idToken)
+          this.$router.push('/customer/account/welcome')
+        })
+    },
   },
 }
 </script>

@@ -12,14 +12,15 @@
         <v-expansion-panel-header class="grey lighten-2">{{
           filterProduct.name
         }}</v-expansion-panel-header>
-        <v-expansion-panel-content class="my-0">
-          <div v-for="(item, index) in filterProduct.types" :key="index">
-            <v-checkbox
-              v-model="item.typeValue"
-              :label="item.title"
-              @click="query(filterProduct, index)"
-            ></v-checkbox>
-          </div>
+        <v-expansion-panel-content>
+          <v-checkbox
+            v-for="(item, index) in filterProduct.types"
+            :key="index"
+            v-model="item.typeValue"
+            :label="item.title"
+            dense
+            @click="query(filterProduct, index)"
+          ></v-checkbox>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
