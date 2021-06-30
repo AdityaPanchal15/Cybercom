@@ -250,9 +250,13 @@ a {
 a {
   color: black;
 }
+.myLink {
+  color: black;
+}
 .myLink:hover {
   color: #42a5f5;
 }
+
 .container {
   padding: 0;
 }

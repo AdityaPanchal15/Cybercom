@@ -44,13 +44,18 @@
         </v-text-field>
         <v-text-field
           v-model="cvv"
+          class="float-left mr-5"
           label="CVV"
           required
           outlined
           dense
-          append-outer-icon="mdi-credit-card-outline"
         >
         </v-text-field>
+        <v-img
+          class="ma-2"
+          width="10%"
+          src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/cvv_icon_v2.png?va525a247"
+        ></v-img>
       </v-col>
     </v-row>
     <v-divider></v-divider>
