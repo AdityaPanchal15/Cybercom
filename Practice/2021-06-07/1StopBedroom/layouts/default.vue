@@ -64,11 +64,11 @@
             <template #activator="{ on, attrs }">
               <span
                 v-if="!$store.state.auth.loggedIn"
-                class="white--text font-weight-bold pa-3"
+                class="font-weight-bold white--text pa-3"
                 v-bind="attrs"
                 v-on="on"
               >
-                <v-icon color="white">mdi-login</v-icon>
+                <v-icon dark>mdi-login</v-icon>
                 <span>Sign In</span>
               </span>
               <v-btn
@@ -126,14 +126,107 @@
             </v-list>
           </v-menu>
 
-          <nuxt-link to="/checkout/cart" class="ml-6">
-            <v-icon color="white">mdi-cart</v-icon>
-            <span class="white--text font-weight-bold"
-              ><v-badge v-if="products.length !== 0" :content="products.length"
-                >Cart</v-badge
-              ></span
-            >
-          </nuxt-link>
+          <v-menu
+            open-on-hover
+            :close-on-content-click="false"
+            offset-y
+            tile
+            max-height="70vh"
+          >
+            <template #activator="{ on, attrs }">
+              <v-btn
+                to="/checkout/cart"
+                text
+                v-bind="attrs"
+                class="pa-3"
+                v-on="on"
+              >
+                <v-icon color="white">mdi-cart</v-icon>
+                <span class="white--text font-weight-bold">
+                  <v-badge
+                    v-if="products.length !== 0"
+                    :content="products.length"
+                  >
+                    Cart
+                  </v-badge>
+                </span>
+              </v-btn>
+            </template>
+
+            <div v-if="products.length !== 0">
+              <v-list width="60vh">
+                <v-subheader>RECENTLY ADDED ITEM(S)</v-subheader>
+                <template v-for="(item, i) in products">
+                  <v-divider :key="i" class="my-1"></v-divider>
+                  <v-list-item :key="i">
+                    <v-row>
+                      <v-col cols="2">
+                        <v-list-item-avatar tile>
+                          <v-img :src="item.src"></v-img>
+                        </v-list-item-avatar>
+                      </v-col>
+                      <v-col cols="7">
+                        <v-list-item-title class="subtitle-2 text-wrap">
+                          {{ item.title }}
+                        </v-list-item-title>
+                        <v-list-item-subtitle class="d-inline-flex">
+                          <p class="py-3 mr-2">Qty:</p>
+                          <v-text-field
+                            :value="item.quantity"
+                            outlined
+                            dense
+                            style="width: 40px"
+                            @focus="okBtnEnable = true"
+                            @change="changedQuantity = $event"
+                          ></v-text-field>
+                          <v-btn
+                            v-if="okBtnEnable"
+                            class="mx-1"
+                            @click="updateQuantity(i)"
+                          >
+                            ok
+                          </v-btn>
+                          <v-btn icon class="mx-6" @click="removeProduct(i)">
+                            <v-icon color="grey">mdi-delete</v-icon>
+                          </v-btn>
+                        </v-list-item-subtitle>
+                      </v-col>
+                      <v-col>{{ item.subTotal }}</v-col>
+                    </v-row>
+                  </v-list-item>
+                </template>
+              </v-list>
+              <v-card class="grey lighten-4" flat tile>
+                <v-card-subtitle class="text-right font-weight-bold blue--text">
+                  CART SUBTOTAL: {{ totalAmount }}
+                </v-card-subtitle>
+              </v-card>
+              <v-card flat tile>
+                <v-btn
+                  to="/checkout/cart"
+                  class="ma-2 blue lighten-4"
+                  outlined
+                  width="45%"
+                >
+                  View Cart
+                </v-btn>
+                <v-btn
+                  to="/onepage"
+                  class="ma-2 deep-orange accent-3"
+                  dark
+                  width="45%"
+                >
+                  Checkout
+                </v-btn>
+              </v-card>
+            </div>
+            <v-list v-if="products.length === 0">
+              <v-list-item class="body-2 blue--text font-weight-light">
+                RECENTLY ADDED ITEM(S) <br />
+                You have no items in your shopping cart.
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </div>
       </v-col>
     </v-row>
@@ -175,13 +268,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 import Footer from '~/components/Footer.vue'
 import Navbar from '~/components/Navbar.vue'
 export default {
   components: { Navbar, Footer },
   data() {
     return {
+      changedQuantity: null,
+      okBtnEnable: false,
       items: [
         {
           icon: 'mdi-account',
@@ -233,6 +328,14 @@ export default {
   computed: {
     ...mapState('cart', ['products']),
     ...mapState('auth', ['firstName']),
+    ...mapGetters('cart', ['totalAmount']),
+  },
+  methods: {
+    ...mapMutations('cart', ['removeProduct', 'updateProduct']),
+    updateQuantity(i) {
+      this.updateProduct({ quantity: this.changedQuantity, id: i })
+      this.okBtnEnable = false
+    },
   },
 }
 </script>
