@@ -98,7 +98,7 @@
               outlined
               label="Quantity"
               dense
-              @change.capture="updateProduct({ quantity: $event, id: index })"
+              @change="updateProduct({ quantity: $event, id: index })"
             >
             </v-select>
             <v-btn class="blue--text" @click="removeProduct(index)">

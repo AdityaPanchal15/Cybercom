@@ -16,7 +16,7 @@
     <br />
 
     <v-row class="bg-header" dark>
-      <v-col>
+      <v-col cols="2">
         <nuxt-link to="/">
           <v-img
             class="ma-5"
@@ -26,14 +26,13 @@
         </nuxt-link>
       </v-col>
 
-      <v-spacer></v-spacer>
-
-      <v-col>
+      <v-col cols="1"></v-col>
+      <v-col cols="5">
         <p class="pt-3 white--text body-2">
           <a href="">
-            <span class="text-decoration-underline white--text"
-              >36 Month Financing*</span
-            ></a
+            <span class="text-decoration-underline white--text">
+              36 Month Financing*
+            </span></a
           >&nbsp;&nbsp;&nbsp;
           <nuxt-link to="/sales/guest/form">
             <span class="text-decoration-underline white--text">
@@ -56,10 +55,17 @@
         </v-text-field>
       </v-col>
 
-      <v-spacer></v-spacer>
+      <v-col cols="1"></v-col>
 
-      <v-col>
+      <v-col cols="3">
         <div class="pt-12">
+          <router-link to="/testimonials">
+            <v-img
+              src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa"
+              width="22%"
+              class="float-left my-1"
+            ></v-img>
+          </router-link>
           <v-menu open-on-hover offset-y tile>
             <template #activator="{ on, attrs }">
               <span
