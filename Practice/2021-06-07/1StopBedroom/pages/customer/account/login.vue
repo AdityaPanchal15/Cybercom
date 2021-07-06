@@ -103,7 +103,7 @@ export default {
             name: res.data.displayName,
             email: res.data.email,
           })
-          this.$router.push('/')
+          this.$router.push('/customer/account/welcome')
         })
         .catch((error) => {
           alert(error.response.data.error.message)

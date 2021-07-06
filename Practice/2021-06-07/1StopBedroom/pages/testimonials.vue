@@ -13,9 +13,11 @@
           src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/review/review_img.png"
         >
         </v-img>
+
         <v-row class="my-6 mx-12">
           <v-col>
             <h1 class="font-weight-medium">1STOPBEDROOMS</h1>
+
             <v-img
               src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/review/star_small_v1.png"
               width="10%"

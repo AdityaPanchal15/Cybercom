@@ -3,7 +3,15 @@
     <h2 class="font-weight-regular">Secure Checkout</h2>
     <v-card class="grey lighten-5 my-5" flat tile>
       <one-page-form v-if="!loggedIn" />
-      <address-card v-else />
+      <v-row class="my-4 pa-4">
+        <v-col cols="5">
+          <address-card title="Default Billing Address" />
+        </v-col>
+        <v-col cols="5">
+          <address-card title="Default Shipping Address" />
+        </v-col>
+      </v-row>
+
       <div class="mx-4">
         <v-row>
           <v-col cols="11">

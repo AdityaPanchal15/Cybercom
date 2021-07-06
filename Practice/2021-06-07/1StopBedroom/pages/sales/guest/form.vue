@@ -50,9 +50,8 @@
         </v-row>
         <v-btn class="deep-orange accent-3" dark>Continue</v-btn>
         <p class="font-weight-light py-5">
-          Are you a member?<nuxt-link to="/customer/account/login"
-            >Sign In</nuxt-link
-          >
+          Are you a member?
+          <nuxt-link to="/customer/account/login"> Sign In </nuxt-link>
           to view your order status!
         </p>
       </v-col>
@@ -63,7 +62,7 @@
 
 <script>
 export default {
-  middleware: 'auth',
+  middleware: ['trackOrder'],
   data() {
     return {
       email: '',

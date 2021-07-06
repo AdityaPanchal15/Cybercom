@@ -1,12 +1,19 @@
 <template>
   <v-card flat class="grey lighten-4 pa-2">
-    <v-img
-      src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/review/map_img.png"
-    ></v-img>
+    <a
+      href="https://www.google.com/maps/place/1StopBedrooms.com/@40.6150144,-73.9583817,14.75z/data=!4m13!1m7!3m6!1s0x89c244c1bd0893c5:0xcd1a28533b13553b!2s1716+Coney+Island+Ave,+Brooklyn,+NY+11230,+USA!3b1!8m2!3d40.6155949!4d-73.9636955!3m4!1s0x89c252bf58b8c1b9:0x16211ff39e1005b6!8m2!3d40.6155949!4d-73.9636955"
+    >
+      <v-img
+        src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/review/map_img.png"
+      ></v-img>
+    </a>
     <ul class="body-2">
       <li>
         <v-icon size="20"> mdi-map-marker </v-icon>
-        <a href="" class="font-weight-regular">
+        <a
+          href="https://www.google.com/maps/place/1StopBedrooms.com/@40.6150144,-73.9583817,14.75z/data=!4m13!1m7!3m6!1s0x89c244c1bd0893c5:0xcd1a28533b13553b!2s1716+Coney+Island+Ave,+Brooklyn,+NY+11230,+USA!3b1!8m2!3d40.6155949!4d-73.9636955!3m4!1s0x89c252bf58b8c1b9:0x16211ff39e1005b6!8m2!3d40.6155949!4d-73.9636955"
+          class="font-weight-regular"
+        >
           <span> 1716 Coney Island Ave Brooklyn, NY 11230 </span>
         </a>
       </li>

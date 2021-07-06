@@ -77,15 +77,15 @@ export default {
         ],
         customerService: [
           { title: 'My Account', link: '/customer/account/login' },
-          { title: 'My Orders', link: 'my-orders' },
-          { title: 'Track My Order', link: 'track-my-orders' },
+          { title: 'My Orders', link: '/sales/order/history' },
+          { title: 'Track My Order', link: '/sales/guest/form' },
           { title: 'Help Center', link: '/policy/help-center' },
           { title: 'Return Policy', link: '/policy/return-policy' },
           {
             title: 'Shipping & Delivery',
             link: '/policy/shipping-and-delivery',
           },
-          { title: 'Coupons', link: 'coupon-code' },
+          { title: 'Coupons', link: '/coupon-code' },
           { title: 'Price Match', link: 'price-match' },
           { title: 'Financing', link: 'financing' },
         ],

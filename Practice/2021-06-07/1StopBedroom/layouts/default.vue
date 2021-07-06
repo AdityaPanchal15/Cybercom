@@ -16,7 +16,7 @@
     <br />
 
     <v-row class="bg-header" dark>
-      <v-col cols="2">
+      <v-col cols="3">
         <nuxt-link to="/">
           <v-img
             class="ma-5"
@@ -27,7 +27,7 @@
       </v-col>
 
       <v-col cols="1"></v-col>
-      <v-col cols="5">
+      <v-col cols="3">
         <p class="pt-3 white--text body-2">
           <a href="">
             <span class="text-decoration-underline white--text">
@@ -57,20 +57,20 @@
 
       <v-col cols="1"></v-col>
 
-      <v-col cols="3">
+      <v-col cols="4">
         <div class="pt-12">
           <router-link to="/testimonials">
             <v-img
               src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/1sb-general/1sb-testimonials-stars.png?va49360aa"
-              width="22%"
-              class="float-left my-1"
+              width="20%"
+              class="float-left mx-3"
             ></v-img>
           </router-link>
           <v-menu open-on-hover offset-y tile>
             <template #activator="{ on, attrs }">
               <span
                 v-if="!$store.state.auth.loggedIn"
-                class="font-weight-bold white--text pa-3"
+                class="font-weight-bold white--text pa-3 mx-3"
                 v-bind="attrs"
                 v-on="on"
               >
@@ -82,7 +82,7 @@
                 dark
                 text
                 v-bind="attrs"
-                class="text-capitalize"
+                class="text-capitalize mx-3"
                 v-on="on"
               >
                 <v-icon>mdi-account</v-icon>
@@ -197,14 +197,14 @@
                           </v-btn>
                         </v-list-item-subtitle>
                       </v-col>
-                      <v-col>{{ item.subTotal }}</v-col>
+                      <v-col>${{ item.subTotal }}</v-col>
                     </v-row>
                   </v-list-item>
                 </template>
               </v-list>
               <v-card class="grey lighten-4" flat tile>
                 <v-card-subtitle class="text-right font-weight-bold blue--text">
-                  CART SUBTOTAL: {{ totalAmount }}
+                  CART SUBTOTAL: ${{ totalAmount }}
                 </v-card-subtitle>
               </v-card>
               <v-card flat tile>
