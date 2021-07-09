@@ -3,39 +3,73 @@ const { ApolloServer, gql } = require('apollo-server');
 const policy = require('./datasource/policy');
 const product = require('./datasource/product');
 const subCategory = require('./datasource/subCategory');
+const coupons = require('./datasource/coupons');
+const brands = require('./datasource/brands');
 
 const typeDefs = gql`
 	type Query {
-		product(productType:String!): Product
-		policy(url:String): Policy
-		subCategory(categoryType:String!):[subCategory]
-		itemSet(sku:String):[subCategory]
+		product(productType: String!): Product
+		policy(url: String): Policy
+		subCategory(categoryType: String!): [subCategory]
+		subCategoryFilter(categoryType: String,mattress_size: String,mattress_position: String,mattress_comfort: String): [subCategory]
+		itemSet(sku: String): [subCategory]
+		coupons: Coupons
+		brands(char:String!): [Brands]
 	}
-	type Product{
-		productLinks:[Link]
-		img:String
-		categories:[Category]
-	}
-	type Link {
-		linkTitle:String
-		link:String
-	}
-	type Category {
+	type Brands {
+		char:String
 		src:String
+		link:String
 		name:String
 	}
+	type Coupons {
+		totalOrderBasedDiscount: [TotalOrderBasedDiscount]
+		manufacturerDiscount: [ManufacturerDiscountCoupon]
+	}
+	type TotalOrderBasedDiscount {
+		amount: String
+		save: String
+		details: String
+	}
+	type ManufacturerDiscountCoupon {
+		src: String
+		amount: String
+		code: String
+		details: String
+		orders: String
+	}
+	type Product {
+		productLinks: [Link]
+		img: String
+		categories: [Category]
+	}
+	type Link {
+		linkTitle: String
+		link: String
+	}
+	type Category {
+		src: String
+		name: String
+	}
 	type subCategory {
-		src:String
-		title:String
-		subTitle:String
-		webId:String
-		specialPrice:String
-		price:String
-		originalPrice:String
-		numberOfRating:String
-		rating:Float
-		sku:String
-		productType:String
+		src: String
+		title: String
+		subTitle: String
+		webId: String
+		specialPrice: String
+		price: String
+		originalPrice: String
+		numberOfRating: String
+		rating: Float
+		sku: String
+		productType: String
+		comfortLevel:String,
+		mattress_thickness:String,
+		mattress_type:String,
+		mattress_position:String,
+		mattress_comfort:String,
+		mattress_top:String,
+		mattress_size:String,
 	}
 	# type Product {
 	# 	entity_id: String
@@ -118,8 +152,8 @@ const typeDefs = gql`
 		block_id: String
 	}
 	type MetaData {
-		keywords:String,
-		description:String
+		keywords: String
+		description: String
 	}
 `;
 const resolvers = {
@@ -127,25 +161,43 @@ const resolvers = {
 		// products: (_, __, { dataSources }) => {
 		// 	return dataSources.products.ProductAPI();
 		// },
-		policy:(_,{url})=>{
-			const result = policy.find((data)=>data.pageInfo.url===url)
-			return result
+		policy: (_, { url }) => {
+			const result = policy.find((data) => data.pageInfo.url === url);
+			return result;
 		},
-		product:(_,{productType})=>{
-			return product[productType]
+		product: (_, { productType }) => {
+			return product[productType];
 		},
-		subCategory:(_,{categoryType})=>{
-			const result = subCategory.filter((item)=>item.productType===categoryType)
-			return result
+		subCategory: (_, { categoryType }) => {
+			const result = subCategory.filter((item) => item.productType === categoryType);
+			return result;
 		},
-		itemSet:(_,{sku})=>{
-			const result = subCategory.filter(item=>{
-				if(item.sku !== sku && item.sku){
-					return  item.sku.slice(0,4)===sku.slice(0,4)
+		subCategoryFilter:(_,param) => {
+			
+			if(param.mattress_size && !param.mattress_comfort){
+				result = subCategory.filter((item) => item.productType === param.categoryType && item.mattress_size === param.mattress_size);
+			}else if(!param.mattress_size && param.mattress_comfort){
+				result = subCategory.filter((item) => item.productType === param.categoryType && item.mattress_comfort === param.mattress_comfort);
+			}else {
+				result = subCategory.filter((item) => item.productType === param.categoryType && item.mattress_size === param.mattress_size && item.mattress_position === param.mattress_position && item.mattress_comfort === param.mattress_comfort);
+			}
+			return result;
+		},
+		itemSet: (_, { sku }) => {
+			const result = subCategory.filter((item) => {
+				if (item.sku !== sku && item.sku) {
+					return item.sku.slice(0, 4) === sku.slice(0, 4);
 				}
-			})
-			return result
+			});
+			return result;
 		},
+		coupons:()=>{
+			return coupons
+		},
+		brands:(_,{ char }) => {
+			const result = brands.filter((item) => item.char === char);
+			return result;
+		}
 	},
 };
 

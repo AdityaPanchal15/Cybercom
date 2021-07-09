@@ -20,6 +20,14 @@
         />
       </v-col>
     </v-row>
+    <v-row v-else-if="productName === 'brands'">
+      <v-col cols="3">
+        <search-bar />
+      </v-col>
+      <v-col>
+        <all-brands />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -27,8 +35,10 @@
 import gql from 'graphql-tag'
 import ProductImages from '~/components/ProductLandingPage/ProductImages.vue'
 import SidePanel from '~/components/ProductLandingPage/SidePanel.vue'
+import SearchBar from '~/components/Brands/SearchBar.vue'
+import AllBrands from '~/components/Brands/AllBrands.vue'
 export default {
-  components: { SidePanel, ProductImages },
+  components: { SidePanel, ProductImages, SearchBar, AllBrands },
   apollo: {
     product: {
       query: gql`

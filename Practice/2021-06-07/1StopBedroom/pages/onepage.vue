@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="font-weight-regular">Secure Checkout</h2>
+    <h2 class="font-weight-regular ma-2">Secure Checkout</h2>
     <v-card class="grey lighten-5 my-5" flat tile>
       <one-page-form v-if="!loggedIn" />
       <v-row class="my-4 pa-4">

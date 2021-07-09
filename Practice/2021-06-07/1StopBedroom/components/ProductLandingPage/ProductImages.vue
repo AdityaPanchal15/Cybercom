@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-img :src="imgSrc" class="mb-9">
+    <v-img :src="imgSrc" lazy-src="../lazyImg.gif" class="mb-9">
       <v-card flat tile color="rgba(0, 0, 0, 0.3)">
         <h1 class="text-center text-capitalize">
           {{ $route.params.product }}
@@ -16,7 +16,7 @@
           <v-hover v-slot="{ hover }">
             <v-card id="rounded-card">
               <v-avatar size="200">
-                <v-img :src="category.src"></v-img>
+                <v-img :src="category.src" lazy-src="../lazyImg.gif"></v-img>
               </v-avatar>
               <v-fade-transition>
                 <v-overlay v-if="hover" absolute style="z-index: 0">

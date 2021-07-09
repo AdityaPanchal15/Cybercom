@@ -2,11 +2,9 @@
   <div class="ma-2">
     <slider />
     <small-image-slider />
-    <v-parallax
-      src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/why_bg_v4.jpg?vd95b97fe"
-    >
+    <div class="home-icon-block-wrapper">
       <feature-component />
-    </v-parallax>
+    </div>
     <card-slider />
     <card-set />
     <sale-card :card-data="saleCardData.bedroom" title="Bedroom Sets on Sale" />
@@ -288,3 +286,27 @@ export default {
   },
 }
 </script>
+<style scoped>
+.home-icon-block-wrapper::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  content: '';
+}
+.home-icon-block-wrapper {
+  background: url(https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/new/why_bg_v4.jpg?vd95b97fe)
+    50% 50% no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  padding: 70px 0;
+}
+</style>
+>

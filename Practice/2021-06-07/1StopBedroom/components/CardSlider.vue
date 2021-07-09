@@ -5,11 +5,14 @@
       <v-slide-group show-arrows>
         <v-slide-item v-for="(item, i) in cardData" :key="i">
           <v-card class="mx-1" height="430" width="240" tile flat>
-            <v-img height="200" :src="item.imgUrl"></v-img>
-
-            <v-card-title class="font-weight-light headline">{{
-              item.title
-            }}</v-card-title>
+            <nuxt-link
+              :to="{ name: 'product', params: { product: item.link } }"
+            >
+              <v-img height="200" :src="item.imgUrl"></v-img>
+            </nuxt-link>
+            <v-card-title class="font-weight-light headline">
+              {{ item.title }}
+            </v-card-title>
             <v-divider></v-divider>
             <v-card-text>
               <div
@@ -45,6 +48,7 @@ export default {
             'Dressers',
             'Dressers Mirrors',
           ],
+          link: 'bedroom',
         },
         {
           imgUrl:
@@ -57,6 +61,7 @@ export default {
             'Loveseats',
             'Sleeper Sofas',
           ],
+          link: 'living',
         },
         {
           imgUrl:
@@ -68,6 +73,7 @@ export default {
             'Dining Tables',
             "Backer's Racks",
           ],
+          link: 'dining',
         },
         {
           imgUrl:
@@ -80,6 +86,7 @@ export default {
             'Office Accesories',
             'Conference Room',
           ],
+          link: 'office',
         },
         {
           imgUrl:
@@ -92,6 +99,7 @@ export default {
             'Home Bars',
             'Bar Tables and Pub Tables',
           ],
+          link: 'barfurniture',
         },
         {
           imgUrl:
@@ -103,6 +111,7 @@ export default {
             'Outdoor Accessories',
             'Outdoor Conversation Sets',
           ],
+          link: 'outdoors',
         },
       ],
     }

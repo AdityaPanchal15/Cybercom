@@ -3,7 +3,12 @@
     <v-slide-group show-arrows class="py-4">
       <v-slide-item v-for="(slide, i) in slides" :key="i">
         <v-card class="ma-4" tile flat width="100">
-          <v-img :src="slide.imgUrl" :alt="slide.alt" height="60"></v-img>
+          <v-img
+            :src="slide.imgUrl"
+            :alt="slide.alt"
+            lazy-src="lazyImg.gif"
+            height="60"
+          ></v-img>
           <v-card-text class="text-center text-subtitle-2">{{
             slide.name
           }}</v-card-text>

@@ -1,7 +1,12 @@
 <template>
   <v-carousel cycle height="400" hide-delimiter-background show-arrows-on-hover>
     <v-carousel-item v-for="(slide, i) in slides" :key="i">
-      <v-img :src="slide.imgUrl" :alt="slide.alt" height="100%"></v-img>
+      <v-img
+        :src="slide.imgUrl"
+        :alt="slide.alt"
+        lazy-src="lazyImg.gif"
+        height="100%"
+      ></v-img>
     </v-carousel-item>
   </v-carousel>
 </template>

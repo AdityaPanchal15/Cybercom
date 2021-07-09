@@ -38,10 +38,5 @@ import AddressCard from '~/components/OnePageComponents/AddressCard.vue'
 export default {
   components: { AddressCard },
   layout: 'customerLayout',
-  data() {
-    return {
-      id: this.$cookies.get('uid'),
-    }
-  },
 }
 </script>

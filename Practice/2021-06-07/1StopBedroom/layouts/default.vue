@@ -20,7 +20,7 @@
         <nuxt-link to="/">
           <v-img
             class="ma-5"
-            width="200"
+            width="200px"
             src="https://cdn.1stopbedrooms.com/skin/frontend/onestopbedrooms/default/images/account-logo.png"
           ></v-img>
         </nuxt-link>
@@ -32,8 +32,9 @@
           <a href="">
             <span class="text-decoration-underline white--text">
               36 Month Financing*
-            </span></a
-          >&nbsp;&nbsp;&nbsp;
+            </span>
+          </a>
+          &nbsp;&nbsp;&nbsp;
           <nuxt-link to="/sales/guest/form">
             <span class="text-decoration-underline white--text">
               Track My Order
@@ -241,7 +242,8 @@
 
     <v-main>
       <v-img
-        src="https://cdn.1stopbedrooms.com/media/bannerslider/j/u/july4thsale2021_topbnr_internal_170621.png"
+        src="https://cdn.1stopbedrooms.com/media/bannerslider/j/u/july4thsale2021_topbnr_home_020721.png"
+        contain
       ></v-img>
       <v-container fluid>
         <v-fab-transition>
